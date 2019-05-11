@@ -1,5 +1,8 @@
 package controller.commands;
 
+import model.service.ServiceFactory;
+import model.service.UserService;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -18,7 +21,7 @@ public interface Command {
 
 
 //    RoomService roomService = ServiceFactory.getRoomService();
-//    UserService userService = ServiceFactory.getUserService();
+    UserService userService = ServiceFactory.getUserService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }
