@@ -2,16 +2,16 @@ package model.entity;
 
 import java.util.Objects;
 
-public class Products {
+public class Product {
     private Integer id;
     private String name;
     private Double cost;
     private Double quantity;
 //    private Invoice invoice;
 
-    public Products() {}
+    public Product() {}
 
-    public Products(Integer id, String name, Double cost, Double quantity) {
+    public Product(Integer id, String name, Double cost, Double quantity) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -58,7 +58,7 @@ public class Products {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Products that = (Products) o;
+        Product that = (Product) o;
         return name.equals(that.name);
 //                quantity.equals(that.quantity) &&
 //                cost.equals(that.cost);
