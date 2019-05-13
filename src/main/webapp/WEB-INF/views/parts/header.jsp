@@ -9,7 +9,7 @@
 
 <div style="background: #E0E0E0; height: 55px; padding: 5px;">
     <div style="float: left">
-        <h1><fmt:message key="hotel.name"/></h1>
+        <h1><fmt:message key="shop.name"/></h1>
     </div>
 
     <div style="float: right; padding: 10px; text-align: right;">

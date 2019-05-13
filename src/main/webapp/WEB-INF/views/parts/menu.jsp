@@ -9,14 +9,16 @@
 
 <div style="padding: 5px;">
 
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/info_page'"><fmt:message key="about.hotel"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/info_page'"><fmt:message key="about.shop"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/room_list'"><fmt:message key="room.list"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/cashier_page'"><fmt:message key="cashier.list"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/admin_home_list'"><fmt:message key="admin.room.list"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/senior_cashier_list'"><fmt:message key="senior.cashier"/></button>
+
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/manager_page'"><fmt:message key="manager"/></button>
     |
     <%--<a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>--%>
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/user_home_page'"><fmt:message key="my.account.info"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/error'"><fmt:message key="my.account.info"/></button>
 
     |
     <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/log_out'"><fmt:message key="exit-button"/></button>

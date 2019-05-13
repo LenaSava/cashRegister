@@ -25,7 +25,7 @@
         <jsp:include page="parts/menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
             <h2>
-                User Page<br/>
+                Cashier Page<br/>
                 <i>User</i>
             </h2>
         </div>

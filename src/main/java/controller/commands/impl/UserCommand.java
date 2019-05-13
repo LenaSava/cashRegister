@@ -28,10 +28,12 @@ public class UserCommand implements Command {
         if (HashPassword.getPwdHash(passFromRequest).equals(password)) {
             request.getSession(true).setAttribute("User", user);
             logger.info("Successfully logged in user: " + user.getLogin());
-            if (Role.CAHIER_CHIEF.getRole() == user.getRole()) {
-                return "redirect:/" + CommandUtil.ADMIN_ROOM_LIST.getPath();
+            if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
+                return "redirect:/" + CommandUtil.SENIOR_CASHIER_PAGE.getPath();
+            } else if (Role.MANAGER.getRole() == user.getRole()) {
+                return "redirect:/" + CommandUtil.MANAGER_PAGE.getPath();
             }
-            return "redirect:/" + CommandUtil.CAHIER_LIST.getPath();
+            return "redirect:/" + CommandUtil.CAHIER_PAGE.getPath();
         }
 //        }catch (ServiceException e) {
 //            request.setAttribute("wrongPassOrLogin", true);

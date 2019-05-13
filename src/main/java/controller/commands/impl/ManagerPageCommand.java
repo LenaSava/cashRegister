@@ -5,9 +5,9 @@ import controller.commands.Command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ShowRegistrationPageCommand implements Command {
+public class ManagerPageCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return SHOW_SENIOR_CASHIER;
+        return MANAGER_PAGE;
     }
 }

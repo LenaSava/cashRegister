@@ -27,10 +27,11 @@ public class CommandFactory {
         commands.put(CommandUtil.SHOW_REGISTRATION.getPath(), new ShowRegistrationPageCommand());
         commands.put(CommandUtil.INFO_PAGE.getPath(), new InfoCommand());
 //        commands.put(CommandUtil.ROOM_LIST.getPath(), new RoomListCommand());
-//        commands.put(CommandUtil.ADMIN_ROOM_LIST.getPath(), new AdminRoomListCommand());
+        commands.put(CommandUtil.SENIOR_CASHIER_PAGE.getPath(), new SeniorCashierPage());
 //        commands.put(CommandUtil.CREATE_ROOM.getPath(), new CreateRoomCommand());
 //        commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateRoomCommand());
-        commands.put(CommandUtil.CAHIER_LIST.getPath(), new CahierPageCommand());
+        commands.put(CommandUtil.CAHIER_PAGE.getPath(), new CahierPageCommand());
+        commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());
     }
 
     public static Command getCommand(String url) {
