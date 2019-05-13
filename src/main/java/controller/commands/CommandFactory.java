@@ -30,6 +30,7 @@ public class CommandFactory {
 //        commands.put(CommandUtil.ADMIN_ROOM_LIST.getPath(), new AdminRoomListCommand());
 //        commands.put(CommandUtil.CREATE_ROOM.getPath(), new CreateRoomCommand());
 //        commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateRoomCommand());
+        commands.put(CommandUtil.CAHIER_LIST.getPath(), new CahierPageCommand());
     }
 
     public static Command getCommand(String url) {

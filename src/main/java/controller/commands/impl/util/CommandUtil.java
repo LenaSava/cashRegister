@@ -14,6 +14,8 @@ public enum CommandUtil {
     ADMIN_ROOM_LIST("admin_home_list"),
     CREATE_ROOM("create_room"),
     SHOW_CREATE("show_create"),
+    CAHIER_LIST("cahier_page"),
+    CHIEF_CAHIER("chief_page"),
 
     CHOSE_APARTMENT_BY_ADMIN("chose_apartment"),
     SEND_BILL_TO_CLIENT("create_bill"),

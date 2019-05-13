@@ -31,7 +31,7 @@ public class UserCommand implements Command {
             if (Role.CAHIER_CHIEF.getRole() == user.getRole()) {
                 return "redirect:/" + CommandUtil.ADMIN_ROOM_LIST.getPath();
             }
-            return "redirect:/" + CommandUtil.ROOM_LIST.getPath();
+            return "redirect:/" + CommandUtil.CAHIER_LIST.getPath();
         }
 //        }catch (ServiceException e) {
 //            request.setAttribute("wrongPassOrLogin", true);
