@@ -18,14 +18,9 @@ public class JDBCDaoFactory extends DaoFactory {
     }
 
     @Override
-    public ProductDao createProductrDao() {
+    public ProductDao createProductDao() {
         return new JDBCProductDao();
     }
-
-//    @Override
-//    public RoomDao createRoomDao() {
-//        return new JDBCRoomDao(getConnection());
-//    }
 
 
     private Connection getConnection(){
