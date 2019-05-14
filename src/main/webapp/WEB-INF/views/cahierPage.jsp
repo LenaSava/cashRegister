@@ -41,7 +41,7 @@
                         <td>${product.name}</td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <%--<td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(product.orderId)}">checked="checked"</c:if> /> </td>--%>
+                        <td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(product.invoice_id)}">checked="checked"</c:if> /> </td>
                     </tr>
                 </c:forEach>
             </table>

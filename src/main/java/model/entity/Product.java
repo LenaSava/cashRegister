@@ -7,7 +7,7 @@ public class Product {
     private String name;
     private Double cost;
     private Double quantity;
-//    private Invoice invoice;
+    private Invoice invoice;
 
     public Product() {}
 
