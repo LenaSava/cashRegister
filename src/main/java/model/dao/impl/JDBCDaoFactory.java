@@ -19,7 +19,7 @@ public class JDBCDaoFactory extends DaoFactory {
 
     @Override
     public ProductDao createProductDao() {
-        return new JDBCProductDao();
+        return new JDBCProductDao(getConnection());
     }
 
 

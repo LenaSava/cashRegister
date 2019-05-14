@@ -19,16 +19,12 @@ public class JDBCProductDao implements ProductDao {
         this.connection = connection;
     }
 
-    public JDBCProductDao(){
-        this.connection = connection;
-    }
-
     @Override
     public boolean create(Product entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO products(name, cost, quantity) VALUES (?,?,?)")){
 
-            statement.setString(1, entity.getProductName());
+            statement.setString(1, entity.getName());
             statement.setDouble(2, entity.getCost());
             statement.setDouble(3, entity.getQuantity());
 
@@ -95,7 +91,7 @@ public class JDBCProductDao implements ProductDao {
     public void update(Product entity) {
         try(PreparedStatement statement = connection.prepareStatement("UPDATE products set name = ?, cost=?, quantity=? where id=?")){
 
-            statement.setString(1, entity.getProductName());
+            statement.setString(1, entity.getName());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
       //      statement.setInt(5, entity.getRoomID());
