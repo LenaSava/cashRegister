@@ -7,7 +7,6 @@ public enum CommandUtil {
     ERROR_PAGE("error"),
     REGISTRATION("registration"),
     SHOW_REGISTRATION("show_registration"),
-    SHOW_SENIOR_CASHIER("show_senior_cashier"),
     LOG_OUT("log_out"),
     INFO_PAGE("info_page"),
     USER_HOME_PAGE("user_home_page"),

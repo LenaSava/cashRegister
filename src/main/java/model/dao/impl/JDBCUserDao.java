@@ -25,11 +25,11 @@ public class JDBCUserDao implements UserDao {
     @Override
     public boolean create(User entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO user(login, password, user_email, role_ID_role) VALUES (?,?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO user(login,email, password, role_id) VALUES (?,?,?,?)")){
 
             statement.setString(1, entity.getLogin());
-            statement.setString(2, entity.getPassword());
-            statement.setString(3, entity.getEmail());
+            statement.setString(2, entity.getEmail());
+            statement.setString(3, entity.getPassword());
             statement.setInt(4, 1);
 
             statement.execute();
