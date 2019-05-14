@@ -1,5 +1,6 @@
 package controller.commands;
 
+import model.service.ProductService;
 import model.service.ServiceFactory;
 import model.service.UserService;
 
@@ -16,12 +17,12 @@ public interface Command {
     String ERROR_PAGE = "/WEB-INF/views/error.jsp";
     String HOME = "/index.jsp";
     String INFO_VIEW = "/WEB-INF/views/infoView.jsp";
-    String CAHIER_PAGE = "/WEB-INF/views/cahierPage.jsp";
+    String CAHIER_PAGE_JSP = "/WEB-INF/views/cahierPage.jsp";
     String MANAGER_PAGE = "/WEB-INF/views/manager.jsp";
     String CREATE_ROOM = "/WEB-INF/views/createRoom.jsp";
 
 
-//    RoomService roomService = ServiceFactory.getRoomService();
+    ProductService productService = ServiceFactory.getProductService();
     UserService userService = ServiceFactory.getUserService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;

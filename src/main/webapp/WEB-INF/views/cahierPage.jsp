@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenkasava
@@ -10,13 +12,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>user page</title>
+    <title>cashier page</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body class="w3-light-grey">
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
-    <h1>Room Reservation!</h1>
+    <h1><fmt:message key="cash.register"/></h1>
 </div>
 
 <div class="w3-container w3-padding">
@@ -25,14 +27,30 @@
         <jsp:include page="parts/menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
             <h2>
-                Cashier Page<br/>
-                <i>User</i>
+                <i>Product List</i>
             </h2>
+            <table border="1" cellpadding="5" cellspacing="1" >
+                <tr>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Book</th>
+                </tr>
+                <c:forEach items="${products}" var="product" >
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.cost}</td>
+                        <td>${product.quantity}</td>
+                        <td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(product.orderId)}">checked="checked"</c:if> /> </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <br>
         </div>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large" onclick="location.href='../..'">Back to main</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'">back to user menu</button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

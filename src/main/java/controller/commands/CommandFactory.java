@@ -20,7 +20,6 @@ public class CommandFactory {
     static {
         commands.put(CommandUtil.LOGIN_PAGE.getPath(), new SignInCommand());
         commands.put(CommandUtil.REGISTRATION.getPath(), new RegistrationCommand());
-//        commands.put(CommandUtil.USER_HOME_PAGE.getPath(), new UserHomePageCommand());
         commands.put(CommandUtil.LOG_OUT.getPath(), new LogOutCommand());
         commands.put(CommandUtil.ERROR_PAGE.getPath(), new ErrorCommand());
         commands.put(CommandUtil.SIGN_IN.getPath(), new UserCommand());
@@ -36,8 +35,6 @@ public class CommandFactory {
 
     public static Command getCommand(String url) {
         Command command = commands.getOrDefault(url, (r,response) ->"/index.jsp");
-//        Command command = commands.get(url);
-//        logger.info(String.format("get command by url = %s", url));
 
         if( command == null){
             return new ErrorCommand();
