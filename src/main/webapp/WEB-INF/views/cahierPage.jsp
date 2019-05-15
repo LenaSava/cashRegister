@@ -31,13 +31,15 @@
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th>Product name</th>
+                    <th>Code</th>
+                    <th>Product's name</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Book</th>
                 </tr>
                 <c:forEach items="${products}" var="product" >
                     <tr>
+                        <td>${product.code}</td>
                         <td>${product.name}</td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>

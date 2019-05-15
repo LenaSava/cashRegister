@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Product {
     private Integer id;
+    private Integer code;
     private String name;
     private Double cost;
     private Double quantity;
@@ -11,8 +12,9 @@ public class Product {
 
     public Product() {}
 
-    public Product(Integer id, String name, Double cost, Double quantity) {
+    public Product(Integer id, Integer code, String name, Double cost, Double quantity) {
         this.id = id;
+        this.code = code;
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;
@@ -24,6 +26,14 @@ public class Product {
 
     public void setID(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -73,6 +83,7 @@ public class Product {
     public String toString() {
         return "\nRoom{" +
                 "id=" + id +
+                "code=" + code +
                 ", room type='" + name + '\'' +
                 ", cost='" + cost + '\'' +
                 ", quota=" + quantity +

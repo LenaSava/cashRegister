@@ -22,11 +22,12 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public boolean create(Product entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(name, cost, quantity) VALUES (?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(name, code, cost, quantity) VALUES (?,?,?,?)")){
 
             statement.setString(1, entity.getName());
-            statement.setDouble(2, entity.getCost());
-            statement.setDouble(3, entity.getQuantity());
+            statement.setInt(2,entity.getCode());
+            statement.setDouble(3, entity.getCost());
+            statement.setDouble(4, entity.getQuantity());
 
             statement.execute();
             return true;
@@ -60,7 +61,7 @@ public class JDBCProductDao implements ProductDao {
         Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select r.id as id, r.name as name, r.cost as cost, r.quantity as quantity from products r";// +
+                " select r.id as id, r.name as name, r.code as code, r.cost as cost, r.quantity as quantity from products r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
@@ -92,9 +93,9 @@ public class JDBCProductDao implements ProductDao {
         try(PreparedStatement statement = connection.prepareStatement("UPDATE products set name = ?, cost=?, quantity=? where id=?")){
 
             statement.setString(1, entity.getName());
+            statement.setInt(2,entity.getCode());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
-      //      statement.setInt(5, entity.getRoomID());
 
             statement.execute();
 

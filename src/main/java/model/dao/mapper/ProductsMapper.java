@@ -13,6 +13,7 @@ public class ProductsMapper implements ObjectMapper<Product> {
     public Product extractFromResultSet(ResultSet rs) throws SQLException {
         Product product = new Product();
         product.setID(rs.getInt("id"));
+        product.setCode(rs.getInt("code"));
         product.setName(rs.getString("name"));
         product.setCost(rs.getDouble("cost"));
         product.setQuantity(rs.getDouble("quantity"));
