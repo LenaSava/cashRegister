@@ -22,10 +22,10 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public boolean create(Product entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(name, code, cost, quantity) VALUES (?,?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, cost, quantity) VALUES (?,?,?,?)")){
 
-            statement.setString(1, entity.getName());
-            statement.setInt(2,entity.getCode());
+            statement.setInt(1,entity.getCode());
+            statement.setString(2, entity.getName());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
 
@@ -61,7 +61,8 @@ public class JDBCProductDao implements ProductDao {
         Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select r.id as id, r.name as name, r.code as code, r.cost as cost, r.quantity as quantity from products r";// +
+                " select r.id as id, r.code as code, r.name as name, r.cost as cost, r.quantity as quantity," +
+                "r.invoice_id as invoice_id from products r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
@@ -90,12 +91,13 @@ public class JDBCProductDao implements ProductDao {
 
     @Override
     public void update(Product entity) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE products set name = ?, cost=?, quantity=? where id=?")){
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, cost=?, quantity=? where id=?")){
 
             statement.setInt(1,entity.getCode());
             statement.setString(2, entity.getName());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
+            statement.setInt(5, entity.getID());
 
             statement.execute();
 

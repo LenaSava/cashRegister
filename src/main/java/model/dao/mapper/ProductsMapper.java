@@ -1,7 +1,6 @@
 package model.dao.mapper;
 
 import model.entity.Product;
-import model.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
