@@ -37,15 +37,15 @@
         <name>LocaleFilter</name>
     </absolute-ordering>
 
-    <!--<filter>-->
-        <!--<filter-name>EncodingFilter</filter-name>-->
-        <!--<filter-class>controller.filter.EncodingFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>EncodingFilter</filter-name>-->
-        <!--<servlet-name>Servl</servlet-name>-->
-        <!--<url-pattern>/api/*</url-pattern>-->
-    <!--</filter-mapping>-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>controller.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <servlet-name>Servl</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
 
     <!--<filter>-->
         <!--<filter-name>AccessFilter</filter-name>-->
@@ -56,11 +56,11 @@
                 <!--/api/info_page</param-value>-->
         <!--</init-param>-->
         <!--<init-param>-->
-            <!--<param-name>client-urls</param-name>-->
+            <!--<param-name>cashier-urls</param-name>-->
             <!--<param-value>/api/user_home_page,/api/room_list,/api/log_out</param-value>-->
         <!--</init-param>-->
         <!--<init-param>-->
-            <!--<param-name>admin-urls</param-name>-->
+            <!--<param-name>manager-urls</param-name>-->
             <!--<param-value>/api/admin_home_list,/api/log_out,/api/create_room,/api/show_create</param-value>-->
         <!--</init-param>-->
     <!--</filter>-->
