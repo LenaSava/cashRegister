@@ -36,8 +36,8 @@
                         <td>${product.name}</td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <td><a href="/api/show_create?id=${product.id}">Edit</a></td>
-                        <td><a href="/api/delete?id=${product.id}">Delete</a></td>
+                        <td><a href="/api/show_create?id=${product.productID}">Edit</a></td>
+                        <td><a href="/api/delete?id=${product.productID}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>

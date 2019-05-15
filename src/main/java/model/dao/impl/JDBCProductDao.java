@@ -92,8 +92,8 @@ public class JDBCProductDao implements ProductDao {
     public void update(Product entity) {
         try(PreparedStatement statement = connection.prepareStatement("UPDATE products set name = ?, cost=?, quantity=? where id=?")){
 
-            statement.setString(1, entity.getName());
-            statement.setInt(2,entity.getCode());
+            statement.setInt(1,entity.getCode());
+            statement.setString(2, entity.getName());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
 

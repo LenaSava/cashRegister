@@ -25,7 +25,7 @@
         </div>
         <form method="post" action="/api/create_update" class="w3-selection w3-light-grey w3-padding">
             <input type="hidden" name="id" value="${product.id}"/>
-            <input type="hidden" name="id" value="${product.invoice_id}"/>
+            <input type="hidden" name="id" value="${product.invoiceId}"/>
             <label>Code:
                 <input type="number" required maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>

@@ -25,9 +25,8 @@ public class CommandFactory {
         commands.put(CommandUtil.SIGN_IN.getPath(), new UserCommand());
         commands.put(CommandUtil.SHOW_REGISTRATION.getPath(), new ShowRegistrationPageCommand());
         commands.put(CommandUtil.INFO_PAGE.getPath(), new InfoCommand());
-//        commands.put(CommandUtil.ROOM_LIST.getPath(), new RoomListCommand());
         commands.put(CommandUtil.SENIOR_CASHIER_PAGE.getPath(), new SeniorCashierPage());
-//        commands.put(CommandUtil.CREATE_ROOM.getPath(), new CreateRoomCommand());
+        commands.put(CommandUtil.CREATE_UPDATE.getPath(), new CreateProductCommand());
         commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateProductCommand());
         commands.put(CommandUtil.CAHIER_PAGE.getPath(), new CahierPageCommand());
         commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());

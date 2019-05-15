@@ -11,7 +11,6 @@ import java.io.IOException;
 public interface Command {
 
     String SIGN_IN_JSP = "/WEB-INF/views/login.jsp";
-    String ROOM_LIST_JSP = "/WEB-INF/views/roomList.jsp";
     String SHOW_SENIOR_CASHIER = "/WEB-INF/views/seniorCashier.jsp";
     String REGISTRATION_PAGE_JSP = "/WEB-INF/views/registration.jsp";
     String ERROR_PAGE = "/WEB-INF/views/error.jsp";
