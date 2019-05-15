@@ -19,7 +19,7 @@ public interface Command {
     String INFO_VIEW = "/WEB-INF/views/infoView.jsp";
     String CAHIER_PAGE_JSP = "/WEB-INF/views/cahierPage.jsp";
     String MANAGER_PAGE = "/WEB-INF/views/manager.jsp";
-    String CREATE_ROOM = "/WEB-INF/views/createRoom.jsp";
+    String CREATE_UPDATE = "/WEB-INF/views/createUpdate.jsp";
 
 
     ProductService productService = ServiceFactory.getProductService();

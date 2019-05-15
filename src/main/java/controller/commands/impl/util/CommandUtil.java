@@ -13,10 +13,10 @@ public enum CommandUtil {
     ROOM_LIST("room_list"),
     SENIOR_CASHIER_PAGE("senior_cashier_list"),
     MANAGER_PAGE("manager_page"),
-    CREATE_ROOM("create_room"),
+    CREATE_UPDATE("create_update"),
     SHOW_CREATE("show_create"),
     CAHIER_PAGE("cashier_page"),
-    CHIEF_CAHIER("chief_page"),
+
 
     CHOSE_APARTMENT_BY_ADMIN("chose_apartment"),
     SEND_BILL_TO_CLIENT("create_bill"),
