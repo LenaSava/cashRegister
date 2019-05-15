@@ -8,6 +8,7 @@ public class Product {
     private String name;
     private Double cost;
     private Double quantity;
+    private Integer invoiceId;
     private Invoice invoice;
 
     public Product() {}
@@ -18,6 +19,7 @@ public class Product {
         this.name = name;
         this.cost = cost;
         this.quantity = quantity;
+
     }
 
     public Integer getID() {
@@ -56,13 +58,12 @@ public class Product {
     public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
-//    public Integer getOrderId() {
-//        return orderId;
-//    }
-//
-//    public void setOrderId(Integer orderId) {
-//        this.orderId = orderId;
-//    }
+    public Integer getInvoiceId() {
+        return invoiceId;
+    }
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
+    }
 
     @Override
     public boolean equals(Object o) {

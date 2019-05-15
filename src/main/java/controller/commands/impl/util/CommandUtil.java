@@ -10,20 +10,11 @@ public enum CommandUtil {
     LOG_OUT("log_out"),
     INFO_PAGE("info_page"),
     USER_HOME_PAGE("user_home_page"),
-    ROOM_LIST("room_list"),
     SENIOR_CASHIER_PAGE("senior_cashier_list"),
     MANAGER_PAGE("manager_page"),
     CREATE_UPDATE("create_update"),
     SHOW_CREATE("show_create"),
-    CAHIER_PAGE("cashier_page"),
-
-
-    CHOSE_APARTMENT_BY_ADMIN("chose_apartment"),
-    SEND_BILL_TO_CLIENT("create_bill"),
-    CLIENT_BILLS_PAGE("bills-page"),
-    CHANGE_LOCALE("change-locale"),
-    BILL_PAYMENT("billPayment"),
-    REJECT_ORDER("reject-order");
+    CAHIER_PAGE("cashier_page");
 
 
     private String path;
