@@ -97,7 +97,7 @@ public class JDBCProductDao implements ProductDao {
             statement.setString(2, entity.getName());
             statement.setDouble(3, entity.getCost());
             statement.setDouble(4, entity.getQuantity());
-            statement.setInt(5, entity.getID());
+            statement.setInt(5, entity.getId());
 
             statement.execute();
 

@@ -21,7 +21,7 @@ public class CreateProductCommand implements Command {
         if (StringUtil.isEmpty(request.getParameter("id"))) {
             isNewProduct = true;
         } else {
-            product.setID(Integer.parseInt(request.getParameter("id")));
+            product.setId(Integer.parseInt(request.getParameter("id")));
         }
         if (!StringUtil.isEmpty(request.getParameter("invoiceId"))) {
             product.setInvoiceId(Integer.parseInt(request.getParameter("invoiceId")));

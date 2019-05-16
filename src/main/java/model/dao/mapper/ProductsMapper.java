@@ -11,7 +11,7 @@ public class ProductsMapper implements ObjectMapper<Product> {
     @Override
     public Product extractFromResultSet(ResultSet rs) throws SQLException {
         Product product = new Product();
-        product.setID(rs.getInt("id"));
+        product.setId(rs.getInt("id"));
         product.setCode(rs.getInt("code"));
         product.setName(rs.getString("name"));
         product.setCost(rs.getDouble("cost"));
@@ -22,7 +22,7 @@ public class ProductsMapper implements ObjectMapper<Product> {
 
 
     public Product makeUnique(Map<Integer, Product> cache, Product product) {
-        cache.putIfAbsent(product.getID(), product);
-        return cache.get(product.getID());
+        cache.putIfAbsent(product.getId(), product);
+        return cache.get(product.getId());
     }
 }
