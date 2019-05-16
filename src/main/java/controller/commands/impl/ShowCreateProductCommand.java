@@ -19,7 +19,7 @@ public class ShowCreateProductCommand implements Command {
         } else {
             product = productService.findById(Integer.parseInt(id)).orElseThrow(()->new RuntimeException("room by id: "+ id + " not found"));
         }
-        request.setAttribute("products", product);
+        request.setAttribute("product", product);
         return CREATE_UPDATE;
     }
 }

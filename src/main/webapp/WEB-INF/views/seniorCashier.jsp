@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenkasava
@@ -11,6 +12,7 @@
     <title>SeniorCashier</title>
 </head>
 <body>
+<h1><fmt:message key="cash.register"/></h1>
 i am senior cashier
 </body>
 </html>

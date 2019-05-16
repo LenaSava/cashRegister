@@ -33,6 +33,7 @@ public class JDBCProductDao implements ProductDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
+            System.out.println("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }

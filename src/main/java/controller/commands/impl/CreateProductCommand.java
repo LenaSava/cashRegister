@@ -40,7 +40,7 @@ public class CreateProductCommand implements Command {
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
-        request.setAttribute("rooms", productService.getAllProducts());
+        request.setAttribute("products", productService.getAllProducts());
 
         return MANAGER_PAGE;
     }

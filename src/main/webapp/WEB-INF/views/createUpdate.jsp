@@ -15,7 +15,7 @@
 
 <body class="w3-light-grey">
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
-    <h1><fmt:message key="room.booking"/></h1>
+    <h1><fmt:message key="cash.register"/></h1>
 </div>
 
 <div class="w3-container w3-padding">
@@ -27,10 +27,10 @@
             <input type="hidden" name="id" value="${product.id}"/>
             <input type="hidden" name="id" value="${product.invoiceId}"/>
             <label>Code:
-                <input type="number" required maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" required name ="code" maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Product's name:
-                <input type="text" required name="type" maxlength="50" value="${product.name}" name="capacity" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" required name="name" maxlength="50" value="${product.name}" name="capacity" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Cost:
                 <input type="number" required name="cost" value="${product.cost}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
