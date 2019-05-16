@@ -29,7 +29,7 @@ public class CreateProductCommand implements Command {
         product.setCode(Integer.parseInt(request.getParameter("code")));
         product.setName(request.getParameter("name"));
         product.setCost(Double.parseDouble(request.getParameter("cost")));
-        product.setQuantity(Double.parseDouble(request.getParameter("quantity")));
+        product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 
         try {
             if (isNewProduct) {

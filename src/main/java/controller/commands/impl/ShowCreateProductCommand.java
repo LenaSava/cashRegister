@@ -17,7 +17,7 @@ public class ShowCreateProductCommand implements Command {
         if (id == null || id.trim().length() == 0) {
             product = new Product();
         } else {
-            product = productService.findById(Integer.parseInt(id)).orElseThrow(()->new RuntimeException("room by id: "+ id + " not found"));
+            product = productService.findById(Integer.parseInt(id)).orElseThrow(()->new RuntimeException("product by id: "+ id + " not found"));
         }
         request.setAttribute("product", product);
         return CREATE_UPDATE;

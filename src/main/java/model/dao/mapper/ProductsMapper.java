@@ -15,7 +15,7 @@ public class ProductsMapper implements ObjectMapper<Product> {
         product.setCode(rs.getInt("code"));
         product.setName(rs.getString("name"));
         product.setCost(rs.getDouble("cost"));
-        product.setQuantity(rs.getDouble("quantity"));
+        product.setQuantity(rs.getInt("quantity"));
 
         return product;
     }

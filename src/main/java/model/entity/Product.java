@@ -7,13 +7,13 @@ public class Product {
     private Integer code;
     private String name;
     private Double cost;
-    private Double quantity;
+    private Integer quantity;
     private Integer invoiceId;
     private Invoice invoice;
 
     public Product() {}
 
-    public Product(Integer id, Integer code, String name, Double cost, Double quantity) {
+    public Product(Integer id, Integer code, String name, Double cost, Integer quantity) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -52,10 +52,10 @@ public class Product {
         this.cost = cost;
     }
 
-    public Double getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
-    public void setQuantity(Double quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
     public Integer getInvoiceId() {
