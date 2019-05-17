@@ -1,8 +1,10 @@
 package model.dao.impl;
 
 import model.dao.DaoFactory;
+import model.dao.InvoiceDao;
 import model.dao.ProductDao;
 import model.dao.UserDao;
+import model.entity.Invoice;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -20,6 +22,10 @@ public class JDBCDaoFactory extends DaoFactory {
     @Override
     public ProductDao createProductDao() {
         return new JDBCProductDao(getConnection());
+    }
+    @Override
+    public InvoiceDao createInvoiceDao() {
+        return new JDBCInvoiceDao(getConnection());
     }
 
 

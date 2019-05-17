@@ -1,18 +1,21 @@
 package model.entity;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Invoice {
     private Integer id;
     private Double cost;
-    private Double quantity;
+    private Integer quantity;
     private Integer userId;
     private User user;
 
     private List<Product> products = new ArrayList<>();
 
-    private Invoice(Integer id, Double cost, Double quantity,Integer userId, User user) {
+    public Invoice() {}
+
+    private Invoice(Integer id, Double cost, Integer quantity,Integer userId, User user) {
         this.id = id;
         this.cost = cost;
         this.quantity = quantity;
@@ -32,10 +35,10 @@ public class Invoice {
     public void setCost(Double cost) {
         this.cost = cost;
     }
-    public Double getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
-    public void setQuantity(Double quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
     public int getUserId() {
