@@ -5,7 +5,8 @@ import java.util.Objects;
 public class Product {
     private Integer id;
     private Integer code;
-    private String name;
+    private String name_En;
+    private String name_ua;
     private Double cost;
     private Integer quantity;
     private Integer invoiceId;
@@ -13,10 +14,11 @@ public class Product {
 
     public Product() {}
 
-    public Product(Integer id, Integer code, String name, Double cost, Integer quantity) {
+    public Product(Integer id, Integer code, String name_En, String name_ua, Double cost, Integer quantity) {
         this.id = id;
         this.code = code;
-        this.name = name;
+        this.name_En = name_En;
+        this.name_ua = name_ua;
         this.cost = cost;
         this.quantity = quantity;
 
@@ -25,33 +27,33 @@ public class Product {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public Integer getCode() {
         return code;
     }
-
     public void setCode(Integer code) {
         this.code = code;
     }
-
     public String getName() {
-        return name;
+        return name_En;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name_En) {
+        this.name_En = name_En;
     }
-
+    public String getName_ua() {
+        return name_ua;
+    }
+    public void setName_ua(String name_ua) {
+        this.name_ua = name_ua;
+    }
     public Double getCost() {
         return cost;
     }
     public void setCost(Double cost) {
         this.cost = cost;
     }
-
     public Integer getQuantity() {
         return quantity;
     }
@@ -70,22 +72,23 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product that = (Product) o;
-        return name.equals(that.name);
+        return name_En.equals(that.name_En);
 //                quantity.equals(that.quantity) &&
 //                cost.equals(that.cost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, quantity, cost);
+        return Objects.hash(name_En, quantity, cost);
     }
 
     @Override
     public String toString() {
-        return "\nRoom{" +
+        return "\nProduct{" +
                 "id=" + id +
                 "code=" + code +
-                ", room type='" + name + '\'' +
+                ", room type='" + name_En + '\'' +
+                ", room type='" + name_ua + '\'' +
                 ", cost='" + cost + '\'' +
                 ", quota=" + quantity +
                 '}';

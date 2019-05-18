@@ -28,6 +28,7 @@ public class CreateProductCommand implements Command {
         }
         product.setCode(Integer.parseInt(request.getParameter("code")));
         product.setName(request.getParameter("name"));
+        product.setName_ua(request.getParameter("name_ua"));
         product.setCost(Double.parseDouble(request.getParameter("cost")));
         product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 

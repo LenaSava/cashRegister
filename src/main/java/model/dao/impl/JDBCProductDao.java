@@ -2,9 +2,8 @@ package model.dao.impl;
 
 import model.dao.ProductDao;
 import model.dao.mapper.ProductsMapper;
-import model.dao.mapper.UserMapper;
 import model.entity.Product;
-import model.entity.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,12 +21,16 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public boolean create(Product entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, cost, quantity) VALUES (?,?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, name_ua, cost, quantity) VALUES (?,?,?,?,?)")){
 
+
+            System.out.println("rrrrrrrrrrrrrrrrrr " + entity.getName_ua());
             statement.setInt(1,entity.getCode());
             statement.setString(2, entity.getName());
-            statement.setDouble(3, entity.getCost());
-            statement.setInt(4, entity.getQuantity());
+            statement.setString(3,entity.getName_ua());
+            System.out.println("ssssssss " + entity.getName_ua());
+            statement.setDouble(4, entity.getCost());
+            statement.setInt(5, entity.getQuantity());
 
             statement.execute();
             return true;
@@ -59,16 +62,16 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public List<Product> findAll() {
         Map<Integer, Product> products = new HashMap<>();
-        Map<Integer, User> users = new HashMap<>();
+//        Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select r.id as id, r.code as code, r.name as name, r.cost as cost, r.quantity as quantity," +
+                " select r.id as id, r.code as code, r.name as name, r.name_ua as name_ua, r.cost as cost, r.quantity as quantity," +
                 "r.invoice_id as invoice_id from products r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
-            UserMapper userMapper = new UserMapper();
+//            UserMapper userMapper = new UserMapper();
             ProductsMapper productMapper = new ProductsMapper();
 
             while (rs.next()) {
@@ -92,13 +95,14 @@ public class JDBCProductDao implements ProductDao {
 
     @Override
     public void update(Product entity) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, cost=?, quantity=? where id=?")){
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, name_ua = ?, cost=?, quantity=? where id=?")){
 
             statement.setInt(1,entity.getCode());
             statement.setString(2, entity.getName());
-            statement.setDouble(3, entity.getCost());
-            statement.setInt(4, entity.getQuantity());
-            statement.setInt(5, entity.getId());
+            statement.setString(3,entity.getName_ua());
+            statement.setDouble(4, entity.getCost());
+            statement.setInt(5, entity.getQuantity());
+            statement.setInt(6, entity.getId());
 
             statement.execute();
 
@@ -108,7 +112,8 @@ public class JDBCProductDao implements ProductDao {
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
+        return false;
 
     }
 

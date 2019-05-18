@@ -21,7 +21,7 @@
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <div class="w3-container w3-center w3-green">
-            <h2><fmt:message key="сreate.or.update.room"/></h2>
+            <h2><fmt:message key="сreate.or.update"/></h2>
         </div>
         <form method="post" action="/api/create_update" class="w3-selection w3-light-grey w3-padding">
             <input type="hidden" name="id" value="${product.id}"/>
@@ -30,7 +30,10 @@
                 <input type="number" required name ="code" maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Product's name:
-                <input type="text" required name="name" maxlength="50" value="${product.name}" name="capacity" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" required name="name" maxlength="50" value="${product.name}"  class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+            </label>
+            <label>Product's ukrainian name:
+                <input type="text" required name="name_ua" maxlength="50" value="${product.name_ua}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Cost:
                 <input type="number" required name="cost" value="${product.cost}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />

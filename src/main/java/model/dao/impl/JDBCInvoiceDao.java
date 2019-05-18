@@ -90,8 +90,16 @@ public class JDBCInvoiceDao implements InvoiceDao {
         }
     }
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM invoice WHERE id=?")) {
+            preparedStatement.setInt(1,id);
+            preparedStatement.execute();
 
+            return true;
+        }catch (SQLException | RuntimeException ex){
+            throw new RuntimeException();
+        }
     }
 
     @Override

@@ -1,9 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : \"en\"}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties"/>
+
 <html>
 <head>
     <title>cashier page</title>
@@ -21,14 +24,14 @@
         <jsp:include page="parts/menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
             <h2>
-                <i>Product List</i>
+                <i><fmt:message key="product.list"/></i>
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th>Code</th>
-                    <th>Product's name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th><fmt:message key="code"/></th>
+                    <th><fmt:message key="product.name"/></th>
+                    <th><fmt:message key="price"/></th>
+                    <th><fmt:message key="quantity"/></th>
                 </tr>
                 <c:forEach items="${products}" var="product" >
                     <tr>
