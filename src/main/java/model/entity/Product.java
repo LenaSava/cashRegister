@@ -70,29 +70,35 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product that = (Product) o;
-        return name_En.equals(that.name_En);
-//                quantity.equals(that.quantity) &&
-//                cost.equals(that.cost);
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(code, product.code) &&
+                Objects.equals(name_En, product.name_En) &&
+                Objects.equals(name_ua, product.name_ua) &&
+                Objects.equals(cost, product.cost) &&
+                Objects.equals(quantity, product.quantity) &&
+                Objects.equals(invoiceId, product.invoiceId) &&
+                Objects.equals(invoice, product.invoice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name_En, quantity, cost);
+        return Objects.hash(id, code, name_En, name_ua, cost, quantity, invoiceId, invoice);
     }
 
     @Override
     public String toString() {
-        return "\nProduct{" +
+        return "Product{" +
                 "id=" + id +
-                "code=" + code +
-                ", room type='" + name_En + '\'' +
-                ", room type='" + name_ua + '\'' +
-                ", cost='" + cost + '\'' +
-                ", quota=" + quantity +
+                ", code=" + code +
+                ", name_En='" + name_En + '\'' +
+                ", name_ua='" + name_ua + '\'' +
+                ", cost=" + cost +
+                ", quantity=" + quantity +
+                ", invoiceId=" + invoiceId +
+                ", invoice=" + invoice +
                 '}';
     }
-
 }
 

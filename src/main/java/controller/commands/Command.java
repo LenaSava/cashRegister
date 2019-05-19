@@ -24,7 +24,7 @@ public interface Command {
 
     ProductService productService = ServiceFactory.getProductService();
     UserService userService = ServiceFactory.getUserService();
-    InvoiceService invoiceservice = ServiceFactory.getInvoiceService();
+    InvoiceService invoiceService = ServiceFactory.getInvoiceService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }
