@@ -13,5 +13,7 @@ public interface InvoiceService {
 
     void update(Invoice invoice);
 
+    boolean delete(Integer id);
+
     Optional<Invoice> findById(int id);
 }

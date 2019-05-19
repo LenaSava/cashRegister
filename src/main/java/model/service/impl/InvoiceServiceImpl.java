@@ -38,6 +38,14 @@ public class InvoiceServiceImpl implements InvoiceService {
         if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
         invoiceDao.update(invoice);
     }
+    @Override
+    public boolean delete(Integer id) {
+        if (Objects.isNull(id)) {
+            throw new IllegalArgumentException("Id must be a set");
+        }
+        invoiceDao.delete(id);
+        return true;
+    }
 
     @Override
     public Optional<Invoice> findById(int id) {
