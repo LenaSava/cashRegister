@@ -30,6 +30,7 @@ public class CommandFactory {
         commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateProductCommand());
         commands.put(CommandUtil.CAHIER_PAGE.getPath(), new CahierPageCommand());
         commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());
+        commands.put(CommandUtil.DELETE.getPath(), new DeleteCommand());
     }
 
     public static Command getCommand(String url) {

@@ -14,7 +14,8 @@ public enum CommandUtil {
     MANAGER_PAGE("manager_page"),
     CREATE_UPDATE("create_update"),
     SHOW_CREATE("show_create"),
-    CAHIER_PAGE("cashier_page");
+    CAHIER_PAGE("cashier_page"),
+    DELETE("delete");
 
 
     private String path;

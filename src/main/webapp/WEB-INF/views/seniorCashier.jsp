@@ -39,7 +39,7 @@
                         <td>${invoice.cost}</td>
                         <td>${invoice.quantity}</td>
                         <td>${invoice.userId}</td>
-                        <td><a href="/api/show_create?id=${product.id}">Delete</a></td>
+                        <td><a href="/api/delete?id=${product.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
