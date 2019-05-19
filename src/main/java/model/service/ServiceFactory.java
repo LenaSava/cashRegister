@@ -1,6 +1,7 @@
 package model.service;
 
 import model.dao.DaoFactory;
+import model.service.impl.InvoiceServiceImpl;
 import model.service.impl.ProductServiceImpl;
 import model.service.impl.UserServiceImpl;
 
@@ -16,6 +17,11 @@ public final class ServiceFactory {
 
     public static ProductService getProductService() {
         ProductService service = new ProductServiceImpl(daoFactory);
+        return service;
+    }
+
+    public static InvoiceService getInvoiceService() {
+        InvoiceService service = new InvoiceServiceImpl(daoFactory);
         return service;
     }
 }

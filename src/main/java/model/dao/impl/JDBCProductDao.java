@@ -24,11 +24,11 @@ public class JDBCProductDao implements ProductDao {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, name_ua, cost, quantity) VALUES (?,?,?,?,?)")){
 
 
-            System.out.println("rrrrrrrrrrrrrrrrrr " + entity.getName_ua());
+//            System.out.println("rrrrrrrrrrrrrrrrrr " + entity.getName_ua());
             statement.setInt(1,entity.getCode());
             statement.setString(2, entity.getName());
             statement.setString(3,entity.getName_ua());
-            System.out.println("ssssssss " + entity.getName_ua());
+//            System.out.println("ssssssss " + entity.getName_ua());
             statement.setDouble(4, entity.getCost());
             statement.setInt(5, entity.getQuantity());
 

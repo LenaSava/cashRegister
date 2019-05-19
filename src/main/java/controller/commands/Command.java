@@ -1,5 +1,6 @@
 package controller.commands;
 
+import model.service.InvoiceService;
 import model.service.ProductService;
 import model.service.ServiceFactory;
 import model.service.UserService;
@@ -23,6 +24,7 @@ public interface Command {
 
     ProductService productService = ServiceFactory.getProductService();
     UserService userService = ServiceFactory.getUserService();
+    InvoiceService invoiceservice = ServiceFactory.getInvoiceService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

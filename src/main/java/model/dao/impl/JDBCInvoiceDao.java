@@ -20,9 +20,10 @@ public class JDBCInvoiceDao implements InvoiceDao {
     @Override
     public boolean create(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(cost, quantity) VALUES (?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(cost, quantity, user_id) VALUES (?,?,?)")){
             statement.setDouble(1, entity.getCost());
             statement.setInt(2, entity.getQuantity());
+            statement.setInt(3,entity.getUserId());
 
             statement.execute();
             return true;
