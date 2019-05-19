@@ -31,19 +31,20 @@
                     <th><fmt:message key="product.name"/></th>
                     <th><fmt:message key="price"/></th>
                     <th><fmt:message key="quantity"/></th>
-                    <th><fmt:message key="choose"/></th>
+                    <th><fmt:message key="cashier.id"/></th>
                 </tr>
                 <c:forEach items="${invoices}" var="invoice" >
                     <tr>
                         <td>${invoice.product_name}</td>
                         <td>${invoice.cost}</td>
                         <td>${invoice.quantity}</td>
-                        <%--<td>${invoice.user_id}</td>--%>
-                        <td><a href="/api/show_create?id=${product.id}">Edit</a></td>
-                        <td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(invoice.id)}">checked="checked"</c:if> /> </td>
+                        <td>${invoice.userId}</td>
+                        <td><a href="/api/show_create?id=${product.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Confirm check</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Delete check</button>
             <br>
         </div>
     </div>

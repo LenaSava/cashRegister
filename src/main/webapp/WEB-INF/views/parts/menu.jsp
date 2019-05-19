@@ -21,4 +21,11 @@
     |
     <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/log_out'"><fmt:message key="exit-button"/></button>
 
+    <a href="${pageContext.request.contextPath}/views/language//?language=ua">
+        <fmt:message key="ua"/>
+    </a>
+    <a href="${pageContext.request.contextPath}/views/language//?language=en">
+        <fmt:message key="en"/>
+    </a>
+
 </div>
