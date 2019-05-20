@@ -9,13 +9,16 @@ public enum CommandUtil {
     SHOW_REGISTRATION("show_registration"),
     LOG_OUT("log_out"),
     INFO_PAGE("info_page"),
-    USER_HOME_PAGE("user_home_page"),
     SENIOR_CASHIER_PAGE("senior_cashier_list"),
     MANAGER_PAGE("manager_page"),
     CREATE_UPDATE("create_update"),
     SHOW_CREATE("show_create"),
     CAHIER_PAGE("cashier_page"),
-    DELETE("delete");
+    DELETE("delete"),
+    BILLS_PAGE("bills_page"),
+    CONFIRM_BILL("confirm_invoice"),
+    DELETE_BILL("delete_invoice");
+
 
 
     private String path;

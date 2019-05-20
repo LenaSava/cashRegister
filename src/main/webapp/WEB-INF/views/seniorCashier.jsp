@@ -39,12 +39,12 @@
                         <td>${invoice.cost}</td>
                         <td>${invoice.quantity}</td>
                         <td>${invoice.userId}</td>
-                        <td><a href="/api/delete?id=${product.id}">Delete</a></td>
+                        <td><a href="/api/delete?id=${invoice.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Confirm check</button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Delete check</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/confirm_invoice'">Confirm invoice</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_invoice'">Delete invoice</button>
             <br>
         </div>
     </div>

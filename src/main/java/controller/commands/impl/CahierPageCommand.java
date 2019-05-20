@@ -2,7 +2,6 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import model.entity.Product;
-import model.service.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
