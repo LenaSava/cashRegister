@@ -5,6 +5,7 @@ import controller.commands.Command;
 import controller.commands.impl.util.CommandUtil;
 import model.entity.User;
 import model.entity.types.Role;
+import model.exception.ServiceException;
 import org.apache.log4j.Logger;
 import util.HashPassword;
 
@@ -20,24 +21,24 @@ public class UserCommand implements Command {
         String passFromRequest = request.getParameter("pass");
         logger.info("Attempt to log in user: " + nameFromRequest);
 
-        User user = userService.login(nameFromRequest);
-        String password = user.getPassword();
 
+        try {
+            User user = userService.login(nameFromRequest);
+            String password = user.getPassword();
 
-//        try {
-        if (HashPassword.getPwdHash(passFromRequest).equals(password)) {
-            request.getSession(true).setAttribute("User", user);
-            logger.info("Successfully logged in user: " + user.getLogin());
-            if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
-                return "redirect:/" + CommandUtil.SENIOR_CASHIER_PAGE.getPath();
-            } else if (Role.MANAGER.getRole() == user.getRole()) {
-                return "redirect:/" + CommandUtil.MANAGER_PAGE.getPath();
+            if (HashPassword.getPwdHash(passFromRequest).equals(password)) {
+                request.getSession(true).setAttribute("User", user);
+                logger.info("Successfully logged in user: " + user.getLogin());
+                    if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
+                        return "redirect:/" + CommandUtil.SENIOR_CASHIER_PAGE.getPath();
+                    } else if (Role.MANAGER.getRole() == user.getRole()) {
+                        return "redirect:/" + CommandUtil.MANAGER_PAGE.getPath();
+                    }
+                return "redirect:/" + CommandUtil.CAHIER_PAGE.getPath();
             }
-            return "redirect:/" + CommandUtil.CAHIER_PAGE.getPath();
+        }catch (RuntimeException e) {
+            request.setAttribute("wrongPassOrLogin", true);
         }
-//        }catch (ServiceException e) {
-//            request.setAttribute("wrongPassOrLogin", true);
-//        }
         return SIGN_IN_JSP;
     }
 }

@@ -54,7 +54,8 @@
             </table>
             <br>
             <c:if test="${not empty errorMessage}">
-                <c:out value="${errorMessage}"/>
+                <%--<c:out value="${errorMessage}"/>--%>
+                <div class="w3-red"><fmt:message key="registration.exception"/></div>
             </c:if>
         </div>
     </div>

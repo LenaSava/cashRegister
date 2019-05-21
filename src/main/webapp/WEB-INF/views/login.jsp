@@ -26,9 +26,6 @@
             <h2><fmt:message key="please.login"/></h2>
         </div>
         <div class="w3-red">
-            <c:if test="${wrongPassOrLogin.equals(true)}">
-                <fmt:message key="wrong.pass.or.login"/>
-            </c:if>
         </div>
         <form method="post" action="/api/login_submit" class="w3-selection w3-light-grey w3-padding">
             <label><fmt:message key="registration.button"/>
@@ -39,6 +36,9 @@
             </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom"><fmt:message key="submit"/></button>
         </form>
+        <c:if test="${not empty wrongPassOrLogin}">
+            <div class="w3-red"><fmt:message key="registration.exception"/></div>
+        </c:if>
     </div>
 </div>
 

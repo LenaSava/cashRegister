@@ -20,7 +20,7 @@ public class FindProductCommand implements Command {
             if (findCode.isPresent()) {
                 request.setAttribute("products", Arrays.asList(findCode.get()));
             } else {
-                request.setAttribute("errorMessage", "product with such code not found!");
+                request.setAttribute("errorMessage", true);
             }
         } catch (NumberFormatException e) {
             request.setAttribute("products", productService.getAllProducts());
