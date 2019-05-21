@@ -47,9 +47,4 @@ public class ProductServiceImpl implements ProductService {
         final Product product = productDao.findByCode(code);
         return Optional.ofNullable(product);
     }
-//    @Override
-//    public Product findByCode(int code) {
-//        final Product product = productDao.findByCode(code);
-//        return product;
-//    }
 }
