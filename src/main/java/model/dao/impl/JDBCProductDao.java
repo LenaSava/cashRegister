@@ -60,6 +60,25 @@ public class JDBCProductDao implements ProductDao {
         }
     }
     @Override
+    public Product findByCode(int code) {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE code = ?")){
+            preparedStatement.setInt(1, code);
+            ResultSet rs = preparedStatement.executeQuery();
+            final Product product;
+            if (rs.next()) {
+                product = new ProductsMapper().extractFromResultSet(rs);
+            } else {
+                product = null;
+            }
+
+            return product;
+
+        }catch (SQLException ex){
+            throw new RuntimeException();
+        }
+    }
+    @Override
     public List<Product> findAll() {
         Map<Integer, Product> products = new HashMap<>();
 //        Map<Integer, User> users = new HashMap<>();

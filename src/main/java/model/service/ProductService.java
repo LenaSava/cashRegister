@@ -13,4 +13,6 @@ public interface ProductService {
     void update(Product product);
 
     Optional<Product> findById(int id);
+
+    Optional<Product> findByCode(int code);
 }
