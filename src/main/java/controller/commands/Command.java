@@ -1,9 +1,6 @@
 package controller.commands;
 
-import model.service.InvoiceService;
-import model.service.ProductService;
-import model.service.ServiceFactory;
-import model.service.UserService;
+import model.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +22,7 @@ public interface Command {
     ProductService productService = ServiceFactory.getProductService();
     UserService userService = ServiceFactory.getUserService();
     InvoiceService invoiceService = ServiceFactory.getInvoiceService();
+    BillService billService = ServiceFactory.getBillService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }
