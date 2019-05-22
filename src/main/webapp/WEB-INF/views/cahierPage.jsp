@@ -45,7 +45,9 @@
                 <c:forEach items="${products}" var="product" >
                     <tr>
                         <td>${product.code}</td>
-                        <td>${product.name}</td>
+                            <td>
+                                <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
+                            </td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
                         <td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(product.id)}">checked="checked"</c:if> /> </td>
@@ -54,7 +56,6 @@
             </table>
             <br>
             <c:if test="${not empty errorMessage}">
-                <%--<c:out value="${errorMessage}"/>--%>
                 <div class="w3-red"><fmt:message key="registration.exception"/></div>
             </c:if>
         </div>

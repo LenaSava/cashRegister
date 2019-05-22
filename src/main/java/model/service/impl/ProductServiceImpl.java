@@ -47,4 +47,9 @@ public class ProductServiceImpl implements ProductService {
         final Product product = productDao.findByCode(code);
         return Optional.ofNullable(product);
     }
+    @Override
+    public Optional<Product> insertIntoInvoices(int code) {
+        final Product product = productDao.insertIntoInvoices(code);
+        return Optional.ofNullable(product);
+    }
 }

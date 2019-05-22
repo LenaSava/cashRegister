@@ -15,4 +15,6 @@ public interface ProductService {
     Optional<Product> findById(int id);
 
     Optional<Product> findByCode(int code);
+
+    Optional<Product> insertIntoInvoices(int code);
 }

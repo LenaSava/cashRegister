@@ -81,7 +81,7 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public List<Product> findAll() {
         Map<Integer, Product> products = new HashMap<>();
-//        Map<Integer, User> users = new HashMap<>();
+//        Map<Integer, User> users = new HashMap<>()
 
         final String query = "" +
                 " select r.id as id, r.code as code, r.name as name, r.name_ua as name_ua, r.cost as cost, r.quantity as quantity," +
@@ -142,6 +142,26 @@ public class JDBCProductDao implements ProductDao {
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public Product insertIntoInvoices(int code) {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO invoice " +
+                    "SELECT * FROM products WHERE code = ?")){
+            preparedStatement.setInt(1, code);
+            ResultSet rs = preparedStatement.executeQuery();
+            final Product product;
+            if (rs.next()) {
+                product = new ProductsMapper().extractFromResultSet(rs);
+            } else {
+                product = null;
+            }
+
+            return product;
+
+        }catch (SQLException ex){
+            throw new RuntimeException();
         }
     }
 }

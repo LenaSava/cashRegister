@@ -12,6 +12,10 @@ public class CahierPageCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         List<Product> products = productService.getAllProducts();
         request.setAttribute("products", products);
+
+        Integer book = Integer.parseInt(request.getParameter("canBooking"));
+        productService.insertIntoInvoices(book);
+
         return CAHIER_PAGE_JSP;
     }
 }
