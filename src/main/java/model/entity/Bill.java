@@ -1,5 +1,7 @@
 package model.entity;
 
+import model.entity.enumeration.BillStatus;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -7,17 +9,18 @@ public class Bill {
     private Integer id;
     private String totalCost;
     private Date dates;
-    private String status;
-    private Invoice invoiceId;
+    private BillStatus status;
+    private Integer userId;
 
-    public Bill() {}
+    public Bill() {
+    }
 
-    public Bill(Integer id, String totalCost, Date dates, String status, Invoice invoiceId) {
+    public Bill(Integer id, String totalCost, Date dates, BillStatus status, Integer userId) {
         this.id = id;
         this.totalCost = totalCost;
         this.dates = dates;
         this.status = status;
-        this.invoiceId = invoiceId;
+        this.userId = userId;
     }
 
     public Integer getId() {
@@ -44,20 +47,20 @@ public class Bill {
         this.dates = dates;
     }
 
-    public String getStatus() {
+    public BillStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BillStatus status) {
         this.status = status;
     }
 
-    public Invoice getInvoiceId() {
-        return invoiceId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setInvoiceId(Invoice invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -68,13 +71,13 @@ public class Bill {
         return id.equals(bill.id) &&
                 totalCost.equals(bill.totalCost) &&
                 dates.equals(bill.dates) &&
-                status.equals(bill.status) &&
-                invoiceId.equals(bill.invoiceId);
+                status == bill.status &&
+                userId.equals(bill.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, totalCost, dates, status, invoiceId);
+        return Objects.hash(id, totalCost, dates, status, userId);
     }
 
     @Override
@@ -83,8 +86,8 @@ public class Bill {
                 "id=" + id +
                 ", totalCost='" + totalCost + '\'' +
                 ", dates=" + dates +
-                ", status='" + status + '\'' +
-                ", invoiceId=" + invoiceId +
+                ", status=" + status +
+                ", userId=" + userId +
                 '}';
     }
 }

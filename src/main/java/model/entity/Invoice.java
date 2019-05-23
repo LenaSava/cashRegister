@@ -12,18 +12,20 @@ public class Invoice {
     private Integer quantity;
     private Integer userId;
     private Integer userRoleId;
+    private Integer billId;
 
     private List<Product> products = new ArrayList<>();
 
     public Invoice() {}
 
-    private Invoice(Integer id, String product_name, Double cost, Integer quantity,Integer userId, Integer userRoleId) {
+    private Invoice(Integer id, String product_name, Double cost, Integer quantity,Integer userId, Integer userRoleId, Integer billId) {
         this.id = id;
         this.product_name = product_name;
         this.cost = cost;
         this.quantity = quantity;
         this.userId = userId;
         this.userRoleId = userRoleId;
+        this.billId = billId;
     }
 
     public Integer getId() {
@@ -57,6 +59,14 @@ public class Invoice {
         this.userId = userId;
     }
 
+    public Integer getBillId() {
+        return billId;
+    }
+
+    public void setBillId(Integer billId) {
+        this.billId = billId;
+    }
+
     public Integer getUserRoleId() {
         return userRoleId;
     }
@@ -83,6 +93,7 @@ public class Invoice {
                 Objects.equals(quantity, invoice.quantity) &&
                 Objects.equals(userId, invoice.userId) &&
                 Objects.equals(userRoleId, invoice.userRoleId) &&
+                Objects.equals(billId, invoice.billId) &&
                 Objects.equals(products, invoice.products);
     }
 
@@ -101,6 +112,7 @@ public class Invoice {
                 ", userId=" + userId +
                 ", userRoleId=" + userRoleId +
                 ", products=" + products +
+                ", billId=" + billId +
                 '}';
     }
 }

@@ -147,8 +147,7 @@ public class JDBCProductDao implements ProductDao {
     @Override
     public Product insertIntoInvoices(int code) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO invoice " +
-                    "SELECT * FROM products WHERE code = ?")){
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO invoice SELECT * FROM products WHERE code = ?")){
             preparedStatement.setInt(1, code);
             ResultSet rs = preparedStatement.executeQuery();
             final Product product;

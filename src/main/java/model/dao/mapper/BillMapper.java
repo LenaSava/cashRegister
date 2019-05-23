@@ -2,6 +2,7 @@ package model.dao.mapper;
 
 import model.entity.Bill;
 import model.entity.Invoice;
+import util.StringUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +15,11 @@ public class BillMapper implements ObjectMapper<Bill> {
         bill.setId(rs.getInt("id"));
         bill.setTotalCost(rs.getString("totalCost"));
         bill.setDates(rs.getDate("dates"));
-        bill.setStatus(rs.getString("status"));
-//        bill.setInvoiceId(rs.getInt("invoice_id"));
+        final String status = rs.getString("status");
+        if (!StringUtil.isEmpty(status)) {
+            bill.setStatus(BillStatus.valueOf(status));
+        }
+        bill.setUserId(rs.getInt("user_id"));
 
         return bill;
     }

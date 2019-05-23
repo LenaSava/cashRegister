@@ -34,6 +34,28 @@ public class JDBCInvoiceDao implements InvoiceDao {
         }
     }
     @Override
+    public Invoice createAndGet(Invoice entity) throws SQLException {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(cost, quantity, user_id) VALUES (?,?,?)", ObjectMapper.generatedColumns)){
+            statement.setDouble(1, entity.getCost());
+            statement.setInt(2, entity.getQuantity());
+            statement.setInt(3,entity.getUserId());
+
+            statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                entity.setId(id);
+            }
+            return entity;
+
+        }catch (SQLException | RuntimeException ex){
+            System.out.println("Exception" + ex.getMessage());
+            throw new RuntimeException();
+        }
+    }
+    @Override
     public Invoice findById(int id) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoice WHERE id = ?")){
