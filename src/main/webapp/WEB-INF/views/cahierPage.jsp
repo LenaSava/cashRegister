@@ -39,8 +39,7 @@
                     <th><fmt:message key="code"/></th>
                     <th><fmt:message key="product.name"/></th>
                     <th><fmt:message key="price"/></th>
-                    <th><fmt:message key="quantity"/></th>
-                    <th><fmt:message key="buy"/></th>
+                    <%--<th><fmt:message key="buy"/></th>--%>
                 </tr>
                 <c:forEach items="${products}" var="product" >
                     <tr>
@@ -49,11 +48,7 @@
                             <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
                         </td>
                         <td>${product.cost}</td>
-                        <td>${product.quantity}</td>
-                        <td><a href="/api/create_invoice?id=${product.id}">купить</a></td>
-                        <%--<td><input type="checkbox" name="canBooking" value="${product.id}"/></td>--%>
-                        <%--<td><a href="/api/show_create?id=${product.id}"></a><fmt:message key="buy"/></td>--%>
-                        <%--<button class="w3-btn w3-round-large" onclick="location.href='/api/manager_page'"><fmt:message key="buy"/></button>--%>
+                        <td><a href="/api/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

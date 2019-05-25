@@ -21,10 +21,12 @@ public class JDBCInvoiceDao implements InvoiceDao {
     @Override
     public boolean create(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(cost, quantity, user_id) VALUES (?,?,?)")){
-            statement.setDouble(1, entity.getCost());
-            statement.setInt(2, entity.getQuantity());
-            statement.setInt(3,entity.getUserId());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(product_id, cost, quantity, user_id, user_role_id) VALUES (?,?,?,?,?)")){
+            statement.setInt(1,entity.getProduct_id());
+            statement.setDouble(2, entity.getCost());
+            statement.setInt(3, entity.getQuantity());
+            statement.setInt(4,entity.getUserId());
+            statement.setInt(5, entity.getUserRoleId());
 
             statement.execute();
             return true;
@@ -34,6 +36,8 @@ public class JDBCInvoiceDao implements InvoiceDao {
             throw new RuntimeException();
         }
     }
+
+    //лучше переделать и использовать этот
     @Override
     public Invoice createAndGet(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
