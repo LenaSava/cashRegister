@@ -1,16 +1,58 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lenkasava
-  Date: 2019-05-25
-  Time: 16:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : \"en\"}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties"/>
+
 <html>
 <head>
-    <title>Title</title>
+    <title>cashier page</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body>
-hghghg
+
+<body class="w3-light-grey">
+<div class="w3-container w3-blue-grey w3-opacity w3-right-align">
+    <h1><fmt:message key="cash.register"/></h1>
+</div>
+
+<div class="w3-container w3-padding">
+    <div class="w3-card-4">
+        <jsp:include page="parts/header.jsp"></jsp:include>
+        <jsp:include page="parts/menu.jsp"></jsp:include>
+        <div class="w3-container w3-center w3-green">
+            <h2>
+                <i><fmt:message key="invoices.list"/></i>
+            </h2>
+            <table border="1" cellpadding="5" cellspacing="1" >
+                <tr>
+                    <th><fmt:message key="price"/></th>
+                    <th>date</th>
+                    <th>status</th>
+                    <th><fmt:message key="cashier.id"/></th>
+                </tr>
+                <c:forEach items="${bills}" var="bill" >
+                    <tr>
+                        <td>${bill.totalCost}</td>
+                        <td>${bill.dates}</td>
+                        <td>${bill.status}</td>
+                        <td>${bill.userId}</td>
+                        <%--<td><a href="/api/delete?id=${invoice.id}">Delete</a></td>--%>
+                    </tr>
+                </c:forEach>
+            </table>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/confirm_invoice'">Confirm invoice</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_invoice'">Delete invoice</button>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'">back to user menu</button>
+</div>
+
+<jsp:include page="parts/footer.jsp"></jsp:include>
 </body>
 </html>
