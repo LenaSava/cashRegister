@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import model.entity.Bill;
 import model.entity.Invoice;
 import model.entity.Product;
 import model.entity.User;
@@ -16,6 +17,7 @@ public class CreateInvoiceCommand implements Command {
         int idFromRequest = Integer.parseInt(request.getParameter("id"));
         Optional<Product> service = productService.findById(idFromRequest);
         User user = (User) request.getSession(true).getAttribute("User");
+        Bill bill = billService.findOrCreate(user.getId());
 
 //        billService вызвать метод и получить конкретный билинг и с него взять айди и вставить в инвойс
         invoice.setProduct_id(service.get().getId());
@@ -23,6 +25,7 @@ public class CreateInvoiceCommand implements Command {
         invoice.setQuantity(service.get().getQuantity());
         invoice.setUserId(user.getId());
         invoice.setUserRoleId(user.getRole());
+        invoice.setBillId(bill.getId());
 
         try {
             invoiceService.create(invoice);

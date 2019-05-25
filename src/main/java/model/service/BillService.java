@@ -9,4 +9,5 @@ public interface BillService {
      * @return
      */
     List<Bill> getAllBills();
+    Bill findOrCreate(int userId);
 }

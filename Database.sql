@@ -149,7 +149,7 @@ create table bill
 );
 
 create index fk_bill_invoice1_idx
-  on bill (invoice_id);
+  on bill (user_id);
 
 alter table bill
   add primary key (id);

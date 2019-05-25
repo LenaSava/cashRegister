@@ -14,7 +14,7 @@ public class BillMapper implements ObjectMapper<Bill> {
     public Bill extractFromResultSet(ResultSet rs) throws SQLException {
         Bill bill = new Bill();
         bill.setId(rs.getInt("id"));
-        bill.setTotalCost(rs.getString("totalCost"));
+        bill.setTotalCost(rs.getInt("totalCost"));
         bill.setDates(rs.getDate("dates"));
         final String status = rs.getString("status");
         if (!StringUtil.isEmpty(status)) {

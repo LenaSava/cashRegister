@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Bill {
     private Integer id;
-    private String totalCost;
+    private Integer totalCost;
     private Date dates;
     private BillStatus status;
     private Integer userId;
@@ -15,7 +15,7 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Integer id, String totalCost, Date dates, BillStatus status, Integer userId) {
+    public Bill(Integer id, Integer totalCost, Date dates, BillStatus status, Integer userId) {
         this.id = id;
         this.totalCost = totalCost;
         this.dates = dates;
@@ -31,11 +31,11 @@ public class Bill {
         this.id = id;
     }
 
-    public String getTotalCost() {
+    public Integer getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(String totalCost) {
+    public void setTotalCost(Integer totalCost) {
         this.totalCost = totalCost;
     }
 

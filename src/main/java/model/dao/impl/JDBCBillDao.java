@@ -21,7 +21,7 @@ public class JDBCBillDao implements BillDao {
     public boolean create(Bill entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(totalCost, dates, status, user_id) VALUES (?,?,?,?)")){
-            statement.setString(1, entity.getTotalCost());
+            statement.setInt(1, entity.getTotalCost());
             statement.setDate(2, new Date(entity.getDates().getTime()));
             statement.setString(3,entity.getStatus().name());
             statement.setInt(4,entity.getUserId());
@@ -38,8 +38,8 @@ public class JDBCBillDao implements BillDao {
     @Override
     public Bill createAndGet(Bill entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(totalCost, dates, status, user_id) VALUES (?,?,?,?)", ObjectMapper.generatedColumns)){
-            statement.setString(1, entity.getTotalCost());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO bill(totalCost, dates, status, user_id) VALUES (?,?,?,?)", ObjectMapper.generatedColumns)){
+            statement.setInt(1, entity.getTotalCost());
             statement.setDate(2, new Date(entity.getDates().getTime()));
             statement.setString(3,entity.getStatus().name());
             statement.setInt(4,entity.getUserId());
@@ -70,13 +70,14 @@ public class JDBCBillDao implements BillDao {
             if (rs.next()) {
                 bill = new BillMapper().extractFromResultSet(rs);
             } else {
-                bill = new Bill(null, null, Calendar.getInstance().getTime(), BillStatus.CREATE, userId);
+                bill = new Bill(null, 100, Calendar.getInstance().getTime(), BillStatus.CREATE, userId);
                 return createAndGet(bill);
             }
 
             return bill;
 
         }catch (SQLException ex){
+            System.out.println("Exception" + ex);
             throw new RuntimeException();
         }
     }
@@ -106,7 +107,7 @@ public class JDBCBillDao implements BillDao {
 
         final String query = "" +
                 " select r.id as id, r.totalCost as totalCost, r.dates as dates, r.status as status," +
-                "r.invoice_id as invoice_id from bill r";// +
+                "r.user_id as invoice_id from bill r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
