@@ -37,7 +37,7 @@
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
                     <th><fmt:message key="code"/></th>
-                    <th><fmt:message key="product.name"/></th>
+                    <th><fmt:message key="product.id"/></th>
                     <th><fmt:message key="price"/></th>
                     <%--<th><fmt:message key="buy"/></th>--%>
                 </tr>

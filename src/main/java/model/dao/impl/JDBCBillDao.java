@@ -107,7 +107,7 @@ public class JDBCBillDao implements BillDao {
 
         final String query = "" +
                 " select r.id as id, r.totalCost as totalCost, r.dates as dates, r.status as status," +
-                "r.user_id as invoice_id from bill r";// +
+                "r.user_id as user_id from bill r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);

@@ -10,8 +10,8 @@ import java.util.List;
 public class BillsPageCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-//        List<Bill> bills = billService.getAllBills();
-//        request.setAttribute("bills", bills);
+        List<Bill> bills = billService.getAllBills();
+        request.setAttribute("bills", bills);
 
         return BILLS_PAGE;
     }
