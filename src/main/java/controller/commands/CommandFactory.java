@@ -32,6 +32,7 @@ public class CommandFactory {
         commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());
         commands.put(CommandUtil.DELETE.getPath(), new DeleteCommand());
         commands.put(CommandUtil.FIND_PRODUCT.getPath(), new FindProductCommand());
+        commands.put(CommandUtil.CREATE_INVOICE.getPath(), new CreateInvoiceCommand());
     }
 
     public static Command getCommand(String url) {

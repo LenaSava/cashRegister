@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Invoice {
     private Integer id;
-    private String product_name;
+    private Integer product_id;
     private Double cost;
     private Integer quantity;
     private Integer userId;
@@ -18,9 +18,9 @@ public class Invoice {
 
     public Invoice() {}
 
-    private Invoice(Integer id, String product_name, Double cost, Integer quantity,Integer userId, Integer userRoleId, Integer billId) {
+    private Invoice(Integer id, Integer product_id, Double cost, Integer quantity,Integer userId, Integer userRoleId, Integer billId) {
         this.id = id;
-        this.product_name = product_name;
+        this.product_id = product_id;
         this.cost = cost;
         this.quantity = quantity;
         this.userId = userId;
@@ -34,11 +34,11 @@ public class Invoice {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getProduct_name() {
-        return product_name;
+    public Integer getProduct_id() {
+        return product_id;
     }
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProduct_id(Integer product_id) {
+        this.product_id = product_id;
     }
     public Double getCost() {
         return cost;
@@ -87,32 +87,32 @@ public class Invoice {
         if (this == o) return true;
         if (!(o instanceof Invoice)) return false;
         Invoice invoice = (Invoice) o;
-        return Objects.equals(id, invoice.id) &&
-                Objects.equals(product_name, invoice.product_name) &&
-                Objects.equals(cost, invoice.cost) &&
-                Objects.equals(quantity, invoice.quantity) &&
-                Objects.equals(userId, invoice.userId) &&
-                Objects.equals(userRoleId, invoice.userRoleId) &&
-                Objects.equals(billId, invoice.billId) &&
-                Objects.equals(products, invoice.products);
+        return id.equals(invoice.id) &&
+                product_id.equals(invoice.product_id) &&
+                cost.equals(invoice.cost) &&
+                quantity.equals(invoice.quantity) &&
+                userId.equals(invoice.userId) &&
+                userRoleId.equals(invoice.userRoleId) &&
+                billId.equals(invoice.billId) &&
+                products.equals(invoice.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, product_name, cost, quantity, userId, userRoleId, products);
+        return Objects.hash(id, product_id, cost, quantity, userId, userRoleId, billId, products);
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
                 "id=" + id +
-                ", product_name='" + product_name + '\'' +
+                ", product_id=" + product_id +
                 ", cost=" + cost +
                 ", quantity=" + quantity +
                 ", userId=" + userId +
                 ", userRoleId=" + userRoleId +
-                ", products=" + products +
                 ", billId=" + billId +
+                ", products=" + products +
                 '}';
     }
 }

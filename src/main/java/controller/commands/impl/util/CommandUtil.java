@@ -18,7 +18,8 @@ public enum CommandUtil {
     BILLS_PAGE("bills_page"),
     CONFIRM_BILL("confirm_invoice"),
     DELETE_BILL("delete_invoice"),
-    FIND_PRODUCT("find_product");
+    FIND_PRODUCT("find_product"),
+    CREATE_INVOICE("create_invoice");
 
 
 

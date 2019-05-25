@@ -35,7 +35,7 @@
                 </tr>
                 <c:forEach items="${invoices}" var="invoice" >
                     <tr>
-                        <td>${invoice.product_name}</td>
+                        <td>${invoice.product_id}</td>
                         <td>${invoice.cost}</td>
                         <td>${invoice.quantity}</td>
                         <td>${invoice.userId}</td>

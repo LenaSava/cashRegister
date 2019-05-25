@@ -2,6 +2,7 @@ package model.dao.impl;
 
 import model.dao.InvoiceDao;
 import model.dao.mapper.InvoiceMapper;
+import model.dao.mapper.ObjectMapper;
 import model.entity.Invoice;
 
 
@@ -79,7 +80,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
         Map<Integer, Invoice> invoices = new HashMap<>();
 
         final String query = "" +
-                " select r.id as id, r.product_id as product_name, r.cost as cost, r.quantity as quantity," +
+                " select r.id as id, r.product_id as product_id, r.cost as cost, r.quantity as quantity," +
                 "r.user_id as user_id, r.user_role_id as user_role_id from invoice r";// +
 
         try (Statement st = connection.createStatement()) {

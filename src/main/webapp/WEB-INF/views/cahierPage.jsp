@@ -45,12 +45,15 @@
                 <c:forEach items="${products}" var="product" >
                     <tr>
                         <td>${product.code}</td>
-                            <td>
-                                <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
-                            </td>
+                        <td>
+                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
+                        </td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <td><input type="checkbox" name="canBooking" <c:if test="${Objects.isNull(product.id)}">checked="checked"</c:if> /> </td>
+                        <td><a href="/api/create_invoice?id=${product.id}">купить</a></td>
+                        <%--<td><input type="checkbox" name="canBooking" value="${product.id}"/></td>--%>
+                        <%--<td><a href="/api/show_create?id=${product.id}"></a><fmt:message key="buy"/></td>--%>
+                        <%--<button class="w3-btn w3-round-large" onclick="location.href='/api/manager_page'"><fmt:message key="buy"/></button>--%>
                     </tr>
                 </c:forEach>
             </table>

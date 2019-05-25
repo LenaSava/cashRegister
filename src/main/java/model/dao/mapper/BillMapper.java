@@ -2,6 +2,7 @@ package model.dao.mapper;
 
 import model.entity.Bill;
 import model.entity.Invoice;
+import model.entity.enumeration.BillStatus;
 import util.StringUtil;
 
 import java.sql.ResultSet;

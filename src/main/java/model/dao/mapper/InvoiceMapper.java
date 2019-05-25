@@ -12,7 +12,7 @@ public class InvoiceMapper implements ObjectMapper<Invoice> {
     public Invoice extractFromResultSet(ResultSet rs) throws SQLException {
         Invoice invoice = new Invoice();
         invoice.setId(rs.getInt("id"));
-        invoice.setProduct_name(rs.getString("product_name"));
+        invoice.setProduct_id(rs.getInt("product_id"));
         invoice.setCost(rs.getDouble("cost"));
         invoice.setQuantity(rs.getInt("quantity"));
         invoice.setUserId(rs.getInt("user_id"));
