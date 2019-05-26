@@ -30,19 +30,22 @@
                 <input type="number" required name ="code" maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Product's name:
-                <input type="text" required name="name" maxlength="50" value="${product.name}"  class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" pattern="^[A-Z][a-z]{1,20}$" required name="name" maxlength="50" value="${product.name}"  class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Product's ukrainian name:
-                <input type="text" required name="name_ua" maxlength="50" value="${product.name_ua}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" pattern="^[А-Я][а-я]{1,20}$" required name="name_ua" maxlength="50" value="${product.name_ua}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Cost:
-                <input type="number" required name="cost" value="${product.cost}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" pattern="^{1,20}$" required name="cost" value="${product.cost}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Quantity:
-                <input type="number" required name="quantity" value="${product.quantity}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" pattern="^{1,20}$" required name="quantity" value="${product.quantity}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom">Submit</button>
         </form>
+        <c:if test="${not empty wrongInputData}">
+            <div class="w3-red"><fmt:message key="registration.exception"/></div>
+        </c:if>
     </div>
 </div>
 

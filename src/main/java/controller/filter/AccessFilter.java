@@ -18,7 +18,9 @@ public class AccessFilter implements Filter {
 
     private List<String> allowedUrls = new ArrayList<>();
     private List<String> cashierUrls = new ArrayList<>();
+    private List<String> seniorCashierUrls = new ArrayList<>();
     private List<String> managerUrls = new ArrayList<>();
+
 
     @Override
     public void init(FilterConfig filterConfig) {
@@ -28,13 +30,19 @@ public class AccessFilter implements Filter {
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
-        String cashierParameter = filterConfig.getInitParameter("cashierUrls");
+        String cashierParameter = filterConfig.getInitParameter("cashier-urls");
         if (cashierParameter != null && !cashierParameter.isEmpty()) {
             cashierUrls = Arrays.stream(cashierParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
-        String managerParameter = filterConfig.getInitParameter("managerUrls");
+        String seniorParameter = filterConfig.getInitParameter("senior-cashier-urls");
+        if (seniorParameter != null && !seniorParameter.isEmpty()) {
+            seniorCashierUrls = Arrays.stream(seniorParameter.split(","))
+                    .map(String::trim)
+                    .collect(Collectors.toList());
+        }
+        String managerParameter = filterConfig.getInitParameter("manager-urls");
         if (managerParameter != null && !managerParameter.isEmpty()) {
             managerUrls = Arrays.stream(managerParameter.split(","))
                     .map(String::trim)
@@ -65,6 +73,13 @@ public class AccessFilter implements Filter {
             if (Role.CAHIER.getRole() == user.getRole()) {
                 //todo check for client grants
                 if (cashierUrls.contains(request.getRequestURI())) {
+                    filterChain.doFilter(request, response);
+                    return;
+                }
+            }
+            if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
+                //todo check for client grants
+                if (seniorCashierUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }

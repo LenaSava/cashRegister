@@ -26,10 +26,6 @@
             <h2>
                 <i><fmt:message key="product.list"/></i>
             </h2>
-            <!-- Load icon library -->
-            <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--%>
-
-            <!-- The form -->
             <form class="example" action="find_product">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -39,7 +35,6 @@
                     <th><fmt:message key="code"/></th>
                     <th><fmt:message key="product.id"/></th>
                     <th><fmt:message key="price"/></th>
-                    <%--<th><fmt:message key="buy"/></th>--%>
                 </tr>
                 <c:forEach items="${products}" var="product" >
                     <tr>

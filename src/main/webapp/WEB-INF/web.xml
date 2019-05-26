@@ -32,43 +32,36 @@
     </filter-mapping>
 
     <absolute-ordering>
-        <name>EncodingFilter</name>
         <name>AccessFilter</name>
         <name>LocaleFilter</name>
     </absolute-ordering>
 
-    <!--<filter>-->
-        <!--<filter-name>EncodingFilter</filter-name>-->
-        <!--<filter-class>controller.filter.EncodingFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>EncodingFilter</filter-name>-->
-        <!--<servlet-name>Servl</servlet-name>-->
-        <!--<url-pattern>/api/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!--<filter>-->
-        <!--<filter-name>AccessFilter</filter-name>-->
-        <!--<filter-class>controller.filter.AccessFilter</filter-class>-->
-        <!--<init-param>-->
-            <!--<param-name>allowed-urls</param-name>-->
-            <!--<param-value>/api/login,/api/registration,/api/login_submit,/api/show_registration,-->
-                <!--/api/info_page</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>cashier-urls</param-name>-->
-            <!--<param-value>/api/user_home_page,/api/room_list,/api/log_out</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>manager-urls</param-name>-->
-            <!--<param-value>/api/admin_home_list,/api/log_out,/api/create_room,/api/show_create</param-value>-->
-        <!--</init-param>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>AccessFilter</filter-name>-->
-        <!--<servlet-name>Servl</servlet-name>-->
-        <!--<url-pattern>/api/*</url-pattern>-->
-    <!--</filter-mapping>-->
+    <filter>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>controller.filter.AccessFilter</filter-class>
+        <init-param>
+            <param-name>allowed-urls</param-name>
+            <param-value>/api/login,/api/registration,/api/login_submit,/api/show_registration,
+                /api/info_page,/api/error</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cashier-urls</param-name>
+            <param-value>/api/cashier_page,/api/create_invoice,/api/log_out,/api/find_product</param-value>
+        </init-param>
+        <init-param>
+            <param-name>senior-cashier-urls</param-name>
+            <param-value>/api/senior_cashier_list,/api/delete,/api/log_out,/api/confirm_invoice,/api/delete_invoice</param-value>
+        </init-param>
+        <init-param>
+            <param-name>manager-urls</param-name>
+            <param-value>/api/manager_page,/api/log_out,/api/create_update,/api/show_create,/api/show_create,/api/bills_page</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <servlet-name>Servl</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
 
 
 

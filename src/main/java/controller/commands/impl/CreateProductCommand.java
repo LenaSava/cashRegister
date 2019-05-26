@@ -38,7 +38,7 @@ public class CreateProductCommand implements Command {
                 productService.update(product);
             }
         } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+            request.setAttribute("wrongInputData", true);
         }
         request.setAttribute("products", productService.getAllProducts());
 
