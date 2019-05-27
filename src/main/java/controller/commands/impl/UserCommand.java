@@ -33,7 +33,7 @@ public class UserCommand implements Command {
                     } else if (Role.MANAGER.getRole() == user.getRole()) {
                         return "redirect:/" + CommandUtil.MANAGER_PAGE.getPath();
                     }
-                return "redirect:/" + CommandUtil.CAHIER_PAGE.getPath();
+                return "redirect:/" + CommandUtil.CASHIER_PAGE.getPath();
             }
         }catch (RuntimeException e) {
             request.setAttribute("wrongPassOrLogin", true);

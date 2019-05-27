@@ -94,13 +94,8 @@ public class JDBCProductDao implements ProductDao {
             while (rs.next()) {
                 Product product = productMapper
                         .extractFromResultSet(rs);
-                /*User user = userMapper
-                        .extractFromResultSet(rs);*/
                 product = productMapper
                         .makeUnique(products, product);
-//                user = userMapper
-//                        .makeUnique(users, user);
-//                room.getUsers().add(user);
             }
             return new ArrayList<>(products.values());
         } catch (SQLException e) {

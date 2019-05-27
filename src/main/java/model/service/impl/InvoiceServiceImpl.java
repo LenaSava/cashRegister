@@ -23,6 +23,11 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
+    public void deleteAll(){
+        invoiceDao.deleteAll();
+    }
+
+    @Override
     public void create(final Invoice invoice) {
         if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
         try {

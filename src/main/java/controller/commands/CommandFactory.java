@@ -23,7 +23,7 @@ public class CommandFactory {
         commands.put(CommandUtil.SENIOR_CASHIER_PAGE.getPath(), new SeniorCashierPage());
         commands.put(CommandUtil.CREATE_UPDATE.getPath(), new CreateProductCommand());
         commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateProductCommand());
-        commands.put(CommandUtil.CAHIER_PAGE.getPath(), new CahierPageCommand());
+        commands.put(CommandUtil.CASHIER_PAGE.getPath(), new CahierPageCommand());
         commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());
         commands.put(CommandUtil.DELETE.getPath(), new DeleteCommand());
         commands.put(CommandUtil.FIND_PRODUCT.getPath(), new FindProductCommand());
@@ -31,6 +31,7 @@ public class CommandFactory {
         commands.put(CommandUtil.BILLS_PAGE.getPath(), new BillsPageCommand());
         commands.put(CommandUtil.CONFIRM_BILL.getPath(), new ConfirmBillCommand());
         commands.put(CommandUtil.CANCEL_BILL.getPath(), new CancelBillCommand());
+        commands.put(CommandUtil.DELETE_ALL.getPath(), new DeleteAllCommand());
 
     }
 

@@ -105,6 +105,15 @@ public class JDBCInvoiceDao implements InvoiceDao {
         }
     }
     @Override
+    public void deleteAll() {
+        try(PreparedStatement statement = connection.prepareStatement("delete from invoice")){
+            statement.execute();
+
+        }catch (SQLException | RuntimeException ex) {
+            throw new RuntimeException();
+        }
+    }
+    @Override
     public void update(Invoice entity) {
         try(PreparedStatement statement = connection.prepareStatement("UPDATE invoice set cost=?, quantity=? where id=?")){
 

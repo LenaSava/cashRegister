@@ -13,13 +13,15 @@ public enum CommandUtil {
     MANAGER_PAGE("manager_page"),
     CREATE_UPDATE("create_update"),
     SHOW_CREATE("show_create"),
-    CAHIER_PAGE("cashier_page"),
+    CASHIER_PAGE("cashier_page"),
     DELETE("delete"),
     BILLS_PAGE("bills_page"),
     CONFIRM_BILL("confirm_bill"),
     CANCEL_BILL("cancel_bill"),
     FIND_PRODUCT("find_product"),
+    DELETE_ALL("delete_all"),
     CREATE_INVOICE("create_invoice");
+
 
 
 

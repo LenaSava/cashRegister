@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 public class CreateProductCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-//        String typeFromRequest = request.getParameter("name");
-//        int costFromRequest = Double.parseDouble(request.getParameter("cost"));
-//        int quotaFromRequest = Integer.parseInt(request.getParameter("quantity"));
 
 
         boolean isNewProduct = false;
