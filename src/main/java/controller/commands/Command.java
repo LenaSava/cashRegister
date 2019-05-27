@@ -14,10 +14,11 @@ public interface Command {
     String ERROR_PAGE = "/WEB-INF/views/error.jsp";
     String HOME = "/index.jsp";
     String INFO_VIEW = "/WEB-INF/views/infoView.jsp";
-    String CAHIER_PAGE_JSP = "/WEB-INF/views/cahierPage.jsp";
+    String CASHIER_PAGE_JSP = "/WEB-INF/views/cahierPage.jsp";
     String MANAGER_PAGE = "/WEB-INF/views/manager.jsp";
     String CREATE_UPDATE = "/WEB-INF/views/createUpdate.jsp";
     String BILLS_PAGE = "/WEB-INF/views/billsPage.jsp";
+
 
 
     ProductService productService = ServiceFactory.getProductService();

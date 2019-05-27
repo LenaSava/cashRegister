@@ -9,4 +9,6 @@ public interface BillDao extends GenericDao<Bill> {
     Bill createAndGet(Bill entity) throws SQLException;
 
     Bill findOrCreate(int userId);
+
+    void confirm(Integer id);
 }

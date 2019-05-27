@@ -126,12 +126,25 @@ public class JDBCBillDao implements BillDao {
         }
     }
     @Override
-    public void update(Bill bill) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set totalCost=?, dates=?, status=?  where id=?")){
+    public void update(Bill entity) {
+//        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
+//
+//            statement.setString(1, BillStatus.CONFIRM.name());
+//
+//
+//            statement.execute();
+//
+//        }catch (SQLException | RuntimeException ex){
+//            throw new RuntimeException();
+//        }
+    }
 
-//            statement.setString(1, entity.getTotalCost());
-//            statement.setInt(2, entity.getQuantity());
-//            statement.setInt(3, entity.getId());
+    public void confirm(Integer id) {
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
+
+            statement.setString(1, BillStatus.CONFIRM.name());
+            statement.setInt(2,id);
+
 
             statement.execute();
 

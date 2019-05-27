@@ -34,6 +34,7 @@ public class CommandFactory {
         commands.put(CommandUtil.FIND_PRODUCT.getPath(), new FindProductCommand());
         commands.put(CommandUtil.CREATE_INVOICE.getPath(), new CreateInvoiceCommand());
         commands.put(CommandUtil.BILLS_PAGE.getPath(), new BillsPageCommand());
+        commands.put(CommandUtil.CONFIRM_BILL.getPath(), new ConfirmInvoiceCommand());
 
     }
 

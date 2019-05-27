@@ -13,6 +13,6 @@ public class CahierPageCommand implements Command {
         List<Product> products = productService.getAllProducts();
         request.setAttribute("products", products);
 
-        return CAHIER_PAGE_JSP;
+        return CASHIER_PAGE_JSP;
     }
 }

@@ -5,7 +5,6 @@ import controller.commands.Command;
 import controller.commands.impl.util.CommandUtil;
 import model.entity.User;
 import model.entity.types.Role;
-import model.exception.ServiceException;
 import org.apache.log4j.Logger;
 import util.HashPassword;
 

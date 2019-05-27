@@ -19,7 +19,6 @@ public class CreateInvoiceCommand implements Command {
         User user = (User) request.getSession(true).getAttribute("User");
         Bill bill = billService.findOrCreate(user.getId());
 
-//        billService вызвать метод и получить конкретный билинг и с него взять айди и вставить в инвойс
         invoice.setProduct_id(service.get().getId());
         invoice.setCost(service.get().getCost());
         invoice.setQuantity(service.get().getQuantity());
@@ -34,6 +33,6 @@ public class CreateInvoiceCommand implements Command {
         }
         request.setAttribute("products", productService.getAllProducts());
 
-        return CAHIER_PAGE_JSP;
+        return CASHIER_PAGE_JSP;
     }
 }

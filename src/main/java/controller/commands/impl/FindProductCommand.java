@@ -25,6 +25,6 @@ public class FindProductCommand implements Command {
         } catch (NumberFormatException e) {
             request.setAttribute("products", productService.getAllProducts());
         }
-        return CAHIER_PAGE_JSP;
+        return CASHIER_PAGE_JSP;
     }
 }
