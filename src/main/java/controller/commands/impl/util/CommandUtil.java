@@ -20,10 +20,9 @@ public enum CommandUtil {
     CANCEL_BILL("cancel_bill"),
     FIND_PRODUCT("find_product"),
     DELETE_ALL("delete_all"),
-    CREATE_INVOICE("create_invoice");
-
-
-
+    CREATE_INVOICE("create_invoice"),
+    X_REPORT("x_report"),
+    Y_REPORT("y_report");
 
 
     private String path;

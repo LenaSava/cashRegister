@@ -28,7 +28,7 @@
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th><fmt:message key="price"/></th>
+                    <th><fmt:message key="total.cost"/></th>
                     <th>date</th>
                     <th>status</th>
                     <th><fmt:message key="cashier.id"/></th>
@@ -44,8 +44,8 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/confirm_invoice'">X report</button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_invoice'">Y report</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'">X report</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'">Y report</button>
             <br>
         </div>
     </div>

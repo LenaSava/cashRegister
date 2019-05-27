@@ -32,6 +32,8 @@ public class CommandFactory {
         commands.put(CommandUtil.CONFIRM_BILL.getPath(), new ConfirmBillCommand());
         commands.put(CommandUtil.CANCEL_BILL.getPath(), new CancelBillCommand());
         commands.put(CommandUtil.DELETE_ALL.getPath(), new DeleteAllCommand());
+        commands.put(CommandUtil.X_REPORT.getPath(), new XReportCommand());
+        commands.put(CommandUtil.Y_REPORT.getPath(), new YReportCommand());
 
     }
 
