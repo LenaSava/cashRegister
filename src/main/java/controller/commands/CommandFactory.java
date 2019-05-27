@@ -2,12 +2,7 @@ package controller.commands;
 
 import controller.commands.impl.*;
 import controller.commands.impl.util.CommandUtil;
-import model.service.ServiceFactory;
-import model.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +29,8 @@ public class CommandFactory {
         commands.put(CommandUtil.FIND_PRODUCT.getPath(), new FindProductCommand());
         commands.put(CommandUtil.CREATE_INVOICE.getPath(), new CreateInvoiceCommand());
         commands.put(CommandUtil.BILLS_PAGE.getPath(), new BillsPageCommand());
-        commands.put(CommandUtil.CONFIRM_BILL.getPath(), new ConfirmInvoiceCommand());
+        commands.put(CommandUtil.CONFIRM_BILL.getPath(), new ConfirmBillCommand());
+        commands.put(CommandUtil.CANCEL_BILL.getPath(), new CancelBillCommand());
 
     }
 

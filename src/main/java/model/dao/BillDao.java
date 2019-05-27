@@ -11,4 +11,6 @@ public interface BillDao extends GenericDao<Bill> {
     Bill findOrCreate(int userId);
 
     void confirm(Integer id);
+
+    void cancel(Integer id);
 }

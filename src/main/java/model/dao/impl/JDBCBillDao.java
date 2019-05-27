@@ -152,6 +152,19 @@ public class JDBCBillDao implements BillDao {
             throw new RuntimeException();
         }
     }
+    public void cancel(Integer id) {
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
+
+            statement.setString(1, BillStatus.CANCEL.name());
+            statement.setInt(2,id);
+
+
+            statement.execute();
+
+        }catch (SQLException | RuntimeException ex){
+            throw new RuntimeException();
+        }
+    }
     @Override
     public boolean delete(int id) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();

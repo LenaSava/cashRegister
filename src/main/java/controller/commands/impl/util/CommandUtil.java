@@ -16,8 +16,8 @@ public enum CommandUtil {
     CAHIER_PAGE("cashier_page"),
     DELETE("delete"),
     BILLS_PAGE("bills_page"),
-    CONFIRM_BILL("confirm_invoice"),
-    DELETE_BILL("delete_invoice"),
+    CONFIRM_BILL("confirm_bill"),
+    CANCEL_BILL("cancel_bill"),
     FIND_PRODUCT("find_product"),
     CREATE_INVOICE("create_invoice");
 

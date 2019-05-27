@@ -39,12 +39,13 @@
                         <td>${bill.dates}</td>
                         <td>${bill.status}</td>
                         <td>${bill.userId}</td>
-                        <%--<td><a href="/api/delete?id=${invoice.id}">Delete</a></td>--%>
+                        <td><a href="/api/confirm_bill?id=${bill.id}">Confirm</a></td>
+                        <td><a href="/api/cancel_bill?id=${bill.id}">Cancel</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/confirm_invoice'">Confirm invoice</button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_invoice'">Delete invoice</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/confirm_invoice'">X report</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_invoice'">Y report</button>
             <br>
         </div>
     </div>

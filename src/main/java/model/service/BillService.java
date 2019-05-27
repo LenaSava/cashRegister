@@ -12,4 +12,5 @@ public interface BillService {
     List<Bill> getAllBills();
     Bill findOrCreate(int userId);
     void confirm(Integer id);
+    void cancel(Integer id);
 }

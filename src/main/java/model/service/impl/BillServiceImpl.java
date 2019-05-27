@@ -25,6 +25,11 @@ public class BillServiceImpl implements BillService {
         if (Objects.isNull(id)) throw new IllegalArgumentException("Invoice must be a set");
         billDao.confirm(id);
     }
+    @Override
+    public void cancel(Integer id){
+        if (Objects.isNull(id)) throw new IllegalArgumentException("Invoice must be a set");
+        billDao.cancel(id);
+    }
 
     @Override
     public Bill findOrCreate(int userId){
