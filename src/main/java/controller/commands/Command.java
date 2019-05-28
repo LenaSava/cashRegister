@@ -18,6 +18,8 @@ public interface Command {
     String MANAGER_PAGE = "/WEB-INF/views/manager.jsp";
     String CREATE_UPDATE = "/WEB-INF/views/createUpdate.jsp";
     String BILLS_PAGE = "/WEB-INF/views/billsPage.jsp";
+    String X_REPORT = "/WEB-INF/views/xReport.jsp";
+    String Y_REPORT = "/WEB-INF/views/yReport.jsp";
 
 
 

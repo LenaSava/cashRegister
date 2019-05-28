@@ -86,7 +86,6 @@ public class AccessFilter implements Filter {
             }
             if (Role.VIZITOR.getRole() == user.getRole()) {
                 //todo check for visitor grants
-                System.out.println("I'm visitor");
             }
         }
 

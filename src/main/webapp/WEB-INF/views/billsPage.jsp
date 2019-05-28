@@ -24,7 +24,7 @@
         <jsp:include page="parts/menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
             <h2>
-                <i><fmt:message key="invoices.list"/></i>
+                <i><fmt:message key="bill.list"/></i>
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
@@ -39,19 +39,19 @@
                         <td>${bill.dates}</td>
                         <td>${bill.status}</td>
                         <td>${bill.userId}</td>
-                        <td><a href="/api/confirm_bill?id=${bill.id}">Confirm</a></td>
-                        <td><a href="/api/cancel_bill?id=${bill.id}">Cancel</a></td>
+                        <td><a href="/api/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
+                        <td><a href="/api/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'">X report</button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'">Y report</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'"><fmt:message key="x.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'"><fmt:message key="y.report"/></button>
             <br>
         </div>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'">back to user menu</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

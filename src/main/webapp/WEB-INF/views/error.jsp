@@ -15,7 +15,7 @@
 
 <body class="w3-light-grey">
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
-    <h1>You have no right for this page</h1>
+    <h1><fmt:message key="error.massage"/></h1>
 </div>
 
 <div class="w3-container w3-padding">
@@ -23,14 +23,15 @@
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
-            <h2>Please login to continue booking rooms!</h2>
+            <h2><fmt:message key="error.page"/></h2>
+
         </div>
 
     </div>
 </div>
 
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large" onclick="location.href=''">Back to main</button>
+    <button class="w3-btn w3-round-large" onclick="location.href=''"><fmt:message key="back.to.main"/></button>
 </div>
 <jsp:include page="parts/footer.jsp"></jsp:include>
 </body>

@@ -9,6 +9,6 @@ public class XReportCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 
-        return SIGN_IN_JSP;
+        return X_REPORT;
     }
 }
