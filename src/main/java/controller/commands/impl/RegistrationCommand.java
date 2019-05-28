@@ -1,11 +1,13 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RegistrationCommand implements Command {
+    private static final Logger logger = Logger.getLogger(RegistrationCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -13,10 +15,13 @@ public class RegistrationCommand implements Command {
         String passFromRequest = request.getParameter("pass");
         String emailFromRequest = request.getParameter("email");
 
+        logger.info("Get data from registration: " + nameFromRequest + passFromRequest + emailFromRequest);
+
         try {
             userService.registrationUser(nameFromRequest, passFromRequest, emailFromRequest);
         } catch (RuntimeException e) {
             request.setAttribute("error", true);
+            logger.info("Error in registration form");
         }
 
         return HOME;
