@@ -34,6 +34,7 @@
                 <tr>
                     <th><fmt:message key="code"/></th>
                     <th><fmt:message key="product.id"/></th>
+                    <th><fmt:message key="quantity"/></th>
                     <th><fmt:message key="price"/></th>
                 </tr>
                 <c:forEach items="${products}" var="product" >
@@ -42,6 +43,7 @@
                         <td>
                             <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
                         </td>
+                        <td>1</td>
                         <td>${product.cost}</td>
                         <td><a href="/api/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
                     </tr>

@@ -28,7 +28,7 @@
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th><fmt:message key="product.name"/></th>
+                    <th><fmt:message key="product.id"/></th>
                     <th><fmt:message key="price"/></th>
                     <th><fmt:message key="quantity"/></th>
                     <th><fmt:message key="cashier.id"/></th>
@@ -37,7 +37,7 @@
                     <tr>
                         <td>${invoice.product_id}</td>
                         <td>${invoice.cost}</td>
-                        <td>${invoice.quantity}</td>
+                        <td>1</td>
                         <td>${invoice.userId}</td>
                         <td><a href="/api/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
                     </tr>

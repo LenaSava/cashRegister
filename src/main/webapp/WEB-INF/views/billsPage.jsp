@@ -28,17 +28,19 @@
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th><fmt:message key="total.cost"/></th>
-                    <th>date</th>
-                    <th>status</th>
+                    <th><fmt:message key="bill.id"/></th>
+                    <th><fmt:message key="date"/></th>
+                    <th><fmt:message key="status"/></th>
                     <th><fmt:message key="cashier.id"/></th>
+                    <th><fmt:message key="total.cost"/></th>
                 </tr>
                 <c:forEach items="${bills}" var="bill" >
                     <tr>
-                        <td>${bill.totalCost}</td>
+                        <td>${bill.id}</td>
                         <td>${bill.dates}</td>
                         <td>${bill.status}</td>
                         <td>${bill.userId}</td>
+                        <td>${bill.totalCost}</td>
                         <td><a href="/api/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
                         <td><a href="/api/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
                     </tr>

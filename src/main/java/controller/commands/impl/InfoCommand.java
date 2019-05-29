@@ -10,5 +10,6 @@ public class InfoCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
         return INFO_VIEW;
+
     }
 }

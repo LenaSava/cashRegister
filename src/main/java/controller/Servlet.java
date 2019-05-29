@@ -28,9 +28,7 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        System.out.println(path);
         path = path.replaceAll(".*/api/" , "");
-        System.out.println(path);
         Command command = CommandFactory.getCommand(path);
         String page = command.execute(request, response);
         if(page.contains("redirect")){

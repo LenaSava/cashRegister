@@ -4,6 +4,7 @@ import model.dao.BillDao;
 import model.dao.mapper.BillMapper;
 import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
+import model.entity.Invoice;
 import model.entity.enumeration.BillStatus;
 
 import java.sql.*;
@@ -30,7 +31,6 @@ public class JDBCBillDao implements BillDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }

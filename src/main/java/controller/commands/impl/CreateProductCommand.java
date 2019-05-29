@@ -2,12 +2,14 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import model.entity.Product;
+import org.apache.log4j.Logger;
 import util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CreateProductCommand implements Command {
+    private static final Logger logger = Logger.getLogger(CreateProductCommand.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
@@ -15,6 +17,7 @@ public class CreateProductCommand implements Command {
         boolean isNewProduct = false;
         Product product = new Product();
         if (StringUtil.isEmpty(request.getParameter("id"))) {
+            logger.info("The product is new");
             isNewProduct = true;
         } else {
             product.setId(Integer.parseInt(request.getParameter("id")));
@@ -31,13 +34,16 @@ public class CreateProductCommand implements Command {
         try {
             if (isNewProduct) {
                 productService.create(product);
+                logger.info("The product is create" + product);
             } else {
                 productService.update(product);
+                logger.info("The product is update" + product);
             }
         } catch (RuntimeException e) {
             request.setAttribute("wrongInputData", true);
         }
         request.setAttribute("products", productService.getAllProducts());
+        logger.info("Get all products");
 
         return MANAGER_PAGE;
     }

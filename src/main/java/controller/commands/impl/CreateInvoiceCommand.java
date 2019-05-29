@@ -17,7 +17,7 @@ public class CreateInvoiceCommand implements Command {
         int idFromRequest = Integer.parseInt(request.getParameter("id"));
         Optional<Product> service = productService.findById(idFromRequest);
         User user = (User) request.getSession(true).getAttribute("User");
-        Bill bill = billService.findOrCreate(user.getId());
+        Bill bill = billService.findOrCreate(idFromRequest);
 
         invoice.setProduct_id(service.get().getId());
         invoice.setCost(service.get().getCost());

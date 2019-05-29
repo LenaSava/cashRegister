@@ -23,7 +23,7 @@ public class CommandFactory {
         commands.put(CommandUtil.SENIOR_CASHIER_PAGE.getPath(), new SeniorCashierPage());
         commands.put(CommandUtil.CREATE_UPDATE.getPath(), new CreateProductCommand());
         commands.put(CommandUtil.SHOW_CREATE.getPath(), new ShowCreateProductCommand());
-        commands.put(CommandUtil.CASHIER_PAGE.getPath(), new CahierPageCommand());
+        commands.put(CommandUtil.CASHIER_PAGE.getPath(), new CashierPageCommand());
         commands.put(CommandUtil.MANAGER_PAGE.getPath(), new ManagerPageCommand());
         commands.put(CommandUtil.DELETE.getPath(), new DeleteCommand());
         commands.put(CommandUtil.FIND_PRODUCT.getPath(), new FindProductCommand());

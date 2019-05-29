@@ -12,18 +12,5 @@ public class Constants {
     String PASSWORD_REGISTRATION_ATTRIBUTE = "passwordRegistration";
     String EXCEPTION_ATTRIBUTE = "exception";
     String INPUT_DATA_EXCEPTION = "inputDataException";
-    String COUNT_OF_BILLS_ATTRIBUTE = "countOfBills";
-    String ORDERS_ATTRIBUTE = "orders";
-    String APARTMENTS_ATTRIBUTE = "apartments";
-    String BILLS_ATTRIBUTE = "bills";
-    String NUMBER_OF_ROOMS_ATTRIBUTE = "numberOfRooms";
-    String APARTMENT_TYPE_ATTRIBUTE = "apartmentType";
-    String DATE_FROM_ATTRIBUTE = "dateFrom";
-    String DATE_TO_ATTRIBUTE = "dateTo";
-    String COUNT_OF_ORDERS_ATTRIBUTE = "countOfOrders";
-    String PAGE_ATTRIBUTE = "page";
-    String EMAIL_ATTRIBUTE = "email";
-    String PASSWORD_ATTRIBUTE = "password";
-    String LOCALE_ATTRIBUTE = "locale";
-    String COMMAND_ATTRIBUTE = "command";
+
 }
