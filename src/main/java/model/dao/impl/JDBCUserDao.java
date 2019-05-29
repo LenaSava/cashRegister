@@ -3,6 +3,7 @@ package model.dao.impl;
 import model.dao.UserDao;
 import model.dao.mapper.UserMapper;
 import model.entity.User;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class JDBCUserDao implements UserDao {
+    private static final Logger logger = Logger.getLogger(JDBCUserDao.class);
     private Connection connection;
     private UserMapper userMapper;
 
@@ -38,6 +40,7 @@ public class JDBCUserDao implements UserDao {
 
 
         }catch (SQLException | RuntimeException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
 
@@ -56,6 +59,7 @@ public class JDBCUserDao implements UserDao {
             return user;
 
         }catch (SQLException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -82,6 +86,7 @@ public class JDBCUserDao implements UserDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.info("Exception" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -100,6 +105,7 @@ public class JDBCUserDao implements UserDao {
             return user;
 
         }catch (SQLException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }

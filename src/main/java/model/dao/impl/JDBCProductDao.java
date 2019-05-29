@@ -3,6 +3,7 @@ package model.dao.impl;
 import model.dao.ProductDao;
 import model.dao.mapper.ProductsMapper;
 import model.entity.Product;
+import org.apache.log4j.Logger;
 
 
 import java.sql.*;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JDBCProductDao implements ProductDao {
+    private static final Logger logger = Logger.getLogger(JDBCProductDao.class);
     private Connection connection;
 
     public JDBCProductDao(Connection connection) {
@@ -34,7 +36,7 @@ public class JDBCProductDao implements ProductDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println("Exception" + ex.getMessage());
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -54,6 +56,7 @@ public class JDBCProductDao implements ProductDao {
             return product;
 
         }catch (SQLException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -73,13 +76,13 @@ public class JDBCProductDao implements ProductDao {
             return product;
 
         }catch (SQLException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }
     @Override
     public List<Product> findAll() {
         Map<Integer, Product> products = new HashMap<>();
-//        Map<Integer, User> users = new HashMap<>()
 
         final String query = "" +
                 " select r.id as id, r.code as code, r.name as name, r.name_ua as name_ua, r.cost as cost, r.quantity as quantity," +
@@ -88,7 +91,6 @@ public class JDBCProductDao implements ProductDao {
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
-//            UserMapper userMapper = new UserMapper();
             ProductsMapper productMapper = new ProductsMapper();
 
             while (rs.next()) {
@@ -99,6 +101,7 @@ public class JDBCProductDao implements ProductDao {
             }
             return new ArrayList<>(products.values());
         } catch (SQLException e) {
+            logger.info("Exception" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -119,6 +122,7 @@ public class JDBCProductDao implements ProductDao {
             statement.execute();
 
         }catch (SQLException | RuntimeException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -146,6 +150,7 @@ public class JDBCProductDao implements ProductDao {
             final Product product;
             if (rs.next()) {
                 product = new ProductsMapper().extractFromResultSet(rs);
+                logger.info("insertIntoInvoices" + product);
             } else {
                 product = null;
             }
@@ -153,6 +158,7 @@ public class JDBCProductDao implements ProductDao {
             return product;
 
         }catch (SQLException ex){
+            logger.info("Exception" + ex.getMessage());
             throw new RuntimeException();
         }
     }

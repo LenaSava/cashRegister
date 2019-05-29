@@ -33,19 +33,21 @@ public class JDBCInvoiceDao implements InvoiceDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println("Exception" + ex.getMessage());
+            logger.info("Creation failed");
             throw new RuntimeException();
         }
     }
 
-    //лучше переделать и использовать этот
     @Override
     public Invoice createAndGet(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(cost, quantity, user_id) VALUES (?,?,?)", ObjectMapper.generatedColumns)){
-            statement.setDouble(1, entity.getCost());
-            statement.setInt(2, entity.getQuantity());
-            statement.setInt(3,entity.getUserId());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(product_id, cost, quantity, user_id, user_role_id, bill_id) VALUES (?,?,?,?,?,?)", ObjectMapper.generatedColumns)){
+            statement.setInt(1,entity.getProduct_id());
+            statement.setDouble(2, entity.getCost());
+            statement.setInt(3, entity.getQuantity());
+            statement.setInt(4,entity.getUserId());
+            statement.setInt(5, entity.getUserRoleId());
+            statement.setInt(6,entity.getBillId());
 
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
@@ -57,7 +59,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
             return entity;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println("Exception" + ex.getMessage());
+            logger.info("createAndGet failed");
             throw new RuntimeException();
         }
     }
@@ -77,6 +79,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
             return invoice;
 
         }catch (SQLException ex){
+            logger.info("findById failed");
             throw new RuntimeException();
         }
     }
@@ -101,15 +104,17 @@ public class JDBCInvoiceDao implements InvoiceDao {
             }
             return new ArrayList<>(invoices.values());
         } catch (SQLException e) {
+            logger.info("findAll failed");
             throw new RuntimeException(e);
         }
     }
     @Override
     public void deleteAll() {
-        try(PreparedStatement statement = connection.prepareStatement("delete from invoice")){
+        try(PreparedStatement statement = connection.prepareStatement("DELETE FROM invoice")){
             statement.execute();
 
         }catch (SQLException | RuntimeException ex) {
+            logger.info("DeleteAll failed");
             throw new RuntimeException();
         }
     }
@@ -124,6 +129,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
             statement.execute();
 
         }catch (SQLException | RuntimeException ex){
+            logger.info("update failed");
             throw new RuntimeException();
         }
     }
@@ -136,6 +142,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
 
             return true;
         }catch (SQLException | RuntimeException ex){
+            logger.info("delete invoice failed");
             throw new RuntimeException();
         }
     }
@@ -145,6 +152,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.info("Connection invoice not close");
             throw new RuntimeException(e);
         }
     }

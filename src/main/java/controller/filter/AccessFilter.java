@@ -3,6 +3,7 @@ package controller.filter;
 import controller.commands.impl.util.CommandUtil;
 import model.entity.User;
 import model.entity.types.Role;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AccessFilter implements Filter {
+    private static final Logger logger = Logger.getLogger(AccessFilter.class);
 
     private List<String> allowedUrls = new ArrayList<>();
     private List<String> cashierUrls = new ArrayList<>();
@@ -30,24 +32,28 @@ public class AccessFilter implements Filter {
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
+        logger.info("Get allowedUrls: " + allowedUrls);
         String cashierParameter = filterConfig.getInitParameter("cashier-urls");
         if (cashierParameter != null && !cashierParameter.isEmpty()) {
             cashierUrls = Arrays.stream(cashierParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
+        logger.info("Get cashierUrls: " + cashierUrls);
         String seniorParameter = filterConfig.getInitParameter("senior-cashier-urls");
         if (seniorParameter != null && !seniorParameter.isEmpty()) {
             seniorCashierUrls = Arrays.stream(seniorParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
+        logger.info("Get seniorCashierUrls: " + seniorCashierUrls);
         String managerParameter = filterConfig.getInitParameter("manager-urls");
         if (managerParameter != null && !managerParameter.isEmpty()) {
             managerUrls = Arrays.stream(managerParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
+        logger.info("Get  managerUrls: " +  managerUrls);
     }
 
     @Override
@@ -65,27 +71,27 @@ public class AccessFilter implements Filter {
         if (session != null && session.getAttribute("User") != null) {
             User user = (User) session.getAttribute("User");
             if (Role.MANAGER.getRole() == user.getRole())  {
+                logger.info("Get user role: " +  user.getRole());
                 if (managerUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }
             }
             if (Role.CAHIER.getRole() == user.getRole()) {
-                //todo check for client grants
+                logger.info("Get user role: " +  user.getRole());
                 if (cashierUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }
             }
             if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
-                //todo check for client grants
+                logger.info("Get user role: " +  user.getRole());
                 if (seniorCashierUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }
             }
             if (Role.VIZITOR.getRole() == user.getRole()) {
-                //todo check for visitor grants
             }
         }
 

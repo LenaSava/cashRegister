@@ -1,9 +1,11 @@
 package model.service.impl;
 
+import controller.commands.impl.SeniorCashierPage;
 import model.dao.DaoFactory;
 import model.dao.InvoiceDao;
 import model.entity.Invoice;
 import model.service.InvoiceService;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class InvoiceServiceImpl implements InvoiceService {
+    private static final Logger logger = Logger.getLogger(InvoiceServiceImpl.class);
     private final InvoiceDao invoiceDao;
 
     public InvoiceServiceImpl(final DaoFactory daoFactory) {
@@ -31,9 +34,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void create(final Invoice invoice) {
         if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
         try {
-            invoiceDao.create(invoice);
+            invoiceDao.createAndGet(invoice);
         } catch (SQLException e) {
-            //save error message into log
+            logger.info("Exception" + e.getMessage());
             throw new RuntimeException(e);
         }
     }

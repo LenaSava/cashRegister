@@ -6,12 +6,14 @@ import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
 import model.entity.Invoice;
 import model.entity.enumeration.BillStatus;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
 public class JDBCBillDao implements BillDao {
+    private static final Logger logger = Logger.getLogger(JDBCBillDao.class);
     private Connection connection;
 
     public JDBCBillDao(Connection connection){
@@ -31,6 +33,7 @@ public class JDBCBillDao implements BillDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
+            logger.info("create bill failed" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -50,11 +53,12 @@ public class JDBCBillDao implements BillDao {
             if (rs.next()) {
                 int id = rs.getInt(1);
                 entity.setId(id);
+                logger.info("createAndGet" + id);
             }
             return entity;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println("Exception" + ex.getMessage());
+            logger.info("createAndGet bill failed");
             throw new RuntimeException();
         }
     }
@@ -77,7 +81,7 @@ public class JDBCBillDao implements BillDao {
             return bill;
 
         }catch (SQLException ex){
-            System.out.println("Exception" + ex);
+            logger.info("findOrCreate bill failed");
             throw new RuntimeException();
         }
     }
@@ -98,6 +102,7 @@ public class JDBCBillDao implements BillDao {
             return bill;
 
         }catch (SQLException ex){
+            logger.info("findById bill failed");
             throw new RuntimeException();
         }
     }
@@ -122,21 +127,13 @@ public class JDBCBillDao implements BillDao {
             }
             return new ArrayList<>(bills.values());
         } catch (SQLException e) {
+            logger.info("findById bill failed");
             throw new RuntimeException(e);
         }
     }
     @Override
     public void update(Bill entity) {
-//        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
-//
-//            statement.setString(1, BillStatus.CONFIRM.name());
-//
-//
-//            statement.execute();
-//
-//        }catch (SQLException | RuntimeException ex){
-//            throw new RuntimeException();
-//        }
+
     }
 
     public void confirm(Integer id) {
@@ -162,6 +159,7 @@ public class JDBCBillDao implements BillDao {
             statement.execute();
 
         }catch (SQLException | RuntimeException ex){
+            logger.info("cancel bill failed" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -174,6 +172,7 @@ public class JDBCBillDao implements BillDao {
 
             return true;
         }catch (SQLException | RuntimeException ex){
+            logger.info("delete bill failed" + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -183,6 +182,7 @@ public class JDBCBillDao implements BillDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.info("close bill failed" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
