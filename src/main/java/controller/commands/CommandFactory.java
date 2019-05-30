@@ -35,6 +35,8 @@ public class CommandFactory {
         commands.put(CommandUtil.DELETE_ALL.getPath(), new DeleteAllCommand());
         commands.put(CommandUtil.X_REPORT.getPath(), new XReportCommand());
         commands.put(CommandUtil.Y_REPORT.getPath(), new YReportCommand());
+        commands.put(CommandUtil.NEXT.getPath(), new NextCommand());
+        commands.put(CommandUtil.PREV.getPath(), new PrevCommand());
 
     }
 

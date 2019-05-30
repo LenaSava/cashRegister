@@ -40,7 +40,6 @@ public class BillServiceImpl implements BillService {
     @Override
     public List<Bill> xReport(String status){
         return billDao.xReport(status);
-//        return Optional.ofNullable(bill);
     }
 
     @Override

@@ -187,64 +187,22 @@ public class JDBCBillDao implements BillDao {
         }
     }
 
-//    public Bill xReport(String status) {
-//        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill WHERE status = ?")){
-//            preparedStatement.setString(1,status);
-//            ResultSet rs = preparedStatement.executeQuery();
-//            final Bill bill;
-//            if (rs.next()) {
-//                bill = new BillMapper().extractFromResultSet(rs);
-//            } else {
-//                bill = null;
-//            }
-//
-//            return bill;
-//
-//        }catch (SQLException ex){
-//            logger.info("findById bill failed");
-//            throw new RuntimeException();
-//        }
-//
-//    }
-//public List<Bill> xReport(String status) {
-//    Map<Integer, Bill> bills = new HashMap<>();
-//
-//    final String query = "" +
-//            "SELECT r.id as id, r.totalCost as totalCost, r.dates as dates, r.status as status," +
-//            "r.user_id as user_id from bill r WHERE r.status=status";
-//
-//    try (Statement st = connection.createStatement()) {
-//        ResultSet rs = st.executeQuery(query);
-//
-//        BillMapper billMapper = new BillMapper();
-//
-//        while (rs.next()) {
-//            Bill bill = billMapper
-//                    .extractFromResultSet(rs);
-//            bill = billMapper
-//                    .makeUnique(bills, bill);
-//        }
-//        return new ArrayList<>(bills.values());
-//    } catch (SQLException e) {
-//        logger.info("findById bill failed" + e);
-//        throw new RuntimeException(e);
-//    }
-//}
 public List<Bill> xReport(String status) {
     Map<Integer, Bill> bills = new HashMap<>();
     try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill WHERE status = ?")){
             preparedStatement.setString(1,status);
             ResultSet rs = preparedStatement.executeQuery();
-            final Bill bill;
-            if (rs.next()) {
-                bill = new BillMapper().extractFromResultSet(rs);
-            } else {
-                bill = null;
-            }
+            BillMapper billMapper = new BillMapper();
 
+            while (rs.next()) {
+                Bill bill = billMapper
+                        .extractFromResultSet(rs);
+                bill = billMapper
+                        .makeUnique(bills, bill);
+            }
             return new ArrayList<>(bills.values());
+
 
         }catch (SQLException ex){
             logger.info("findById bill failed" + ex);

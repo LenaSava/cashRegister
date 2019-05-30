@@ -35,6 +35,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
         try {
             invoiceDao.createAndGet(invoice);
+            //вызвать метод биллинг апдейт билинг
         } catch (SQLException e) {
             logger.info("Exception" + e.getMessage());
             throw new RuntimeException(e);

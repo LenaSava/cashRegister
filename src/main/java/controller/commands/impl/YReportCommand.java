@@ -2,6 +2,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import model.entity.Bill;
+import model.entity.enumeration.BillStatus;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +14,11 @@ public class YReportCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        List<Bill> bills = billService.yReport();
+        List<Bill> bills = billService.xReport(BillStatus.CONFIRM.name());
         logger.info("Get all bills" + bills);
         request.setAttribute("bills", bills);
 
 
-        return X_REPORT;
+        return Y_REPORT;
     }
 }

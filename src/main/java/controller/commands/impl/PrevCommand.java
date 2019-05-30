@@ -1,0 +1,21 @@
+package controller.commands.impl;
+
+import controller.commands.Command;
+import model.entity.Product;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
+public class PrevCommand implements Command {
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+        int currentPosition = 5;
+        List<Product> products = productService.getAllProducts();
+//        products.subList(currentPosition,20);
+        request.setAttribute("products", products.subList(currentPosition,5));
+
+        return CASHIER_PAGE_JSP;
+    }
+}
+

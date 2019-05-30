@@ -22,7 +22,9 @@ public enum CommandUtil {
     DELETE_ALL("delete_all"),
     CREATE_INVOICE("create_invoice"),
     X_REPORT("x_report"),
-    Y_REPORT("y_report");
+    Y_REPORT("y_report"),
+    PREV("prev"),
+    NEXT("next");
 
 
     private String path;

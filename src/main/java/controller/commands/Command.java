@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public interface Command {
+    ProductService productService = ServiceFactory.getProductService();
+    UserService userService = ServiceFactory.getUserService();
+    InvoiceService invoiceService = ServiceFactory.getInvoiceService();
+    BillService billService = ServiceFactory.getBillService();
+
 
     String SIGN_IN_JSP = "/WEB-INF/views/login.jsp";
     String SHOW_SENIOR_CASHIER = "/WEB-INF/views/seniorCashier.jsp";
@@ -21,12 +26,6 @@ public interface Command {
     String X_REPORT = "/WEB-INF/views/xReport.jsp";
     String Y_REPORT = "/WEB-INF/views/yReport.jsp";
 
-
-
-    ProductService productService = ServiceFactory.getProductService();
-    UserService userService = ServiceFactory.getUserService();
-    InvoiceService invoiceService = ServiceFactory.getInvoiceService();
-    BillService billService = ServiceFactory.getBillService();
 
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }
