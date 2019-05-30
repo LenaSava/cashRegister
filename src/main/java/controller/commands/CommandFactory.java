@@ -2,13 +2,14 @@ package controller.commands;
 
 import controller.commands.impl.*;
 import controller.commands.impl.util.CommandUtil;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CommandFactory {
     private static volatile CommandFactory commandFactory;
-//private static final Logger logger = Logger.getLogger(CommandFactory.class);
+    private static final Logger logger = Logger.getLogger(CommandFactory.class);
 
     private static Map<String, Command> commands = new HashMap<>();
 

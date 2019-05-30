@@ -21,7 +21,7 @@ public class RegistrationCommand implements Command {
             userService.registrationUser(nameFromRequest, passFromRequest, emailFromRequest);
         } catch (RuntimeException e) {
             request.setAttribute("error", true);
-            logger.info("Error in registration form");
+            logger.info("Error in registration form" + e);
         }
 
         return HOME;

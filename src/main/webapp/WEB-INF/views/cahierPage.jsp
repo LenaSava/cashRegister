@@ -49,6 +49,8 @@
                     </tr>
                 </c:forEach>
             </table>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'">Назад</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'">Вперед</button>
             <br>
             <c:if test="${not empty errorMessage}">
                 <div class="w3-red"><fmt:message key="product.not.found"/></div>

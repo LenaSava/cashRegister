@@ -3,6 +3,7 @@ package model.dao;
 import model.entity.Bill;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface BillDao extends GenericDao<Bill> {
 
@@ -13,4 +14,10 @@ public interface BillDao extends GenericDao<Bill> {
     void confirm(Integer id);
 
     void cancel(Integer id);
+
+//    Bill xReport(String status);
+
+    List<Bill> xReport(String status);
+
+    List<Bill> yReport();
 }
