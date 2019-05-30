@@ -14,7 +14,7 @@ public class XReportCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        List<Bill> bills = billService.xReport(BillStatus.CANCEL.name());
+        List<Bill> bills = billService.Report(BillStatus.CANCEL.name());
         logger.info("Get all bills" + bills);
         request.setAttribute("bills", bills);
 

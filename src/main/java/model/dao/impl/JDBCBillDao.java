@@ -38,14 +38,14 @@ public class JDBCBillDao implements BillDao {
         }
     }
 
+
     @Override
     public Bill createAndGet(Bill entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO bill(totalCost, dates, status, user_id) VALUES (?,?,?,?)", ObjectMapper.generatedColumns)){
-            statement.setInt(1, entity.getTotalCost());
-            statement.setDate(2, new Date(entity.getDates().getTime()));
-            statement.setString(3,entity.getStatus().name());
-            statement.setInt(4,entity.getUserId());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO bill(dates, status, user_id) VALUES (?,?,?)", ObjectMapper.generatedColumns)){
+            statement.setDate(1, new Date(entity.getDates().getTime()));
+            statement.setString(2,entity.getStatus().name());
+            statement.setInt(3,entity.getUserId());
 
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
@@ -62,6 +62,21 @@ public class JDBCBillDao implements BillDao {
             throw new RuntimeException();
         }
     }
+    @Override
+    public void updateBillTotalCost(int billId, double cost) throws SQLException {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE bill set totalCost = totalCost + ? where id = ?")) {
+            preparedStatement.setDouble(1, cost);
+            preparedStatement.setInt(2,billId);
+
+            preparedStatement.execute();
+
+        }
+        catch (SQLException | RuntimeException ex) {
+            logger.info("update bill failed" + ex.getMessage());
+            throw new RuntimeException();
+        }
+    }
 
     @Override
     public Bill findOrCreate(int userId) {
@@ -74,7 +89,7 @@ public class JDBCBillDao implements BillDao {
             if (rs.next()) {
                 bill = new BillMapper().extractFromResultSet(rs);
             } else {
-                bill = new Bill(null, 100, Calendar.getInstance().getTime(), BillStatus.CREATE, userId);
+                bill = new Bill(null, null, Calendar.getInstance().getTime(), BillStatus.CREATE, userId);
                 return createAndGet(bill);
             }
 
@@ -211,10 +226,5 @@ public List<Bill> xReport(String status) {
 
     }
 
-
-    @Override
-    public List<Bill> yReport() {
-        return null;
-    }
 }
 

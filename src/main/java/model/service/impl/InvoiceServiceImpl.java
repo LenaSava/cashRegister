@@ -1,6 +1,7 @@
 package model.service.impl;
 
 import controller.commands.impl.SeniorCashierPage;
+import model.dao.BillDao;
 import model.dao.DaoFactory;
 import model.dao.InvoiceDao;
 import model.entity.Invoice;
@@ -15,9 +16,11 @@ import java.util.Optional;
 public class InvoiceServiceImpl implements InvoiceService {
     private static final Logger logger = Logger.getLogger(InvoiceServiceImpl.class);
     private final InvoiceDao invoiceDao;
+    private final BillDao billDao;
 
     public InvoiceServiceImpl(final DaoFactory daoFactory) {
         this.invoiceDao = daoFactory.createInvoiceDao();
+        this.billDao = daoFactory.createBillDao();
     }
 
     @Override
@@ -35,7 +38,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
         try {
             invoiceDao.createAndGet(invoice);
-            //вызвать метод биллинг апдейт билинг
+            billDao.updateBillTotalCost(invoice.getBillId(), invoice.getCost());
         } catch (SQLException e) {
             logger.info("Exception" + e.getMessage());
             throw new RuntimeException(e);

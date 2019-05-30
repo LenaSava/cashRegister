@@ -2,6 +2,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import model.entity.Product;
+import util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +12,9 @@ import java.util.Objects;
 public class NextCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        Integer value = Integer.valueOf((String)request.getSession().getAttribute("currentPosition"));
+        String value = (String)request.getSession().getAttribute("currentPosition");
 
-        int currentPosition = Objects.isNull(value)?5:value + 5;
+        int currentPosition = StringUtil.isEmpty(value)?5:Integer.valueOf(value)+5;
         request.getSession().setAttribute("currentPosition", currentPosition);
         List<Product> products = productService.getAllProducts();
         int size = products.size();

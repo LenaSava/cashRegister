@@ -13,8 +13,6 @@ public interface BillService {
     Bill findOrCreate(int userId);
     void confirm(Integer id);
     void cancel(Integer id);
-    List<Bill> xReport(String status);
-//    List<Bill> xReport();
-    List<Bill> yReport();
+    List<Bill> Report(String status);
 }
 

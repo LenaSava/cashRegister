@@ -7,7 +7,6 @@ import model.service.BillService;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public class BillServiceImpl implements BillService {
     private final BillDao billDao;
@@ -38,12 +37,8 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public List<Bill> xReport(String status){
+    public List<Bill> Report(String status){
         return billDao.xReport(status);
     }
 
-    @Override
-    public List<Bill> yReport(){
-        return billDao.findAll();
-    }
 }

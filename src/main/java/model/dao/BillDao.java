@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface BillDao extends GenericDao<Bill> {
 
+    void updateBillTotalCost(int billId, double cost) throws SQLException;
+
     Bill createAndGet(Bill entity) throws SQLException;
 
     Bill findOrCreate(int userId);
@@ -15,9 +17,6 @@ public interface BillDao extends GenericDao<Bill> {
 
     void cancel(Integer id);
 
-//    Bill xReport(String status);
-
     List<Bill> xReport(String status);
 
-    List<Bill> yReport();
 }
