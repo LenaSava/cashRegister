@@ -38,13 +38,11 @@ public class BillServiceImplTest {
         when(billDao.findById(1)).thenReturn(bill);
         when(billDao.findAll()).thenReturn(Collections.singletonList(bill));
 
-
     }
 
     @Test
     public void getAllBills() {
         List<Bill> billList = billService.getAllBills();
-        billList.stream().forEach(System.out::println);
         assertEquals(bill,billList.get(0));
     }
 
