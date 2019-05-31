@@ -9,11 +9,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class BillServiceImpl implements BillService {
-    private final BillDao billDao;
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private BillDao billDao = daoFactory.createBillDao();
 
-    public BillServiceImpl(final DaoFactory daoFactory) {
-        this.billDao = daoFactory.createBillDao();
-    }
 
     @Override
     public List<Bill> getAllBills(){

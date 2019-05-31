@@ -85,7 +85,7 @@ public class Invoice {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (getClass() == o.getClass()) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
         return id.equals(invoice.id) &&
                 product_id.equals(invoice.product_id) &&

@@ -11,11 +11,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class ProductServiceImpl implements ProductService {
-    private final ProductDao productDao;
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private ProductDao productDao = daoFactory.createProductDao();
 
-    public ProductServiceImpl(final DaoFactory daoFactory) {
-        this.productDao = daoFactory.createProductDao();
-    }
 
     @Override
     public List<Product> getAllProducts(){

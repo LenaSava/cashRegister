@@ -11,10 +11,10 @@ import util.HashPassword;
 import java.sql.SQLException;
 
 public class UserServiceImpl implements UserService {
-    private final UserDao userDao;
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private UserDao userDao =  daoFactory.createUserDao();
 
-    public UserServiceImpl(final DaoFactory daoFactory) {
-        this.userDao = daoFactory.createUserDao();
+    public UserServiceImpl() {
     }
 
     public User login(String name){

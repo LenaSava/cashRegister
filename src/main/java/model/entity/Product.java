@@ -70,7 +70,7 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (getClass() == o.getClass()) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Objects.equals(id, product.id) &&
                 Objects.equals(code, product.code) &&

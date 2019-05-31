@@ -7,23 +7,23 @@ import model.service.impl.ProductServiceImpl;
 import model.service.impl.UserServiceImpl;
 
 public final class ServiceFactory {
-    private static final DaoFactory daoFactory = DaoFactory.getInstance();
+//    private static final DaoFactory daoFactory = DaoFactory.getInstance();
 
     private ServiceFactory() {}
 
     public static UserService getUserService() {
-        return new UserServiceImpl(daoFactory);
+        return new UserServiceImpl();
     }
 
     public static ProductService getProductService() {
-        return new ProductServiceImpl(daoFactory);
+        return new ProductServiceImpl();
     }
 
     public static InvoiceService getInvoiceService() {
-        return new InvoiceServiceImpl(daoFactory);
+        return new InvoiceServiceImpl();
     }
 
     public static BillService getBillService() {
-        return new BillServiceImpl(daoFactory);
+        return new BillServiceImpl();
     }
 }

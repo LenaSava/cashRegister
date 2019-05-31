@@ -22,11 +22,9 @@ import java.util.List;
 
 public class BillServiceImplTest {
     @InjectMocks
-    private Bill bill;
-    @Mock
-    private ServiceFactory serviceFactory;
-    @Mock
     private BillServiceImpl billService;
+    private Bill bill;
+
     @Mock
     private JDBCBillDao billDao;
     @Mock
@@ -36,11 +34,9 @@ public class BillServiceImplTest {
         Date date = Calendar.getInstance().getTime();
         MockitoAnnotations.initMocks(this);
         bill = new Bill(1, 100, date, BillStatus.CREATE, 1);
+        when(daoFactory.createBillDao()).thenReturn(billDao);
         when(billDao.findById(1)).thenReturn(bill);
         when(billDao.findAll()).thenReturn(Collections.singletonList(bill));
-        when(daoFactory.createBillDao()).thenReturn(billDao);
-//        BillService billService = ServiceFactory.getBillService();
-        when(serviceFactory.getBillService()).thenReturn(billService);
 
 
     }

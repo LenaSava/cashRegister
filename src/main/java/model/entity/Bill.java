@@ -66,7 +66,7 @@ public class Bill {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (getClass() == o.getClass()) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Bill bill = (Bill) o;
         return id.equals(bill.id) &&
                 totalCost.equals(bill.totalCost) &&

@@ -14,13 +14,10 @@ import java.util.Optional;
 
 public class InvoiceServiceImpl implements InvoiceService {
     private static final Logger logger = Logger.getLogger(InvoiceServiceImpl.class);
-    private final InvoiceDao invoiceDao;
-    private final BillDao billDao;
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private InvoiceDao invoiceDao = daoFactory.createInvoiceDao();
+    private BillDao billDao = daoFactory.createBillDao();
 
-    public InvoiceServiceImpl(final DaoFactory daoFactory) {
-        this.invoiceDao = daoFactory.createInvoiceDao();
-        this.billDao = daoFactory.createBillDao();
-    }
 
     @Override
     public List<Invoice> getAllInvoices(){
