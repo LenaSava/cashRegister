@@ -8,13 +8,14 @@ import util.StringUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Objects;
 
 public class NextCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        String value = (String)request.getSession().getAttribute("currentPosition");
+        Object data = request.getSession(true).getAttribute("currentPosition");
+        int currentPosition= Objects.isNull(data) ? 5: Integer.parseInt(String.valueOf(data));
 
-        int currentPosition = StringUtil.isEmpty(value)?5:Integer.valueOf(value)+5;
         request.getSession().setAttribute("currentPosition", currentPosition);
         List<Product> products = productService.getAllProducts();
         int size = products.size();
@@ -28,7 +29,7 @@ public class NextCommand implements Command {
                 if (size < currentPosition + 5) {
                     request.setAttribute("products", products.subList(currentPosition, size));
                 } else {
-                    request.setAttribute("products", products.subList(currentPosition, currentPosition + 5));
+                    request.setAttribute("products", products.subList(currentPosition, currentPosition+5));
                 }
             }
         } catch (ClassCastException ex) {

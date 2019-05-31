@@ -12,22 +12,18 @@ public final class ServiceFactory {
     private ServiceFactory() {}
 
     public static UserService getUserService() {
-        UserService service = new UserServiceImpl(daoFactory);
-        return service;
+        return new UserServiceImpl(daoFactory);
     }
 
     public static ProductService getProductService() {
-        ProductService service = new ProductServiceImpl(daoFactory);
-        return service;
+        return new ProductServiceImpl(daoFactory);
     }
 
     public static InvoiceService getInvoiceService() {
-        InvoiceService service = new InvoiceServiceImpl(daoFactory);
-        return service;
+        return new InvoiceServiceImpl(daoFactory);
     }
 
     public static BillService getBillService() {
-        BillService service = new BillServiceImpl(daoFactory);
-        return service;
+        return new BillServiceImpl(daoFactory);
     }
 }
