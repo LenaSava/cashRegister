@@ -14,11 +14,6 @@ import java.util.Map;
 
 public class JDBCProductDao implements ProductDao {
     private static final Logger logger = Logger.getLogger(JDBCProductDao.class);
-    private Connection connection;
-
-    public JDBCProductDao(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public boolean create(Product entity) throws SQLException {
@@ -88,7 +83,8 @@ public class JDBCProductDao implements ProductDao {
                 " select r.id as id, r.code as code, r.name as name, r.name_ua as name_ua, r.cost as cost, r.quantity as quantity," +
                 "r.invoice_id as invoice_id from products r";// +
 
-        try (Statement st = connection.createStatement()) {
+        try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+             Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
             ProductsMapper productMapper = new ProductsMapper();
@@ -110,7 +106,8 @@ public class JDBCProductDao implements ProductDao {
 
     @Override
     public void update(Product entity) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, name_ua = ?, cost=?, quantity=? where id=?")){
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, name_ua = ?, cost=?, quantity=? where id=?")){
 
             statement.setInt(1,entity.getCode());
             statement.setString(2, entity.getName());
@@ -133,14 +130,6 @@ public class JDBCProductDao implements ProductDao {
 
     }
 
-//    @Override
-//    public void close()  {
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
     @Override
     public Product insertIntoInvoices(int code) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();

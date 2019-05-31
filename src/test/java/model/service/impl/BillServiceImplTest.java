@@ -1,10 +1,9 @@
 package model.service.impl;
 
-import model.dao.DaoFactory;
+import model.dao.factory.DaoFactory;
 import model.dao.impl.JDBCBillDao;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
-import model.service.BillService;
 import model.service.ServiceFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static controller.commands.Command.billService;
 import static org.mockito.Mockito.*;
 import static junit.framework.TestCase.assertEquals;
 

@@ -1,7 +1,7 @@
 package model.service.impl;
 
 import model.dao.BillDao;
-import model.dao.DaoFactory;
+import model.dao.factory.DaoFactory;
 import model.entity.Bill;
 import model.service.BillService;
 

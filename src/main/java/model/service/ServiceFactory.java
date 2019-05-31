@@ -1,6 +1,6 @@
 package model.service;
 
-import model.dao.DaoFactory;
+import model.dao.factory.DaoFactory;
 import model.service.impl.BillServiceImpl;
 import model.service.impl.InvoiceServiceImpl;
 import model.service.impl.ProductServiceImpl;

@@ -13,15 +13,15 @@ import java.util.List;
 
 public class JDBCUserDao implements UserDao {
     private static final Logger logger = Logger.getLogger(JDBCUserDao.class);
-    private Connection connection;
-    private UserMapper userMapper;
-
-
-    public JDBCUserDao(){
-        this.connection = connection;
-        userMapper = new UserMapper();
-
-    }
+//    private Connection connection;
+//    private UserMapper userMapper;
+//
+//
+//    public JDBCUserDao(){
+//        this.connection = connection;
+//        userMapper = new UserMapper();
+//
+//    }
 
 
     @Override
@@ -81,15 +81,6 @@ public class JDBCUserDao implements UserDao {
         return false;
     }
 
-//    @Override
-//    public void close()  {
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            logger.info("Exception" + e.getMessage());
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     @Override
     public User findByName(String name) throws RuntimeException {

@@ -13,11 +13,6 @@ import java.util.*;
 
 public class JDBCBillDao implements BillDao {
     private static final Logger logger = Logger.getLogger(JDBCBillDao.class);
-//    private Connection connection;
-
-//    JDBCBillDao(Connection connection){
-//        this.connection = connection;
-//    }
 
     @Override
     public boolean create(Bill entity) throws SQLException {
@@ -193,16 +188,6 @@ public class JDBCBillDao implements BillDao {
             throw new RuntimeException();
         }
     }
-
-//    @Override
-//    public void close()  {
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            logger.info("close bill failed" + e.getMessage());
-//            throw new RuntimeException(e);
-//        }
-//    }
 
 public List<Bill> xReport(String status) {
     Map<Integer, Bill> bills = new HashMap<>();

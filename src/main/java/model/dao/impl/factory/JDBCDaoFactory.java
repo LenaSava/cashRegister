@@ -1,6 +1,8 @@
-package model.dao.impl;
+package model.dao.impl.factory;
 
 import model.dao.*;
+import model.dao.factory.DaoFactory;
+import model.dao.impl.*;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
@@ -19,11 +21,11 @@ public class JDBCDaoFactory extends DaoFactory {
 
     @Override
     public ProductDao createProductDao() {
-        return new JDBCProductDao(getConnection());
+        return new JDBCProductDao();
     }
     @Override
     public InvoiceDao createInvoiceDao() {
-        return new JDBCInvoiceDao(getConnection());
+        return new JDBCInvoiceDao();
     }
     @Override
     public BillDao createBillDao() {

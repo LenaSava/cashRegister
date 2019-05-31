@@ -1,8 +1,7 @@
 package model.service.impl;
 
-import controller.commands.impl.SeniorCashierPage;
 import model.dao.BillDao;
-import model.dao.DaoFactory;
+import model.dao.factory.DaoFactory;
 import model.dao.InvoiceDao;
 import model.entity.Invoice;
 import model.service.InvoiceService;

@@ -5,6 +5,7 @@ import model.dao.mapper.InvoiceMapper;
 import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
 import model.entity.Invoice;
+import org.apache.log4j.Logger;
 
 
 import java.sql.*;
@@ -14,11 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 public class JDBCInvoiceDao implements InvoiceDao {
-    private Connection connection;
-
-    public JDBCInvoiceDao(Connection connection){
-        this.connection = connection;
-    }
+    private static final Logger logger = Logger.getLogger(JDBCInvoiceDao.class);
+//    private Connection connection;
+//
+//    public JDBCInvoiceDao(Connection connection){
+//        this.connection = connection;
+//    }
     @Override
     public boolean create(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
@@ -94,7 +96,8 @@ public class JDBCInvoiceDao implements InvoiceDao {
                 " select r.id as id, r.product_id as product_id, r.cost as cost, r.quantity as quantity," +
                 "r.user_id as user_id, r.user_role_id as user_role_id from invoice r";// +
 
-        try (Statement st = connection.createStatement()) {
+        try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+             Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
             InvoiceMapper invoiceMapper = new InvoiceMapper();
@@ -113,7 +116,8 @@ public class JDBCInvoiceDao implements InvoiceDao {
     }
     @Override
     public void deleteAll() {
-        try(PreparedStatement statement = connection.prepareStatement("DELETE FROM invoice")){
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM invoice")){
             statement.execute();
 
         }catch (SQLException | RuntimeException ex) {
@@ -123,7 +127,8 @@ public class JDBCInvoiceDao implements InvoiceDao {
     }
     @Override
     public void update(Invoice entity) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE invoice set cost=?, quantity=? where id=?")){
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE invoice set cost=?, quantity=? where id=?")){
 
             statement.setDouble(1, entity.getCost());
             statement.setInt(2, entity.getQuantity());
@@ -149,14 +154,4 @@ public class JDBCInvoiceDao implements InvoiceDao {
             throw new RuntimeException();
         }
     }
-
-//    @Override
-//    public void close()  {
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            logger.info("Connection invoice not close");
-//            throw new RuntimeException(e);
-//        }
-//    }
 }

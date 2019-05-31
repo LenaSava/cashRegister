@@ -1,7 +1,11 @@
-package model.dao;
+package model.dao.factory;
 
 
-import model.dao.impl.JDBCDaoFactory;
+import model.dao.BillDao;
+import model.dao.InvoiceDao;
+import model.dao.ProductDao;
+import model.dao.UserDao;
+import model.dao.impl.factory.JDBCDaoFactory;
 
 public abstract class DaoFactory {
     private static DaoFactory daoFactory;
