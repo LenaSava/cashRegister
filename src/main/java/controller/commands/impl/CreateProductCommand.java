@@ -3,6 +3,8 @@ package controller.commands.impl;
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
+import model.service.ProductService;
+import model.service.ServiceFactory;
 import org.apache.log4j.Logger;
 import util.StringUtil;
 
@@ -11,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CreateProductCommand implements Command {
     private static final Logger logger = Logger.getLogger(CreateProductCommand.class);
+    ProductService productService = ServiceFactory.getProductService();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-
-
         boolean isNewProduct = false;
         Product product = new Product();
         if (StringUtil.isEmpty(request.getParameter("id"))) {

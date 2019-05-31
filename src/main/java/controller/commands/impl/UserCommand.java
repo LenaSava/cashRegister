@@ -6,6 +6,8 @@ import controller.commands.impl.util.CommandUtil;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.User;
 import model.entity.types.Role;
+import model.service.ServiceFactory;
+import model.service.UserService;
 import org.apache.log4j.Logger;
 import util.HashPassword;
 
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UserCommand implements Command {
     private static final Logger logger = Logger.getLogger(UserCommand.class);
+    UserService userService = ServiceFactory.getUserService();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 

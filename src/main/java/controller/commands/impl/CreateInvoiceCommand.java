@@ -6,6 +6,10 @@ import model.entity.Bill;
 import model.entity.Invoice;
 import model.entity.Product;
 import model.entity.User;
+import model.service.BillService;
+import model.service.InvoiceService;
+import model.service.ProductService;
+import model.service.ServiceFactory;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +18,10 @@ import java.util.Optional;
 
 public class CreateInvoiceCommand implements Command {
     private static final Logger logger = Logger.getLogger(CreateInvoiceCommand.class);
+    ProductService productService = ServiceFactory.getProductService();
+    InvoiceService invoiceService = ServiceFactory.getInvoiceService();
+    BillService billService = ServiceFactory.getBillService();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         Invoice invoice = new Invoice();

@@ -3,6 +3,8 @@ package controller.commands.impl;
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
+import model.service.ProductService;
+import model.service.ServiceFactory;
 import util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class NextCommand implements Command {
+    ProductService productService = ServiceFactory.getProductService();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         Object data = request.getSession(true).getAttribute("currentPosition");

@@ -4,6 +4,8 @@ import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
+import model.service.BillService;
+import model.service.ServiceFactory;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class XReportCommand implements Command {
     private static final Logger logger = Logger.getLogger(XReportCommand.class);
+    BillService billService = ServiceFactory.getBillService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
