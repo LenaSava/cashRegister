@@ -81,15 +81,15 @@ public class JDBCUserDao implements UserDao {
         return false;
     }
 
-    @Override
-    public void close()  {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            logger.info("Exception" + e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
+//    @Override
+//    public void close()  {
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//            logger.info("Exception" + e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Override
     public User findByName(String name) throws RuntimeException {

@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
 import org.apache.log4j.Logger;
@@ -19,6 +20,6 @@ public class XReportCommand implements Command {
         request.setAttribute("bills", bills);
 
 
-        return X_REPORT;
+        return PageResourseManager.getProperty("x.report");
     }
 }

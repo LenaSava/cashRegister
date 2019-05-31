@@ -4,7 +4,6 @@ import model.dao.BillDao;
 import model.dao.mapper.BillMapper;
 import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
-import model.entity.Invoice;
 import model.entity.enumeration.BillStatus;
 import org.apache.log4j.Logger;
 
@@ -14,11 +13,11 @@ import java.util.*;
 
 public class JDBCBillDao implements BillDao {
     private static final Logger logger = Logger.getLogger(JDBCBillDao.class);
-    private Connection connection;
+//    private Connection connection;
 
-    public JDBCBillDao(Connection connection){
-        this.connection = connection;
-    }
+//    JDBCBillDao(Connection connection){
+//        this.connection = connection;
+//    }
 
     @Override
     public boolean create(Bill entity) throws SQLException {
@@ -129,7 +128,8 @@ public class JDBCBillDao implements BillDao {
                 " select r.id as id, r.totalCost as totalCost, r.dates as dates, r.status as status," +
                 "r.user_id as user_id from bill r";// +
 
-        try (Statement st = connection.createStatement()) {
+        try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+             Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
             BillMapper billMapper = new BillMapper();
@@ -152,7 +152,8 @@ public class JDBCBillDao implements BillDao {
     }
 
     public void confirm(Integer id) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
 
             statement.setString(1, BillStatus.CONFIRM.name());
             statement.setInt(2,id);
@@ -165,7 +166,8 @@ public class JDBCBillDao implements BillDao {
         }
     }
     public void cancel(Integer id) {
-        try(PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE bill set status=?  where id=?")){
 
             statement.setString(1, BillStatus.CANCEL.name());
             statement.setInt(2,id);
@@ -192,15 +194,15 @@ public class JDBCBillDao implements BillDao {
         }
     }
 
-    @Override
-    public void close()  {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            logger.info("close bill failed" + e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
+//    @Override
+//    public void close()  {
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//            logger.info("close bill failed" + e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 public List<Bill> xReport(String status) {
     Map<Integer, Bill> bills = new HashMap<>();

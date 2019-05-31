@@ -27,7 +27,7 @@ public class JDBCDaoFactory extends DaoFactory {
     }
     @Override
     public BillDao createBillDao() {
-        return new JDBCBillDao(getConnection());
+        return new JDBCBillDao();
     }
 
 

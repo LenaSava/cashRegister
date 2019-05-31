@@ -3,6 +3,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import controller.commands.impl.util.CommandUtil;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.User;
 import model.entity.types.Role;
 import org.apache.log4j.Logger;
@@ -38,7 +39,7 @@ public class UserCommand implements Command {
         }catch (RuntimeException e) {
             request.setAttribute("wrongPassOrLogin", true);
         }
-        return SIGN_IN_JSP;
+        return PageResourseManager.getProperty("sign.in.jsp");
     }
 }
 

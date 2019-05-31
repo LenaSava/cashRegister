@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ public class PrevCommand implements Command {
 //        products.subList(currentPosition,20);
         request.setAttribute("products", products.subList(currentPosition,5));
 
-        return CASHIER_PAGE_JSP;
+        return PageResourseManager.getProperty("cashier.page.jsp");
     }
 }
 

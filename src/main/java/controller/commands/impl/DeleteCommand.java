@@ -1,7 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
-import model.entity.Invoice;
+import controller.commands.impl.util.PageResourseManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ public class DeleteCommand implements Command {
         }
         request.setAttribute("invoices", invoiceService.getAllInvoices());
 
-        return SHOW_SENIOR_CASHIER;
+        return PageResourseManager.getProperty("show.senior.cashier");
     }
 }
 

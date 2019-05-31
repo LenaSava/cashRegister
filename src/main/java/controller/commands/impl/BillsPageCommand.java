@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Bill;
 import org.apache.log4j.Logger;
 
@@ -17,7 +18,7 @@ public class BillsPageCommand implements Command {
         logger.info("Get all bills" + bills);
         request.setAttribute("bills", bills);
 
-        return BILLS_PAGE;
+         return PageResourseManager.getProperty("bills.page");
     }
 }
 

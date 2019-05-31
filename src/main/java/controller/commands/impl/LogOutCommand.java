@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,6 @@ public class LogOutCommand implements Command {
         request.getSession().invalidate();
         logger.info("Exit from your acc");
 
-        return HOME;
+        return PageResourseManager.getProperty("home");
     }
 }

@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class DeleteAllCommand implements Command {
         request.setAttribute("invoices", invoiceService.getAllInvoices());
         logger.info("Call service ");
 
-        return SHOW_SENIOR_CASHIER;
+        return PageResourseManager.getProperty("show.senior.cashier");
 
     }
 }

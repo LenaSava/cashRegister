@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Bill;
 import org.apache.log4j.Logger;
 
@@ -20,6 +21,6 @@ public class CancelBillCommand implements Command {
         List<Bill> bills = billService.getAllBills();
         request.setAttribute("bills", bills);
 
-        return BILLS_PAGE;
+        return PageResourseManager.getProperty("bills.page");
     }
 }

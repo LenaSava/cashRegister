@@ -16,7 +16,7 @@ public class BillMapper implements ObjectMapper<Bill> {
         bill.setId(rs.getInt("id"));
         bill.setTotalCost(rs.getInt("totalCost"));
         bill.setDates(rs.getTimestamp("dates"));
-        final String status = rs.getString("status");
+        String status = rs.getString("status");
         if (!StringUtil.isEmpty(status)) {
             bill.setStatus(BillStatus.valueOf(status));
         }

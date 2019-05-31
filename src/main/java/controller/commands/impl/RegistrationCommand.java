@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ public class RegistrationCommand implements Command {
             logger.info("Error in registration form" + e);
         }
 
-        return HOME;
+        return PageResourseManager.getProperty("home");
     }
 }
 

@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 import model.service.ProductService;
 import model.service.ServiceFactory;
@@ -25,6 +26,7 @@ public class ShowCreateProductCommand implements Command {
             logger.info("product by id: "+ id + " not found");
         }
         request.setAttribute("product", product);
-        return CREATE_UPDATE;
+
+        return PageResourseManager.getProperty("create.update");
     }
 }

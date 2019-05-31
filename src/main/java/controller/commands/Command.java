@@ -13,19 +13,5 @@ public interface Command {
     BillService billService = ServiceFactory.getBillService();
 
 
-    String SIGN_IN_JSP = "/WEB-INF/views/login.jsp";
-    String SHOW_SENIOR_CASHIER = "/WEB-INF/views/seniorCashier.jsp";
-    String REGISTRATION_PAGE_JSP = "/WEB-INF/views/registration.jsp";
-    String ERROR_PAGE = "/WEB-INF/views/error.jsp";
-    String HOME = "/index.jsp";
-    String INFO_VIEW = "/WEB-INF/views/infoView.jsp";
-    String CASHIER_PAGE_JSP = "/WEB-INF/views/cahierPage.jsp";
-    String MANAGER_PAGE = "/WEB-INF/views/manager.jsp";
-    String CREATE_UPDATE = "/WEB-INF/views/createUpdate.jsp";
-    String BILLS_PAGE = "/WEB-INF/views/billsPage.jsp";
-    String X_REPORT = "/WEB-INF/views/xReport.jsp";
-    String Y_REPORT = "/WEB-INF/views/yReport.jsp";
-
-
     String execute(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

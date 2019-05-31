@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 import org.apache.log4j.Logger;
 
@@ -18,6 +19,6 @@ public class CashierPageCommand implements Command {
         request.setAttribute("products", products);
         logger.info("Get all products" + products);
 
-        return CASHIER_PAGE_JSP;
+        return PageResourseManager.getProperty("cashier.page.jsp");
     }
 }

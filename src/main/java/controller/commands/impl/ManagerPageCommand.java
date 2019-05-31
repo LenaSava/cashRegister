@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 import org.apache.log4j.Logger;
 
@@ -16,6 +17,7 @@ public class ManagerPageCommand implements Command {
         List<Product> products = productService.getAllProducts();
         logger.info("Get all products: " + products);
         request.setAttribute("products", products);
-        return MANAGER_PAGE;
+
+        return PageResourseManager.getProperty("manager.page");
     }
 }

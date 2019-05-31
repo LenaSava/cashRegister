@@ -150,13 +150,13 @@ public class JDBCInvoiceDao implements InvoiceDao {
         }
     }
 
-    @Override
-    public void close()  {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            logger.info("Connection invoice not close");
-            throw new RuntimeException(e);
-        }
-    }
+//    @Override
+//    public void close()  {
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//            logger.info("Connection invoice not close");
+//            throw new RuntimeException(e);
+//        }
+//    }
 }

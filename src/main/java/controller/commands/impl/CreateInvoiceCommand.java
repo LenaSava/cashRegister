@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Bill;
 import model.entity.Invoice;
 import model.entity.Product;
@@ -37,6 +38,6 @@ public class CreateInvoiceCommand implements Command {
         request.setAttribute("products", productService.getAllProducts());
         logger.info("Get all products");
 
-        return CASHIER_PAGE_JSP;
+        return PageResourseManager.getProperty("cashier.page.jsp");
     }
 }

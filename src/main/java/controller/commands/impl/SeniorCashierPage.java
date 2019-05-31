@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Invoice;
 import org.apache.log4j.Logger;
 
@@ -16,6 +17,7 @@ public class SeniorCashierPage implements Command {
         List<Invoice> invoices = invoiceService.getAllInvoices();
         logger.info("Get all invoices: " + invoices);
         request.setAttribute("invoices", invoices);
-        return SHOW_SENIOR_CASHIER;
+
+        return PageResourseManager.getProperty("show.senior.cashier");
     }
 }

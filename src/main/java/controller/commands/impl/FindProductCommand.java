@@ -1,6 +1,7 @@
 package controller.commands.impl;
 
 import controller.commands.Command;
+import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 import org.apache.log4j.Logger;
 
@@ -30,6 +31,6 @@ public class FindProductCommand implements Command {
         } catch (NumberFormatException e) {
             request.setAttribute("products", productService.getAllProducts());
         }
-        return CASHIER_PAGE_JSP;
+        return PageResourseManager.getProperty("cashier.page.jsp");
     }
 }
