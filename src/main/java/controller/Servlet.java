@@ -1,7 +1,7 @@
 package controller;
 
 import controller.commands.Command;
-import controller.commands.CommandFactory;
+import controller.commands.factory.CommandFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

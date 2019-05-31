@@ -17,37 +17,35 @@ import java.util.stream.Collectors;
 
 public class AccessFilter implements Filter {
     private static final Logger logger = Logger.getLogger(AccessFilter.class);
-
     private List<String> allowedUrls = new ArrayList<>();
     private List<String> cashierUrls = new ArrayList<>();
     private List<String> seniorCashierUrls = new ArrayList<>();
     private List<String> managerUrls = new ArrayList<>();
 
 
+
     @Override
     public void init(FilterConfig filterConfig) {
         String initParameter = filterConfig.getInitParameter("allowed-urls");
+        String cashierParameter = filterConfig.getInitParameter("cashier-urls");
+        String seniorParameter = filterConfig.getInitParameter("senior-cashier-urls");
+        String managerParameter = filterConfig.getInitParameter("manager-urls");
+
         if (initParameter != null && !initParameter.isEmpty()) {
             allowedUrls = Arrays.stream(initParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
-        logger.info("Get allowedUrls: " + allowedUrls);
-        String cashierParameter = filterConfig.getInitParameter("cashier-urls");
         if (cashierParameter != null && !cashierParameter.isEmpty()) {
             cashierUrls = Arrays.stream(cashierParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
-        logger.info("Get cashierUrls: " + cashierUrls);
-        String seniorParameter = filterConfig.getInitParameter("senior-cashier-urls");
         if (seniorParameter != null && !seniorParameter.isEmpty()) {
             seniorCashierUrls = Arrays.stream(seniorParameter.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
         }
-        logger.info("Get seniorCashierUrls: " + seniorCashierUrls);
-        String managerParameter = filterConfig.getInitParameter("manager-urls");
         if (managerParameter != null && !managerParameter.isEmpty()) {
             managerUrls = Arrays.stream(managerParameter.split(","))
                     .map(String::trim)
@@ -62,12 +60,12 @@ public class AccessFilter implements Filter {
             throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
+        final HttpSession session = request.getSession(false);
+
         if (allowedUrls.contains(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
-
-        final HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("User") != null) {
             User user = (User) session.getAttribute("User");
             if (Role.MANAGER.getRole() == user.getRole())  {
@@ -76,22 +74,18 @@ public class AccessFilter implements Filter {
                     filterChain.doFilter(request, response);
                     return;
                 }
-            }
-            if (Role.CAHIER.getRole() == user.getRole()) {
+            } else if (Role.CAHIER.getRole() == user.getRole()) {
                 logger.info("Get user role: " +  user.getRole());
                 if (cashierUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }
-            }
-            if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
+            } else if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
                 logger.info("Get user role: " +  user.getRole());
                 if (seniorCashierUrls.contains(request.getRequestURI())) {
                     filterChain.doFilter(request, response);
                     return;
                 }
-            }
-            if (Role.VIZITOR.getRole() == user.getRole()) {
             }
         }
 

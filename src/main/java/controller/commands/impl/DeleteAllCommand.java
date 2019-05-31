@@ -2,6 +2,8 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
+import model.service.InvoiceService;
+import model.service.ServiceFactory;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class DeleteAllCommand implements Command {
     private static final Logger logger = Logger.getLogger(DeleteAllCommand.class);
+    private InvoiceService invoiceService = ServiceFactory.getInvoiceService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

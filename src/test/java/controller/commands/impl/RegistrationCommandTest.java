@@ -1,6 +1,6 @@
 //package controller.commands.impl;
 //
-//import controller.commands.CommandFactory;
+//import controller.commands.factory.CommandFactory;
 //import model.entity.User;
 //import model.service.UserService;
 //import org.junit.Test;

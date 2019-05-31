@@ -1,5 +1,6 @@
-package controller.commands;
+package controller.commands.factory;
 
+import controller.commands.Command;
 import controller.commands.impl.*;
 import controller.commands.impl.util.CommandUtil;
 import org.apache.log4j.Logger;
