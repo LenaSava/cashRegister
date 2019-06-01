@@ -17,4 +17,9 @@ public interface ProductService {
     Optional<Product> findByCode(int code);
 
     Optional<Product> insertIntoInvoices(int id);
+
+    int getNumberOfproducts();
+
+    List<Product> findProducts(int currentPage, int rowsPerPage);
+
 }

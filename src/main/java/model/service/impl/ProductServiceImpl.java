@@ -50,4 +50,13 @@ public class ProductServiceImpl implements ProductService {
         final Product product = productDao.insertIntoInvoices(code);
         return Optional.ofNullable(product);
     }
+    @Override
+    public int getNumberOfproducts() {
+        return productDao.getNumberOfproducts();
+    }
+    @Override
+    public List<Product> findProducts(int currentPage, int rowsPerPage){
+        int start = currentPage * rowsPerPage - rowsPerPage;
+        return productDao.findProducts(start, rowsPerPage);
+    }
 }

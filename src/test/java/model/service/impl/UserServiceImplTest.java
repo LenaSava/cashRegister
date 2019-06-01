@@ -38,6 +38,8 @@ public class UserServiceImplTest {
 
     @Test
     public void login() {
+        User user = userService.login("Olga");
+        assertEquals(user, user);
     }
 
     @Test

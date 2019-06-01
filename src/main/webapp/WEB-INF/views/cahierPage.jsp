@@ -18,6 +18,7 @@
     <h1><fmt:message key="cash.register"/></h1>
 </div>
 
+
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <jsp:include page="parts/header.jsp"></jsp:include>
@@ -49,8 +50,6 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/prev'">Назад</button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/next'">Вперед</button>
             <br>
             <c:if test="${not empty errorMessage}">
                 <div class="w3-red"><fmt:message key="product.not.found"/></div>

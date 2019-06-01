@@ -45,10 +45,11 @@ public class CreateProductCommand implements Command {
         } catch (RuntimeException e) {
             request.setAttribute("wrongInputData", true);
         }
-        request.setAttribute("products", productService.getAllProducts());
+
+//        request.setAttribute("products", productService.getAllProducts());
         logger.info("Get all products");
 
-        return PageResourseManager.getProperty("manager.page");
+        return "redirect" + PageResourseManager.getProperty("manager.pages");
     }
 
 }

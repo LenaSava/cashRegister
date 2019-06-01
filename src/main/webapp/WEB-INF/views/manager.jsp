@@ -18,10 +18,16 @@
     <h1><fmt:message key="cash.register"/></h1>
 </div>
 
+
+
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
+
+        <%@ include file="parts/pagination.jsp" %>
+
+
         <div class="w3-container w3-center w3-green">
             <h2>
                 <i><fmt:message key="product.list"/></i>

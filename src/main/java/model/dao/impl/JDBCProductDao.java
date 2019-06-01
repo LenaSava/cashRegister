@@ -151,4 +151,44 @@ public class JDBCProductDao implements ProductDao {
             throw new RuntimeException();
         }
     }
+
+    @Override
+    public int getNumberOfproducts() {
+        int numberOfRows = 0;
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT COUNT(id) FROM products")){
+            ResultSet rs = statement.executeQuery();
+
+            if( rs.next()) {
+                numberOfRows = rs.getInt(1);
+            }
+
+        } catch (SQLException ex){
+        logger.info("Exception" + ex.getMessage());
+        throw new RuntimeException();
+        }
+        return numberOfRows;
+    }
+
+    @Override
+    public List<Product> findProducts(int start, int end) {
+        List<Product> list = new ArrayList<>();
+        ProductsMapper productMapper = new ProductsMapper();
+        try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM products LIMIT ?,?")) {
+            statement.setInt(1, start);
+            statement.setInt(2, end);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                list.add(productMapper.extractFromResultSet(rs));
+            }
+
+        } catch (SQLException ex) {
+            logger.info("Exception" + ex.getMessage());
+            throw new RuntimeException();
+
+        }
+        return list;
+    }
 }
