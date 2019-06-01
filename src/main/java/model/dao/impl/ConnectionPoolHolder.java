@@ -1,15 +1,10 @@
 package model.dao.impl;
 
-import model.entity.Bill;
-import model.service.BillService;
-import model.service.ServiceFactory;
-import model.service.impl.BillServiceImpl;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ConnectionPoolHolder {
     private static ConnectionPoolHolder instance;

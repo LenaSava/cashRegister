@@ -9,7 +9,7 @@ import model.entity.User;
 import model.service.BillService;
 import model.service.InvoiceService;
 import model.service.ProductService;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

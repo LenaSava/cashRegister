@@ -4,7 +4,7 @@ import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.Product;
 import model.service.ProductService;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -13,16 +13,6 @@ import java.util.List;
 
 public class JDBCUserDao implements UserDao {
     private static final Logger logger = Logger.getLogger(JDBCUserDao.class);
-//    private Connection connection;
-//    private UserMapper userMapper;
-//
-//
-//    public JDBCUserDao(){
-//        this.connection = connection;
-//        userMapper = new UserMapper();
-//
-//    }
-
 
     @Override
     public boolean create(User entity) throws SQLException {

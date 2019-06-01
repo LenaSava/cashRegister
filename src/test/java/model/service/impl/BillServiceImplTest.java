@@ -4,7 +4,6 @@ import model.dao.factory.DaoFactory;
 import model.dao.impl.JDBCBillDao;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
-import model.service.ServiceFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

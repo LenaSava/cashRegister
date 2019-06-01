@@ -6,7 +6,7 @@ import controller.commands.impl.util.CommandUtil;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.User;
 import model.entity.types.Role;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 import model.service.UserService;
 import org.apache.log4j.Logger;
 import util.HashPassword;

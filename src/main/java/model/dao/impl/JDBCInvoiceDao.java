@@ -16,11 +16,7 @@ import java.util.Map;
 
 public class JDBCInvoiceDao implements InvoiceDao {
     private static final Logger logger = Logger.getLogger(JDBCInvoiceDao.class);
-//    private Connection connection;
-//
-//    public JDBCInvoiceDao(Connection connection){
-//        this.connection = connection;
-//    }
+
     @Override
     public boolean create(Invoice entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
@@ -58,10 +54,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
                 entity.setId(id);
             }
 
-
             return entity;
-
-
 
         }catch (SQLException | RuntimeException ex){
             logger.info("createAndGet failed");

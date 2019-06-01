@@ -4,7 +4,7 @@ import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.entity.Invoice;
 import model.service.InvoiceService;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

@@ -3,7 +3,7 @@ package controller.commands.impl;
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
 import model.service.InvoiceService;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

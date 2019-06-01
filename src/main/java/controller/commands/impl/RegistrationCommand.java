@@ -2,7 +2,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
-import model.service.ServiceFactory;
+import model.service.factory.ServiceFactory;
 import model.service.UserService;
 import org.apache.log4j.Logger;
 
