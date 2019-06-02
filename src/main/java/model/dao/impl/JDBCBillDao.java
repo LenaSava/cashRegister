@@ -117,30 +117,21 @@ public class JDBCBillDao implements BillDao {
     }
     @Override
     public List<Bill> findAll() {
-        Map<Integer, Bill> bills = new HashMap<>();
-
-        final String query = "" +
-                " select r.id as id, r.totalCost as totalCost, r.dates as dates, r.status as status," +
-                "r.user_id as user_id from bill r";// +
-
         try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-             Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(query);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill")) {
 
-            BillMapper billMapper = new BillMapper();
+             List<Bill> bills = new ArrayList<>();
+             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Bill bill = billMapper
-                        .extractFromResultSet(rs);
-                bill = billMapper
-                        .makeUnique(bills, bill);
-            }
-            return new ArrayList<>(bills.values());
-        } catch (SQLException e) {
-            logger.info("findById bill failed");
-            throw new RuntimeException(e);
+            bills.add(new BillMapper().extractFromResultSet(rs));
         }
+        return bills;
+    } catch (SQLException ex) {
+        logger.error("cannot get all from bill", ex);
+        throw new RuntimeException();
     }
+}
     @Override
     public void update(Bill entity) {
 

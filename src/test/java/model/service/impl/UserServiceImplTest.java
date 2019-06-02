@@ -3,6 +3,7 @@ package model.service.impl;
 import model.dao.UserDao;
 import model.dao.factory.DaoFactory;
 import model.entity.User;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -15,6 +16,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 public class UserServiceImplTest {
+    private static final Logger logger = Logger.getLogger(UserServiceImplTest.class);
     @InjectMocks
     private UserServiceImpl userService;
     private User user;
@@ -40,6 +42,7 @@ public class UserServiceImplTest {
     public void login() {
         User user = userService.login("Olga");
         assertEquals(user, user);
+        logger.info("Test UserLogin");
     }
 
     @Test

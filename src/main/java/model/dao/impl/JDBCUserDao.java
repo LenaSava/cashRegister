@@ -1,7 +1,9 @@
 package model.dao.impl;
 
 import model.dao.UserDao;
+import model.dao.mapper.ProductsMapper;
 import model.dao.mapper.UserMapper;
+import model.entity.Product;
 import model.entity.User;
 import org.apache.log4j.Logger;
 
@@ -9,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCUserDao implements UserDao {
@@ -58,7 +61,20 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public List<User> findAll() {
-        return null;
+        try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user")) {
+
+            List<User> users = new ArrayList<>();
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                users.add(new UserMapper().extractFromResultSet(rs));
+            }
+            return users;
+        } catch (SQLException ex) {
+            logger.error("cannot get all from users", ex);
+            throw new RuntimeException();
+        }
     }
 
     @Override

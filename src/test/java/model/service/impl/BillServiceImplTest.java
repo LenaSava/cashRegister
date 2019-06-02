@@ -4,6 +4,7 @@ import model.dao.factory.DaoFactory;
 import model.dao.impl.JDBCBillDao;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -20,6 +21,7 @@ import java.util.List;
 
 
 public class BillServiceImplTest {
+    private static final Logger logger = Logger.getLogger(BillServiceImplTest.class);
     @InjectMocks
     private BillServiceImpl billService;
     private Bill bill;
@@ -43,6 +45,7 @@ public class BillServiceImplTest {
     public void getAllBills() {
         List<Bill> billList = billService.getAllBills();
         assertEquals(bill,billList.get(0));
+        logger.info("Test getAllBills");
     }
 
     @Test

@@ -83,28 +83,19 @@ public class JDBCInvoiceDao implements InvoiceDao {
     }
     @Override
     public List<Invoice> findAll() {
-        Map<Integer, Invoice> invoices = new HashMap<>();
-
-        final String query = "" +
-                " select r.id as id, r.product_id as product_id, r.cost as cost, r.quantity as quantity," +
-                "r.user_id as user_id, r.user_role_id as user_role_id from invoice r";// +
-
         try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-             Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(query);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoice")) {
 
-            InvoiceMapper invoiceMapper = new InvoiceMapper();
+            List<Invoice> invoices = new ArrayList<>();
+            ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Invoice invoice = invoiceMapper
-                        .extractFromResultSet(rs);
-                invoice = invoiceMapper
-                        .makeUnique(invoices, invoice);
+                invoices.add(new InvoiceMapper().extractFromResultSet(rs));
             }
-            return new ArrayList<>(invoices.values());
-        } catch (SQLException e) {
-            logger.info("findAll failed");
-            throw new RuntimeException(e);
+            return invoices;
+        } catch (SQLException ex) {
+            logger.error("cannot get all from invoices", ex);
+            throw new RuntimeException();
         }
     }
     @Override

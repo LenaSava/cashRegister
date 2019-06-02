@@ -77,31 +77,21 @@ public class JDBCProductDao implements ProductDao {
     }
     @Override
     public List<Product> findAll() {
-        Map<Integer, Product> products = new HashMap<>();
-
-        final String query = "" +
-                " select r.id as id, r.code as code, r.name as name, r.name_ua as name_ua, r.cost as cost, r.quantity as quantity," +
-                "r.invoice_id as invoice_id from products r";// +
-
         try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-             Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery(query);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM products")) {
 
-            ProductsMapper productMapper = new ProductsMapper();
+            List<Product> products = new ArrayList<>();
+            ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Product product = productMapper
-                        .extractFromResultSet(rs);
-                product = productMapper
-                        .makeUnique(products, product);
+                products.add(new ProductsMapper().extractFromResultSet(rs));
             }
-            return new ArrayList<>(products.values());
-        } catch (SQLException e) {
-            logger.info("Exception" + e.getMessage());
-            throw new RuntimeException(e);
+            return products;
+        } catch (SQLException ex) {
+            logger.error("cannot get all from products", ex);
+            throw new RuntimeException();
         }
     }
-
 
 
     @Override
