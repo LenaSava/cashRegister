@@ -18,7 +18,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
     private static final Logger logger = Logger.getLogger(JDBCInvoiceDao.class);
 
     @Override
-    public boolean create(Invoice entity) throws SQLException {
+    public boolean create(Invoice entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(product_id, cost, quantity) VALUES (?,?,?)")){
             statement.setInt(1,entity.getProduct_id());
@@ -36,7 +36,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
     }
 
     @Override
-    public Invoice createAndGet(Invoice entity) throws SQLException {
+    public Invoice createAndGet(Invoice entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(product_id, cost, quantity, user_id, user_role_id, bill_id) VALUES (?,?,?,?,?,?)", ObjectMapper.generatedColumns)){
             statement.setInt(1,entity.getProduct_id());

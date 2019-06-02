@@ -3,12 +3,20 @@ package model.service.impl;
 import model.dao.factory.DaoFactory;
 import model.dao.ProductDao;
 import model.entity.Product;
+import model.exception.ServiceException;
 import model.service.ProductService;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+/**
+ * implementation of product service
+ *
+ * @author Olena Savinkova
+ */
 
 public class ProductServiceImpl implements ProductService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
@@ -17,7 +25,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts(){
-        return productDao.findAll();
+        try {
+            return productDao.findAll();
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot getAllProducts");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override
@@ -25,38 +38,68 @@ public class ProductServiceImpl implements ProductService {
         if (Objects.isNull(product)) throw new IllegalArgumentException("Product must be a set");
         try {
             productDao.create(product);
-        } catch (SQLException e) {
-                //save error message into log
-            throw new RuntimeException(e);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot create Products");
+            throw new ServiceException(errorMessage);
         }
     }
     @Override
     public void update(final Product product) {
         if (Objects.isNull(product)) throw new IllegalArgumentException("Product must be a set");
-        productDao.update(product);
+        try {
+            productDao.update(product);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot update Products");
+            throw new ServiceException(errorMessage);
+        }
     }
     @Override
     public Optional<Product> findById(int id) {
-        final Product product = productDao.findById(id);
-        return Optional.ofNullable(product);
+        try {
+            Product product = productDao.findById(id);
+            return Optional.ofNullable(product);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findById");
+            throw new ServiceException(errorMessage);
+        }
     }
     @Override
     public Optional<Product> findByCode(int code) {
-        final Product product = productDao.findByCode(code);
-        return Optional.ofNullable(product);
+        try {
+            Product product = productDao.findByCode(code);
+            return Optional.ofNullable(product);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findByCode");
+            throw new ServiceException(errorMessage);
+        }
     }
     @Override
     public Optional<Product> insertIntoInvoices(int code) {
-        final Product product = productDao.insertIntoInvoices(code);
-        return Optional.ofNullable(product);
+        try {
+            Product product = productDao.insertIntoInvoices(code);
+            return Optional.ofNullable(product);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findByCode");
+            throw new ServiceException(errorMessage);
+        }
     }
     @Override
     public int getNumberOfproducts() {
-        return productDao.getNumberOfproducts();
+        try {
+            return productDao.getNumberOfproducts();
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot getNumber of products");
+            throw new ServiceException(errorMessage);
+        }
     }
     @Override
     public List<Product> findProducts(int currentPage, int rowsPerPage){
-        int start = currentPage * rowsPerPage - rowsPerPage;
-        return productDao.findProducts(start, rowsPerPage);
+        try {
+            int start = currentPage * rowsPerPage - rowsPerPage;
+            return productDao.findProducts(start, rowsPerPage);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findProducts");
+            throw new ServiceException(errorMessage);
+        }
     }
 }

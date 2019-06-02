@@ -15,7 +15,7 @@ public class JDBCBillDao implements BillDao {
     private static final Logger logger = Logger.getLogger(JDBCBillDao.class);
 
     @Override
-    public boolean create(Bill entity) throws SQLException {
+    public boolean create(Bill entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(totalCost, dates, status, user_id) VALUES (?,?,?,?)")){
             statement.setInt(1, entity.getTotalCost());
@@ -34,7 +34,7 @@ public class JDBCBillDao implements BillDao {
 
 
     @Override
-    public Bill createAndGet(Bill entity) throws SQLException {
+    public Bill createAndGet(Bill entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO bill(dates, status, user_id) VALUES (?,?,?)", ObjectMapper.generatedColumns)){
             statement.setDate(1, new Date(entity.getDates().getTime()));
@@ -57,7 +57,7 @@ public class JDBCBillDao implements BillDao {
         }
     }
     @Override
-    public void updateBillTotalCost(int billId, double cost) throws SQLException {
+    public void updateBillTotalCost(int billId, double cost) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE bill set totalCost = totalCost + ? where id = ?")) {
             preparedStatement.setDouble(1, cost);
@@ -180,29 +180,21 @@ public class JDBCBillDao implements BillDao {
         }
     }
 
-public List<Bill> xReport(String status) {
-    Map<Integer, Bill> bills = new HashMap<>();
-    try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill WHERE status = ?")){
-            preparedStatement.setString(1,status);
+    public List<Bill> xReport(String status) {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill WHERE status = ?")){
+                preparedStatement.setString(1,status);
+            List<Bill> bills = new ArrayList<>();
             ResultSet rs = preparedStatement.executeQuery();
-            BillMapper billMapper = new BillMapper();
 
             while (rs.next()) {
-                Bill bill = billMapper
-                        .extractFromResultSet(rs);
-                bill = billMapper
-                        .makeUnique(bills, bill);
+                bills.add(new BillMapper().extractFromResultSet(rs));
             }
-            return new ArrayList<>(bills.values());
-
-
-        }catch (SQLException ex){
-            logger.info("findById bill failed" + ex);
+            return bills;
+        } catch (SQLException ex) {
+            logger.error("cannot get report from bill", ex);
             throw new RuntimeException();
         }
-
     }
-
 }
 

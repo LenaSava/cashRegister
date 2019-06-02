@@ -4,16 +4,20 @@ import model.dao.BillDao;
 import model.dao.factory.DaoFactory;
 import model.dao.InvoiceDao;
 import model.entity.Invoice;
+import model.exception.ServiceException;
 import model.service.InvoiceService;
-import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * implementation of invoice service
+ *
+ * @author Olena Savinkova
+ */
+
 public class InvoiceServiceImpl implements InvoiceService {
-    private static final Logger logger = Logger.getLogger(InvoiceServiceImpl.class);
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private InvoiceDao invoiceDao = daoFactory.createInvoiceDao();
     private BillDao billDao = daoFactory.createBillDao();
@@ -21,44 +25,70 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<Invoice> getAllInvoices(){
-        return invoiceDao.findAll();
+        try {
+            return invoiceDao.findAll();
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot getAllInvoices");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override
     public void deleteAll(){
-        invoiceDao.deleteAll();
+        try {
+            invoiceDao.deleteAll();
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot confirm bill");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override
-    public void create(final Invoice invoice) {
-        if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
+    public void create(final Invoice invoice) throws ServiceException {
         try {
             invoiceDao.createAndGet(invoice);
             billDao.updateBillTotalCost(invoice.getBillId(), invoice.getCost());
-        } catch (SQLException e) {
-            logger.info("Exception" + e.getMessage());
-            throw new RuntimeException(e);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot deleteAll");
+            throw new ServiceException(errorMessage);
         }
     }
 
     @Override
     public void update(final Invoice invoice) {
-        if (Objects.isNull(invoice)) throw new IllegalArgumentException("Invoice must be a set");
-        invoiceDao.update(invoice);
+        if (Objects.isNull(invoice)) {
+            throw new IllegalArgumentException("Invoice must be a set");
+        }
+        try {
+            invoiceDao.update(invoice);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot update invoice");
+            throw new ServiceException(errorMessage);
+        }
+
     }
     @Override
     public boolean delete(Integer id) {
         if (Objects.isNull(id)) {
             throw new IllegalArgumentException("Id must be a set");
         }
-        invoiceDao.delete(id);
-        return true;
+        try {
+            invoiceDao.delete(id);
+            return true;
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot delete invoice");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override
     public Optional<Invoice> findById(int id) {
-        final Invoice invoice = invoiceDao.findById(id);
-        return Optional.ofNullable(invoice);
+        try {
+            Invoice invoice = invoiceDao.findById(id);
+            return Optional.ofNullable(invoice);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot findById");
+            throw new ServiceException(errorMessage);
+        }
     }
-
 }

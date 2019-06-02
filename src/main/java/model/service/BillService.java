@@ -4,12 +4,14 @@ import model.entity.Bill;
 
 import java.util.List;
 
+/**
+ * The root interface for bill services
+ *
+ * @see model.service.impl.InvoiceServiceImpl
+ */
+
 public interface BillService {
-    /**
-     * bill service
-     *
-     * @author Olena Savinkova
-     */
+
     List<Bill> getAllBills();
 
     /**

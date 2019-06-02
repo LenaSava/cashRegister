@@ -16,7 +16,7 @@ public class JDBCProductDao implements ProductDao {
     private static final Logger logger = Logger.getLogger(JDBCProductDao.class);
 
     @Override
-    public boolean create(Product entity) throws SQLException {
+    public boolean create(Product entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, name_ua, cost, quantity) VALUES (?,?,?,?,?)")){
 

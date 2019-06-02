@@ -8,7 +8,11 @@ import model.service.UserService;
 import model.service.impl.util.Validation;
 import util.HashPassword;
 
-import java.sql.SQLException;
+/**
+ * implementation of user service
+ *
+ * @author Olena Savinkova
+ */
 
 public class UserServiceImpl implements UserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
@@ -30,9 +34,9 @@ public class UserServiceImpl implements UserService {
     public void singUp(final User user) {
         try {
             userDao.create(user);
-        } catch (SQLException e) {
-            //save error message into log
-            throw new RuntimeException(e);
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findById");
+            throw new ServiceException(errorMessage);
         }
     }
 

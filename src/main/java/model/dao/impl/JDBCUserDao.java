@@ -18,7 +18,7 @@ public class JDBCUserDao implements UserDao {
     private static final Logger logger = Logger.getLogger(JDBCUserDao.class);
 
     @Override
-    public boolean create(User entity) throws SQLException {
+    public boolean create(User entity) {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user(login,email, password, role_id) VALUES (?,?,?,?)")){
 
