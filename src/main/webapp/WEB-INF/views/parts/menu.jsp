@@ -9,8 +9,6 @@
 
 <div style="padding: 5px;">
 
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/info_page'"><fmt:message key="about.shop"/></button>
-    |
     <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/cashier_page'"><fmt:message key="cashier.list"/></button>
     |
     <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/senior_cashier_list'"><fmt:message key="senior.cashier"/></button>

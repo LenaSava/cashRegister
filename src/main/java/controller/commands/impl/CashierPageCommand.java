@@ -19,8 +19,7 @@ public class CashierPageCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
         List<Product> products = productService.getAllProducts();
-        request.setAttribute("products", products.subList(0, 5));
-//        request.setAttribute("products", products);
+        request.setAttribute("products", products);
         logger.info("Get all products" + products);
 
         return PageResourseManager.getProperty("cashier.page.jsp");

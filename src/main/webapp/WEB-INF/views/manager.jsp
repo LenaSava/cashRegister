@@ -25,7 +25,7 @@
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
 
-        <%@ include file="parts/pagination.jsp" %>
+
 
 
         <div class="w3-container w3-center w3-green">
@@ -53,6 +53,7 @@
             </table>
             <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Create Product</button>
         </div>
+        <%@ include file="parts/pagination.jsp" %>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">

@@ -46,7 +46,8 @@ public class BillServiceImplTest {
     }
 
     @Test
-    public void confirm() {
+    public void confirm(int id) {
+        billService.confirm(id);
     }
 
     @Test
