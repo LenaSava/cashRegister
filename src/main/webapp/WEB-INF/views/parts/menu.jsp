@@ -9,15 +9,15 @@
 
 <div style="padding: 5px;">
 
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/cashier_page'"><fmt:message key="cashier.list"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/cashier_page'"><fmt:message key="cashier.list"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/senior_cashier_list'"><fmt:message key="senior.cashier"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/senior_cashier_list'"><fmt:message key="senior.cashier"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/manager_page'"><fmt:message key="manager"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/manager_page'"><fmt:message key="manager"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/bills_page'"><fmt:message key="bills"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/bills_page'"><fmt:message key="bills"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/log_out'"><fmt:message key="exit-button"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/log_out'"><fmt:message key="exit-button"/></button>
 
 
 </div>

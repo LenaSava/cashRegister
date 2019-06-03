@@ -28,11 +28,11 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/api/" , "");
+        path = path.replaceAll(".*/" , "");
         Command command = CommandFactory.getCommand(path);
         String page = command.execute(request, response);
         if(page.contains("redirect")){
-            response.sendRedirect(request.getContextPath() + page.replace("redirect", "/api/"));
+            response.sendRedirect(request.getContextPath() + page.replace("redirect", "/"));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }

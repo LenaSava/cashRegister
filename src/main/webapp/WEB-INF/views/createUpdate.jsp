@@ -23,7 +23,7 @@
         <div class="w3-container w3-center w3-green">
                 <h2><fmt:message key="update.create"/></h2>
         </div>
-        <form method="post" action="/api/create_update" class="w3-selection w3-light-grey w3-padding">
+        <form method="post" action="/create_update" class="w3-selection w3-light-grey w3-padding">
             <input type="hidden" name="id" value="${product.id}"/>
             <input type="hidden" name="id" value="${product.invoiceId}"/>
             <label><fmt:message key="code"/>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large" onclick="location.href='/api/manager_page'"><fmt:message key="back.to.main"/></button>
+    <button class="w3-btn w3-round-large" onclick="location.href='/manager_page'"><fmt:message key="back.to.main"/></button>
 </div>
 </body>
 </html>

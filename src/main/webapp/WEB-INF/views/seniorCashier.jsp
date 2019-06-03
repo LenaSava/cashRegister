@@ -39,17 +39,17 @@
                         <td>${invoice.cost}</td>
                         <td>1</td>
                         <td>${invoice.userId}</td>
-                        <td><a href="/api/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
+                        <td><a href="/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_all'"><fmt:message key="deleteAll"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/delete_all'"><fmt:message key="deleteAll"/></button>
             <br>
         </div>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

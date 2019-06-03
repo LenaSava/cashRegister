@@ -27,7 +27,7 @@
         </div>
         <div class="w3-red">
         </div>
-        <form method="post" action="/api/login_submit" class="w3-selection w3-light-grey w3-padding">
+        <form method="post" action="/login_submit" class="w3-selection w3-light-grey w3-padding">
             <label><fmt:message key="registration.button"/>
                 <input type="text" required placeholder="<fmt:message key="example.steve"/>" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>

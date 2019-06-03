@@ -23,7 +23,7 @@
         <div class="w3-container w3-center w3-green">
             <h2><fmt:message key="registration.title"/></h2>
         </div>
-        <form method="post" action="/api/registration" class="w3-selection w3-light-grey w3-padding">
+        <form method="post" action="/registration" class="w3-selection w3-light-grey w3-padding">
 
 
             <label><fmt:message key="registration.button"/>

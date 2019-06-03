@@ -40,13 +40,13 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'"><fmt:message key="print"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/y_report'"><fmt:message key="print"/></button>
             <br>
         </div>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/bills_page'"><fmt:message key="back.to.user.menu"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/bills_page'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

@@ -89,7 +89,7 @@ public class AccessFilter implements Filter {
             }
         }
 
-        request.getRequestDispatcher("/api/" + CommandUtil.ERROR_PAGE.getPath()).forward(request, response);
+        request.getRequestDispatcher("/" + CommandUtil.ERROR_PAGE.getPath()).forward(request, response);
     }
 
     @Override
