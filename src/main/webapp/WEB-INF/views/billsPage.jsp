@@ -41,19 +41,19 @@
                         <td>${bill.status}</td>
                         <td>${bill.userId}</td>
                         <td>${bill.totalCost}</td>
-                        <td><a href="/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
-                        <td><a href="/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
+                        <td><a href="/api/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
+                        <td><a href="/api/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/x_report'"><fmt:message key="x.report"/></button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/y_report'"><fmt:message key="y.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'"><fmt:message key="x.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'"><fmt:message key="y.report"/></button>
             <br>
         </div>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/login'"><fmt:message key="back.to.user.menu"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

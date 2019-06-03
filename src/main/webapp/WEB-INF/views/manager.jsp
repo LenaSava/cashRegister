@@ -47,17 +47,17 @@
                         </td>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <td><a href="/show_create?id=${product.id}">Edit</a></td>
+                        <td><a href="/api/show_create?id=${product.id}">Edit</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/show_create'">Create Product</button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Create Product</button>
         </div>
         <%@ include file="parts/pagination.jsp" %>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/login'">back to user menu</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'">back to user menu</button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

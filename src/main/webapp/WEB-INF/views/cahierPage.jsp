@@ -46,7 +46,7 @@
                         </td>
                         <td>1</td>
                         <td>${product.cost}</td>
-                        <td><a href="/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
+                        <td><a href="/api/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -58,7 +58,7 @@
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/login'"><fmt:message key="back.to.user.menu"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

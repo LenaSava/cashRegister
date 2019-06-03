@@ -12,7 +12,7 @@
 
     <servlet-mapping>
         <servlet-name>Servl</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
 
@@ -41,26 +41,26 @@
         <filter-class>controller.filter.AccessFilter</filter-class>
         <init-param>
             <param-name>allowed-urls</param-name>
-            <param-value>/login,/registration,/login_submit,/show_registration,
-                /info_page,/error</param-value>
+            <param-value>/api/login,/api/registration,/api/login_submit,/api/show_registration,
+                /api/info_page,/api/error</param-value>
         </init-param>
         <init-param>
             <param-name>cashier-urls</param-name>
-            <param-value>/cashier_page,/create_invoice,/log_out,/find_product</param-value>
+            <param-value>/api/cashier_page,/api/create_invoice,/api/log_out,/api/find_product</param-value>
         </init-param>
         <init-param>
             <param-name>senior-cashier-urls</param-name>
-            <param-value>/senior_cashier_list,/delete,/log_out,/confirm_invoice,/delete_invoice,/bills_page,/x_report,/y_report,/confirm_bill,/cancel_bill</param-value>
+            <param-value>/api/senior_cashier_list,/api/delete,/api/log_out,/api/confirm_invoice,/api/delete_invoice,/api/bills_page,/api/x_report,/api/y_report,/api/confirm_bill,/api/cancel_bill</param-value>
         </init-param>
         <init-param>
             <param-name>manager-urls</param-name>
-            <param-value>/manager_page,/log_out,/create_update,/show_create,/show_create,/bills_page</param-value>
+            <param-value>/api/manager_page,/api/log_out,/api/create_update,/api/show_create,/api/show_create,/api/bills_page</param-value>
         </init-param>
     </filter>
     <filter-mapping>
         <filter-name>AccessFilter</filter-name>
         <servlet-name>Servl</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </filter-mapping>
 
 
