@@ -2,6 +2,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
+import model.exception.ServiceException;
 import model.exception.WrongDataException;
 import model.service.factory.ServiceFactory;
 import model.service.UserService;
@@ -17,19 +18,21 @@ public class RegistrationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String nameFromRequest = request.getParameter("name");
-        String passFromRequest = request.getParameter("pass");
         String emailFromRequest = request.getParameter("email");
+        String passFromRequest = request.getParameter("pass");
+
 
         logger.info("Get data from registration: " + nameFromRequest + passFromRequest + emailFromRequest);
 
         try {
-            userService.registrationUser(nameFromRequest, passFromRequest, emailFromRequest);
-        } catch (WrongDataException e) {
+            userService.registrationUser(nameFromRequest,  emailFromRequest, passFromRequest);
+            return PageResourseManager.getProperty("home");
+        } catch (RuntimeException e) {
             request.setAttribute("error", true);
             logger.info("Error in registration form" + e);
         }
 
-        return PageResourseManager.getProperty("home");
+        return PageResourseManager.getProperty("registration.page.jsp");
     }
 }
 

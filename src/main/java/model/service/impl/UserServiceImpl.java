@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public User registrationUser(String nickname, String password, String email) throws ServiceException {
-        if (Validation.isValidParam(nickname) && Validation.isValidParam(password)) {
+    public User registrationUser(String nickname, String email, String password) throws ServiceException {
+        if (Validation.isValidParam(nickname) && Validation.isEmailValid(email)) {
 
             User user = new User();
 

@@ -39,7 +39,7 @@
         </form>
 
         <div>
-            <c:if test="${error}">
+            <c:if test="${not empty error}">
                 <div class="w3-red"><fmt:message key="registration.exception"/></div>
             </c:if>
         </div>
