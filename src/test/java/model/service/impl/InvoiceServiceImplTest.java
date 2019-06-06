@@ -6,6 +6,7 @@ import model.dao.impl.JDBCInvoiceDao;
 import model.entity.Bill;
 import model.entity.Invoice;
 import model.entity.enumeration.BillStatus;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class InvoiceServiceImplTest {
     private static final Logger logger = Logger.getLogger(BillServiceImplTest.class);
@@ -49,23 +50,20 @@ public class InvoiceServiceImplTest {
         logger.info("Test getAllInvoice");
     }
 
+
     @Test
-    public void deleteAll() {
+    public void update() throws DataBaseException {
+        Invoice invoice = new Invoice();
+        invoice.setId(2);
+        invoiceService.update(invoice);
+        verify(invoiceDao,times(1)).update(invoice);
+        logger.info("Test update");
     }
 
     @Test
-    public void create() {
+    public void delete() throws DataBaseException {
+        invoiceService.delete(2);
+        verify(invoiceDao, times(1)).delete(2);
     }
 
-    @Test
-    public void update() {
-    }
-
-    @Test
-    public void delete() {
-    }
-
-    @Test
-    public void findById() {
-    }
 }
