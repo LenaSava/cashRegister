@@ -1,11 +1,8 @@
 package model.service.impl;
 
 import model.dao.factory.DaoFactory;
-import model.dao.impl.JDBCBillDao;
 import model.dao.impl.JDBCInvoiceDao;
-import model.entity.Bill;
 import model.entity.Invoice;
-import model.entity.enumeration.BillStatus;
 import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -14,13 +11,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class InvoiceServiceImplTest {
