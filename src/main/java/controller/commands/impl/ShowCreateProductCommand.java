@@ -15,10 +15,10 @@ public class ShowCreateProductCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        final String id = request.getParameter("id");
+        String id = request.getParameter("id");
         logger.info("Get id from product: " + id);
-        final Product product;
-        final ProductService productService = ServiceFactory.getProductService();
+        Product product;
+        ProductService productService = ServiceFactory.getProductService();
         if (id == null || id.trim().length() == 0) {
             product = new Product();
         } else {

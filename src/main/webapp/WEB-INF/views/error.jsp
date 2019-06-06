@@ -31,7 +31,7 @@
 </div>
 
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large" onclick="location.href=''"><fmt:message key="back.to.main"/></button>
+    <button class="w3-btn w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.main"/></button>
 </div>
 <jsp:include page="parts/footer.jsp"></jsp:include>
 </body>

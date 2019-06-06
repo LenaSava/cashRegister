@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CashierPageCommand implements Command {
     private static final Logger logger = Logger.getLogger(CashierPageCommand.class);
-    ProductService productService = ServiceFactory.getProductService();
+    private ProductService productService = ServiceFactory.getProductService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

@@ -34,11 +34,11 @@ public class UserCommand implements Command {
                 request.getSession(true).setAttribute("User", user);
                 logger.info("Successfully logged in user: " + user.getLogin());
                     if (Role.SENIOR_CASHIER.getRole() == user.getRole()) {
-                        return "redirect:/" + CommandUtil.SENIOR_CASHIER_PAGE.getPath();
+                        return "redirect" + CommandUtil.SENIOR_CASHIER_PAGE.getPath();
                     } else if (Role.MANAGER.getRole() == user.getRole()) {
-                        return "redirect:/" + CommandUtil.MANAGER_PAGE.getPath();
+                        return "redirect" + CommandUtil.MANAGER_PAGE.getPath();
                     }
-                return "redirect:/" + CommandUtil.CASHIER_PAGE.getPath();
+                return "redirect" + CommandUtil.CASHIER_PAGE.getPath();
             }
         }catch (RuntimeException e) {
             request.setAttribute("wrongPassOrLogin", true);

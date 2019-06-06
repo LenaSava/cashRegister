@@ -5,6 +5,7 @@ import model.dao.mapper.InvoiceMapper;
 import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
 import model.entity.Invoice;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 
 
@@ -18,7 +19,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
     private static final Logger logger = Logger.getLogger(JDBCInvoiceDao.class);
 
     @Override
-    public boolean create(Invoice entity) {
+    public boolean create(Invoice entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(product_id, cost, quantity) VALUES (?,?,?)")){
             statement.setInt(1,entity.getProduct_id());
@@ -29,9 +30,9 @@ public class JDBCInvoiceDao implements InvoiceDao {
             statement.execute();
             return true;
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("Creation failed");
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 
@@ -56,7 +57,7 @@ public class JDBCInvoiceDao implements InvoiceDao {
 
             return entity;
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("createAndGet failed");
             throw new RuntimeException();
         }
@@ -99,18 +100,18 @@ public class JDBCInvoiceDao implements InvoiceDao {
         }
     }
     @Override
-    public void deleteAll() {
+    public void deleteAll() throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("DELETE FROM invoice")){
             statement.execute();
 
-        }catch (SQLException | RuntimeException ex) {
+        }catch (SQLException  ex) {
             logger.info("DeleteAll failed");
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
     @Override
-    public void update(Invoice entity) {
+    public void update(Invoice entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("UPDATE invoice set cost=?, quantity=? where id=?")){
 
@@ -122,20 +123,20 @@ public class JDBCInvoiceDao implements InvoiceDao {
 
         }catch (SQLException | RuntimeException ex){
             logger.info("update failed");
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
     @Override
-    public boolean delete(int id) {
+    public boolean delete(int id) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM invoice WHERE id=?")) {
             preparedStatement.setInt(1,id);
             preparedStatement.execute();
 
             return true;
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("delete invoice failed");
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 }

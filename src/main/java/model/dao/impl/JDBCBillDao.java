@@ -5,6 +5,7 @@ import model.dao.mapper.BillMapper;
 import model.dao.mapper.ObjectMapper;
 import model.entity.Bill;
 import model.entity.enumeration.BillStatus;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -15,7 +16,7 @@ public class JDBCBillDao implements BillDao {
     private static final Logger logger = Logger.getLogger(JDBCBillDao.class);
 
     @Override
-    public boolean create(Bill entity) {
+    public boolean create(Bill entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO invoice(totalCost, dates, status, user_id) VALUES (?,?,?,?)")){
             statement.setInt(1, entity.getTotalCost());
@@ -26,9 +27,9 @@ public class JDBCBillDao implements BillDao {
             statement.execute();
             return true;
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("create bill failed" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 
@@ -51,7 +52,7 @@ public class JDBCBillDao implements BillDao {
             }
             return entity;
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("createAndGet bill failed");
             throw new RuntimeException();
         }
@@ -66,7 +67,7 @@ public class JDBCBillDao implements BillDao {
             preparedStatement.execute();
 
         }
-        catch (SQLException | RuntimeException ex) {
+        catch (SQLException ex) {
             logger.info("update bill failed" + ex.getMessage());
             throw new RuntimeException();
         }
@@ -116,7 +117,7 @@ public class JDBCBillDao implements BillDao {
         }
     }
     @Override
-    public List<Bill> findAll() {
+    public List<Bill> findAll() throws DataBaseException {
         try (Connection connection = ConnectionPoolHolder.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bill")) {
 
@@ -129,7 +130,7 @@ public class JDBCBillDao implements BillDao {
         return bills;
     } catch (SQLException ex) {
         logger.error("cannot get all from bill", ex);
-        throw new RuntimeException();
+        throw new DataBaseException();
     }
 }
     @Override
@@ -167,16 +168,16 @@ public class JDBCBillDao implements BillDao {
         }
     }
     @Override
-    public boolean delete(int id) {
+    public boolean delete(int id) throws DataBaseException{
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM bill WHERE id=?")) {
             preparedStatement.setInt(1,id);
             preparedStatement.execute();
 
             return true;
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("delete bill failed" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 

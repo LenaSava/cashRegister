@@ -49,23 +49,9 @@ public class BillServiceImplTest {
     }
 
     @Test
-    public void confirm(int id) {
-        billService.confirm(id);
-    }
-
-    @Test
     public void cancel() {
+
+
     }
 
-    @Test
-    public void findOrCreate() {
-    }
-
-    @Test
-    public void Report() {
-    }
-
-    @Test
-    public void yReport() {
-    }
 }

@@ -3,6 +3,7 @@ package model.service.impl;
 import model.dao.factory.DaoFactory;
 import model.dao.ProductDao;
 import model.entity.Product;
+import model.exception.DataBaseException;
 import model.exception.ServiceException;
 import model.service.ProductService;
 import org.apache.log4j.Logger;
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts(){
         try {
             return productDao.findAll();
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot getAllProducts");
             throw new ServiceException(errorMessage);
         }
@@ -38,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
         if (Objects.isNull(product)) throw new IllegalArgumentException("Product must be a set");
         try {
             productDao.create(product);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot create Products");
             throw new ServiceException(errorMessage);
         }
@@ -48,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
         if (Objects.isNull(product)) throw new IllegalArgumentException("Product must be a set");
         try {
             productDao.update(product);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot update Products");
             throw new ServiceException(errorMessage);
         }
@@ -58,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
         try {
             Product product = productDao.findById(id);
             return Optional.ofNullable(product);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot Products findById");
             throw new ServiceException(errorMessage);
         }

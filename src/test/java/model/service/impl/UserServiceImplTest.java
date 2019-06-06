@@ -3,6 +3,7 @@ package model.service.impl;
 import model.dao.UserDao;
 import model.dao.factory.DaoFactory;
 import model.entity.User;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class UserServiceImplTest {
     private DaoFactory daoFactory;
 
     @Before
-    public void setUp() {
+    public void setUp() throws DataBaseException {
         MockitoAnnotations.initMocks(this);
         user = new User();
         user.setLogin("Olga");
@@ -43,10 +44,6 @@ public class UserServiceImplTest {
         User user = userService.login("Olga");
         assertEquals(user, user);
         logger.info("Test UserLogin");
-    }
-
-    @Test
-    public void singUp() {
     }
 
     @Test

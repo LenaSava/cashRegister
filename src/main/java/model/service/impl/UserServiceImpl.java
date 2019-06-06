@@ -3,6 +3,7 @@ package model.service.impl;
 import model.dao.factory.DaoFactory;
 import model.dao.UserDao;
 import model.entity.User;
+import model.exception.DataBaseException;
 import model.exception.ServiceException;
 import model.service.UserService;
 import model.service.impl.util.Validation;
@@ -31,10 +32,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public void singUp(final User user) {
+    public void singUp(User user) {
         try {
             userDao.create(user);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot Products findById");
             throw new ServiceException(errorMessage);
         }

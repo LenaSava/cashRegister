@@ -4,6 +4,7 @@ import model.dao.BillDao;
 import model.dao.factory.DaoFactory;
 import model.dao.InvoiceDao;
 import model.entity.Invoice;
+import model.exception.DataBaseException;
 import model.exception.ServiceException;
 import model.service.InvoiceService;
 
@@ -27,7 +28,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public List<Invoice> getAllInvoices(){
         try {
             return invoiceDao.findAll();
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot getAllInvoices");
             throw new ServiceException(errorMessage);
         }
@@ -37,7 +38,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void deleteAll(){
         try {
             invoiceDao.deleteAll();
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot confirm bill");
             throw new ServiceException(errorMessage);
         }
@@ -61,7 +62,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
         try {
             invoiceDao.update(invoice);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot update invoice");
             throw new ServiceException(errorMessage);
         }
@@ -75,7 +76,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         try {
             invoiceDao.delete(id);
             return true;
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot delete invoice");
             throw new ServiceException(errorMessage);
         }
@@ -86,7 +87,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         try {
             Invoice invoice = invoiceDao.findById(id);
             return Optional.ofNullable(invoice);
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot findById");
             throw new ServiceException(errorMessage);
         }

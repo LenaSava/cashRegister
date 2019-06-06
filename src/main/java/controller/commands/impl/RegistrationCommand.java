@@ -2,6 +2,7 @@ package controller.commands.impl;
 
 import controller.commands.Command;
 import controller.commands.impl.util.PageResourseManager;
+import model.exception.WrongDataException;
 import model.service.factory.ServiceFactory;
 import model.service.UserService;
 import org.apache.log4j.Logger;
@@ -23,7 +24,7 @@ public class RegistrationCommand implements Command {
 
         try {
             userService.registrationUser(nameFromRequest, passFromRequest, emailFromRequest);
-        } catch (RuntimeException e) {
+        } catch (WrongDataException e) {
             request.setAttribute("error", true);
             logger.info("Error in registration form" + e);
         }

@@ -3,6 +3,7 @@ package model.service.impl;
 import model.dao.BillDao;
 import model.dao.factory.DaoFactory;
 import model.entity.Bill;
+import model.exception.DataBaseException;
 import model.exception.ServiceException;
 import model.service.BillService;
 
@@ -22,7 +23,7 @@ public class BillServiceImpl implements BillService {
     public List<Bill> getAllBills() throws ServiceException {
         try {
             return billDao.findAll();
-        } catch (RuntimeException e) {
+        } catch (DataBaseException e) {
             String errorMessage = String.format("cannot get All Bills");
             throw new ServiceException(errorMessage);
         }

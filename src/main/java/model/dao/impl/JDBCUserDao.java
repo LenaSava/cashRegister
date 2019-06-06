@@ -5,6 +5,7 @@ import model.dao.mapper.ProductsMapper;
 import model.dao.mapper.UserMapper;
 import model.entity.Product;
 import model.entity.User;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class JDBCUserDao implements UserDao {
     private static final Logger logger = Logger.getLogger(JDBCUserDao.class);
 
     @Override
-    public boolean create(User entity) {
+    public boolean create(User entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user(login,email, password, role_id) VALUES (?,?,?,?)")){
 
@@ -32,15 +33,15 @@ public class JDBCUserDao implements UserDao {
 
 
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("Exception" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
 
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(int id) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE id = ?")){
             preparedStatement.setInt(1,id);
@@ -53,7 +54,7 @@ public class JDBCUserDao implements UserDao {
 
         }catch (SQLException ex){
             logger.info("Exception" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 

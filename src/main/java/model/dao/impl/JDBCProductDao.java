@@ -3,6 +3,7 @@ package model.dao.impl;
 import model.dao.ProductDao;
 import model.dao.mapper.ProductsMapper;
 import model.entity.Product;
+import model.exception.DataBaseException;
 import org.apache.log4j.Logger;
 
 
@@ -16,7 +17,7 @@ public class JDBCProductDao implements ProductDao {
     private static final Logger logger = Logger.getLogger(JDBCProductDao.class);
 
     @Override
-    public boolean create(Product entity) {
+    public boolean create(Product entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO products(code, name, name_ua, cost, quantity) VALUES (?,?,?,?,?)")){
 
@@ -30,9 +31,9 @@ public class JDBCProductDao implements ProductDao {
             statement.execute();
             return true;
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("Exception" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
     @Override
@@ -95,7 +96,7 @@ public class JDBCProductDao implements ProductDao {
 
 
     @Override
-    public void update(Product entity) {
+    public void update(Product entity) throws DataBaseException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("UPDATE products set code = ?, name = ?, name_ua = ?, cost=?, quantity=? where id=?")){
 
@@ -108,9 +109,9 @@ public class JDBCProductDao implements ProductDao {
 
             statement.execute();
 
-        }catch (SQLException | RuntimeException ex){
+        }catch (SQLException ex){
             logger.info("Exception" + ex.getMessage());
-            throw new RuntimeException();
+            throw new DataBaseException();
         }
     }
 
