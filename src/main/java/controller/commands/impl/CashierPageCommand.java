@@ -13,12 +13,11 @@ import java.util.List;
 
 public class CashierPageCommand implements Command {
     private static final Logger logger = Logger.getLogger(CashierPageCommand.class);
-    private ProductService productService = ServiceFactory.getProductService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = ServiceFactory.getProductService().getAllProducts();
         request.setAttribute("products", products);
         logger.info("Get all products" + products);
 

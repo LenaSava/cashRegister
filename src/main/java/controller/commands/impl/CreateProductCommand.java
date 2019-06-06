@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CreateProductCommand implements Command {
     private static final Logger logger = Logger.getLogger(CreateProductCommand.class);
-    ProductService productService = ServiceFactory.getProductService();
+    private ProductService productService = ServiceFactory.getProductService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

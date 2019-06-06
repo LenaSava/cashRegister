@@ -14,7 +14,7 @@ import java.util.List;
 
 public class YReportCommand implements Command {
     private static final Logger logger = Logger.getLogger(YReportCommand.class);
-    BillService billService = ServiceFactory.getBillService();
+    private BillService billService = ServiceFactory.getBillService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

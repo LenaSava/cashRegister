@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class ManagerPageCommand implements Command {
     private static final Logger logger = Logger.getLogger(ManagerPageCommand.class);
-    ProductService productService = ServiceFactory.getProductService();
+    private ProductService productService = ServiceFactory.getProductService();
     private int recordsPerPage = 4;
     private int currentPage = 1;
     private int numberOfPages;

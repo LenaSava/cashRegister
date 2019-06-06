@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RegistrationCommand implements Command {
     private static final Logger logger = Logger.getLogger(RegistrationCommand.class);
-    UserService userService = ServiceFactory.getUserService();
+    private UserService userService = ServiceFactory.getUserService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

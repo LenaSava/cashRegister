@@ -9,15 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DeleteCommand implements Command {
+    private InvoiceService invoiceService = ServiceFactory.getInvoiceService();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        InvoiceService invoiceService = ServiceFactory.getInvoiceService();
 
-        try {
-                invoiceService.delete((Integer.parseInt(request.getParameter("id"))));
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
-        }
+        invoiceService.delete((Integer.parseInt(request.getParameter("id"))));
         request.setAttribute("invoices", invoiceService.getAllInvoices());
 
         return PageResourseManager.getProperty("show.senior.cashier");

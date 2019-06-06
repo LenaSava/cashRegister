@@ -13,7 +13,7 @@ import java.util.List;
 
 public class SeniorCashierPage implements Command {
     private static final Logger logger = Logger.getLogger(SeniorCashierPage.class);
-    InvoiceService invoiceService = ServiceFactory.getInvoiceService();
+    private InvoiceService invoiceService = ServiceFactory.getInvoiceService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

@@ -16,12 +16,9 @@ public class DeleteAllCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        try {
-            invoiceService.deleteAll();
-            logger.info("Call service deleteAll");
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
-        }
+        invoiceService.deleteAll();
+        logger.info("Call service deleteAll");
+
         request.setAttribute("invoices", invoiceService.getAllInvoices());
         logger.info("Call service ");
 
