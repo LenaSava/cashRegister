@@ -50,8 +50,14 @@ public class BillServiceImplTest {
 
     @Test
     public void cancel() {
+        billService.cancel(1);
+        verify(billDao, times(1)).cancel(1);
+    }
 
-
+    @Test
+    public void confirm() {
+        billService.confirm(1);
+        verify(billDao, times(1)).confirm(1);
     }
 
 }
