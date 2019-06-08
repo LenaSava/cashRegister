@@ -24,6 +24,7 @@ public class CreateInvoiceCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+
         Invoice invoice = new Invoice();
         int idFromRequest = Integer.parseInt(request.getParameter("id"));
         Optional<Product> service = productService.findById(idFromRequest);
@@ -37,12 +38,9 @@ public class CreateInvoiceCommand implements Command {
         invoice.setUserRoleId(user.getRole());
         invoice.setBillId(bill.getId());
 
-        try {
-            invoiceService.create(invoice);
-            logger.info("Create invoice");
-        } catch (RuntimeException e) {
-            throw new SecurityException(e);
-        }
+
+        invoiceService.create(invoice);
+        logger.info("Create invoice");
         request.setAttribute("products", productService.getAllProducts());
         logger.info("Get all products");
 

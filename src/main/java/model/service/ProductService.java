@@ -62,5 +62,6 @@ public interface ProductService {
      *
      *
      */
+    Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity);
 
 }

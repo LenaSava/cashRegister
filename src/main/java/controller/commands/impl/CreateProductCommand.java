@@ -17,8 +17,15 @@ public class CreateProductCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+        int codeFromRequest = Integer.parseInt(request.getParameter("code"));
+        String nameFromRequest = request.getParameter("name");
+        String nameUAFromRequest = request.getParameter("name_ua");
+        Double costFromRequest = Double.parseDouble(request.getParameter("cost"));
+        Integer quantityRequest = Integer.parseInt(request.getParameter("quantity"));
+
+
         boolean isNewProduct = false;
-        Product product = new Product();
+        Product product = productService.getProduct(codeFromRequest, nameFromRequest, nameUAFromRequest, costFromRequest, quantityRequest);
         if (StringUtil.isEmpty(request.getParameter("id"))) {
             logger.info("The product is new");
             isNewProduct = true;
@@ -28,11 +35,6 @@ public class CreateProductCommand implements Command {
         if (!StringUtil.isEmpty(request.getParameter("invoiceId"))) {
             product.setInvoiceId(Integer.parseInt(request.getParameter("invoiceId")));
         }
-        product.setCode(Integer.parseInt(request.getParameter("code")));
-        product.setName(request.getParameter("name"));
-        product.setName_ua(request.getParameter("name_ua"));
-        product.setCost(Double.parseDouble(request.getParameter("cost")));
-        product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 
         try {
             if (isNewProduct) {
@@ -46,7 +48,6 @@ public class CreateProductCommand implements Command {
             request.setAttribute("wrongInputData", true);
         }
 
-//        request.setAttribute("products", productService.getAllProducts());
         logger.info("Get all products");
 
         return "redirect" + PageResourseManager.getProperty("manager.pages");

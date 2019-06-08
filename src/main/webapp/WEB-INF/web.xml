@@ -54,7 +54,7 @@
         </init-param>
         <init-param>
             <param-name>manager-urls</param-name>
-            <param-value>/api/manager_page,/api/log_out,/api/create_update,/api/show_create,/api/show_create,/api/bills_page</param-value>
+            <param-value>/api/manager_page,/api/log_out,/api/create_update,/api/show_create,/api/show_create</param-value>
         </init-param>
     </filter>
     <filter-mapping>

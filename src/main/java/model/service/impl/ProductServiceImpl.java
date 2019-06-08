@@ -103,4 +103,16 @@ public class ProductServiceImpl implements ProductService {
             throw new ServiceException(errorMessage);
         }
     }
+    @Override
+    public Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity) {
+            Product product = new Product();
+
+            product.setCode(code);
+            product.setName(name);
+            product.setName_ua(name_ua);
+            product.setCost(cost);
+            product.setQuantity(quantity);
+
+            return product;
+    }
 }
